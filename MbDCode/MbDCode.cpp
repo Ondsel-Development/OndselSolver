@@ -26,6 +26,7 @@ void runSpMat();
 
 int main()
 {
+	ASMTAssembly::runSinglePendulumSuperSimplified();
 	ASMTAssembly::runSinglePendulum();
 	ASMTAssembly::runFile("piston.asmt");
 	ASMTAssembly::runFile("00backhoe.asmt");
