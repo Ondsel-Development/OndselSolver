@@ -265,7 +265,7 @@ void MbD::ASMTAssembly::runSinglePendulum()
 	assembly->runKINEMATIC();
 }
 
-void MbD::ASMTAssembly::runFile(const char* chars)
+void MbD::ASMTAssembly::runFile(const char* fileName)
 {
 	std::ifstream stream(fileName);
     if(stream.fail()) {
