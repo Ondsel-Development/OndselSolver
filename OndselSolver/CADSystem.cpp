@@ -834,12 +834,14 @@ void CADSystem::runPiston()
 	TheSystem->runKINEMATIC(TheSystem);
 }
 
-void MbD::CADSystem::preMbDrun(std::shared_ptr<System> mbdSys)
+int MbD::CADSystem::preMbDrun(std::shared_ptr<System> mbdSys)
 {
+	return 0;
 }
 
-void CADSystem::postMbDrun()
+int CADSystem::postMbDrun()
 {
+	return 0;
 }
 
 void MbD::CADSystem::updateFromMbD()

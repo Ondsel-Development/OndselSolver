@@ -22,6 +22,21 @@
 
 #include "Item.h"
 
+#define ERR_PREMBDRUN 1000
+#define ERR_PREMBDRUN_SIMPARAMETERMISSING 1001
+#define ERR_CREATEMBD_DIVBY0_TIME 1100
+#define ERR_CREATEMBD_DIVBY0_LENGTH 1101
+#define ERR_CREATEMBD_DIVBY0_MASS 1102
+#define ERR_CREATEMBD_DIVBY0_VELOCITY 1103
+#define ERR_CREATEMBD_DIVBY0_OMEGA 1104
+#define ERR_CREATEMBD_DIVBY0_AJ 1105
+#define ERR_CREATEMBD_DIVBY0_ACCELERATION 1106
+#define ERR_CREATEMBD_DIVBY0_ANGLE 1107
+
+#define ERR_CREATEMBD_ASMTITEM 1205
+#define ERR_CREATEMBD_SYMBOLIC 1205
+#define ERR_CREATEMBD_TIME_XXERR 1206
+
 namespace MbD {
 	class Part;
 	class Joint;
@@ -43,7 +58,7 @@ namespace MbD {
 		void initializeLocally() override;
 		void initializeGlobally() override;
 		void clear();
-		void runKINEMATIC(std::shared_ptr<System> self);
+		int runKINEMATIC(std::shared_ptr<System> self);
 		std::shared_ptr<std::vector<std::string>> discontinuitiesAtIC();
 		void jointsMotionsDo(const std::function <void(std::shared_ptr<Joint>)>& f);
 		void partsJointsMotionsDo(const std::function <void(std::shared_ptr<Item>)>& f);

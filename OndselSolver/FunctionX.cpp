@@ -38,7 +38,8 @@ Symsptr MbD::FunctionX::differentiateWRTx()
 	return Symsptr();
 }
 
-void MbD::FunctionX::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int FunctionX::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	xx->createMbD(mbdSys, mbdUnits);
+	return 0;
 }

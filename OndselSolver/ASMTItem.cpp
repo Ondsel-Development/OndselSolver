@@ -131,9 +131,9 @@ void MbD::ASMTItem::deleteMbD()
 	mbdObject = nullptr;
 }
 
-void MbD::ASMTItem::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTItem::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
-	assert(false);
+	return ERR_CREATEMBD_ASMTITEM;
 }
 
 void MbD::ASMTItem::updateFromMbD()

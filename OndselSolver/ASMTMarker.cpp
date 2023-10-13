@@ -50,7 +50,7 @@ FMatDsptr MbD::ASMTMarker::aApm()
 	return aApm;
 }
 
-void MbD::ASMTMarker::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTMarker::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	auto mkr = CREATE<MarkerFrame>::With(name.c_str());
 	auto prt = std::static_pointer_cast<Part>(part()->mbdObject);
@@ -59,4 +59,6 @@ void MbD::ASMTMarker::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<
 	mkr->rpmp = rpmp()->times(1.0 / mbdUnits->length);
 	mkr->aApm = aApm();
 	mbdObject = mkr->endFrames->at(0);
+
+	return 0;
 }

@@ -21,11 +21,15 @@ void MbD::ASMTTime::deleteMbD()
 	expression = nullptr;
 }
 
-void MbD::ASMTTime::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTTime::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	auto mbdTime = mbdSys->time;
-	if (xx == mbdTime) return;
+	if (xx == mbdTime) {
+		return ERR_CREATEMBD_TIME_XXERR;
+	}
 	auto timeScale = std::make_shared<Constant>(mbdUnits->time);
 	auto geoTime = std::make_shared<Product>(timeScale, mbdTime);
 	this->xexpression(mbdTime, geoTime->simplified(geoTime));
+
+	return 0;
 }

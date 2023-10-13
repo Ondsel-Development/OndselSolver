@@ -23,7 +23,7 @@ namespace MbD {
 		void arguments(Symsptr args) override;
 		Symsptr differentiateWRT(Symsptr var) override;
 		virtual Symsptr differentiateWRTx();
-		void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
+		int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
 
 		Symsptr xx;
 

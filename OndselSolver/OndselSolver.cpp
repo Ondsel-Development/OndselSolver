@@ -25,24 +25,24 @@ void runSpMat();
 int main()
 {
 	//MBDynSystem::runFile("crank_slider.mbd");		//To be completed
-	//ASMTAssembly::runSinglePendulumSuperSimplified();	//Mass is missing
-	ASMTAssembly::runSinglePendulumSimplified();
-	ASMTAssembly::runSinglePendulum();	
-	ASMTAssembly::runFile("piston.asmt");
-	ASMTAssembly::runFile("00backhoe.asmt");
+	ASMTAssembly::runSinglePendulumSuperSimplified();	//Mass is missing
+	//ASMTAssembly::runSinglePendulumSimplified();
+	//ASMTAssembly::runSinglePendulum();	
+	//ASMTAssembly::runFile("piston.asmt");
+	//ASMTAssembly::runFile("00backhoe.asmt");
 	//ASMTAssembly::runFile("circular.asmt");	//Needs checking
 	//ASMTAssembly::runFile("cirpendu.asmt");	//Under constrained. Testing ICKine.
 	//ASMTAssembly::runFile("engine1.asmt");	//Needs checking
-	ASMTAssembly::runFile("fourbar.asmt");
+	//ASMTAssembly::runFile("fourbar.asmt");
 	//ASMTAssembly::runFile("fourbot.asmt");	//Very large but works
-	ASMTAssembly::runFile("wobpump.asmt");
+	//ASMTAssembly::runFile("wobpump.asmt");
 
-	auto cadSystem = std::make_shared<CADSystem>();
-	cadSystem->runOndselSinglePendulum();
-	cadSystem->runOndselDoublePendulum();
+	//auto cadSystem = std::make_shared<CADSystem>();
+	//cadSystem->runOndselSinglePendulum();
+	//cadSystem->runOndselDoublePendulum();
 	//cadSystem->runOndselPiston();		//For debugging
-	cadSystem->runPiston();
-	runSpMat();
+	//cadSystem->runPiston();
+	//runSpMat();
 }
 
 void runSpMat() {

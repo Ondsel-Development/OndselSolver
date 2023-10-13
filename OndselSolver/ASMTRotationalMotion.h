@@ -20,7 +20,7 @@ namespace MbD {
         void readMotionJoint(std::vector<std::string>& lines);
         void readRotationZ(std::vector<std::string>& lines);
         void initMarkers() override;
-        void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
+        int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
         std::shared_ptr<Joint> mbdClassNew() override;
         void setMotionJoint(std::string motionJoint);
         void setRotationZ(std::string rotZ);

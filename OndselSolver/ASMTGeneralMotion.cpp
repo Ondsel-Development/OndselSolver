@@ -77,7 +77,7 @@ std::shared_ptr<Joint> MbD::ASMTGeneralMotion::mbdClassNew()
 	return CREATE<FullMotion>::With();
 }
 
-void MbD::ASMTGeneralMotion::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int ASMTGeneralMotion::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	ASMTMotion::createMbD(mbdSys, mbdUnits);
 	auto parser = CREATE<SymbolicParser>::With();
@@ -146,4 +146,6 @@ void MbD::ASMTGeneralMotion::createMbD(std::shared_ptr<System> mbdSys, std::shar
 	}
 	fangIJJ->rotOrder = rotOrder;
 	fullMotion->fangIJJ = fangIJJ;
+
+	return 0;
 }

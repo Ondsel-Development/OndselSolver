@@ -13,17 +13,15 @@
 
 using namespace MbD;
 
-void MbD::ExternalSystem::preMbDrun(std::shared_ptr<System> mbdSys)
+int MbD::ExternalSystem::preMbDrun(std::shared_ptr<System> mbdSys)
 {
 	if (cadSystem) {
-		cadSystem->preMbDrun(mbdSys);
+		return cadSystem->preMbDrun(mbdSys);
 	}
 	else if (asmtAssembly) {
-		asmtAssembly->preMbDrun(mbdSys);
+		return asmtAssembly->preMbDrun(mbdSys);
 	}
-	else {
-		assert(false);
-	}
+	return ERR_PREMBDRUN;
 }
 
 void MbD::ExternalSystem::outputFor(AnalysisType type)

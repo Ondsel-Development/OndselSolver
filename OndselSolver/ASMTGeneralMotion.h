@@ -20,7 +20,7 @@ namespace MbD {
         void readangIJJ(std::vector<std::string>& lines);
         void readRotationOrder(std::vector<std::string>& lines);
         std::shared_ptr<Joint> mbdClassNew() override;
-        void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
+        int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
 
         std::shared_ptr<std::vector<std::string>> rIJI, angIJJ;
         std::string rotationOrder;

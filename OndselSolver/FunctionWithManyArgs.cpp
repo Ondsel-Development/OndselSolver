@@ -5,7 +5,7 @@
  *                                                                         *
  *   See LICENSE file for details about copyright.                         *
  ***************************************************************************/
- 
+
 #include "FunctionWithManyArgs.h"
 #include "Symbolic.h"
 
@@ -42,9 +42,14 @@ std::shared_ptr<std::vector<Symsptr>> FunctionWithManyArgs::getTerms()
 	return terms;
 }
 
-void MbD::FunctionWithManyArgs::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int FunctionWithManyArgs::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
-	for (auto& term : *terms) term->createMbD(mbdSys, mbdUnits);
+	for (auto& term : *terms) {
+		int ret = term->createMbD(mbdSys, mbdUnits);
+		if (ret != 0) {	return ret; }
+	}
+
+	return 0;
 }
 
 void MbD::FunctionWithManyArgs::arguments(Symsptr args)

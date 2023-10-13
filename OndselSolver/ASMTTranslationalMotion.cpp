@@ -46,7 +46,7 @@ void MbD::ASMTTranslationalMotion::initMarkers()
 	markerJ = jt->markerJ;
 }
 
-void MbD::ASMTTranslationalMotion::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTTranslationalMotion::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	ASMTMotion::createMbD(mbdSys, mbdUnits);
 	auto parser = CREATE<SymbolicParser>::With();
@@ -59,6 +59,8 @@ void MbD::ASMTTranslationalMotion::createMbD(std::shared_ptr<System> mbdSys, std
 	zIJ = Symbolic::times(zIJ, std::make_shared<Constant>(1.0 / mbdUnits->length));
 	zIJ->createMbD(mbdSys, mbdUnits);
 	std::static_pointer_cast<ZTranslation>(mbdObject)->zBlk = zIJ->simplified(zIJ);
+
+	return 0;
 }
 
 std::shared_ptr<Joint> MbD::ASMTTranslationalMotion::mbdClassNew()

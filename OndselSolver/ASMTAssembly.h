@@ -69,7 +69,7 @@ namespace MbD {
 		void outputFor(AnalysisType type);
 		void logString(std::string& str);
 		void logString(double value);
-		void preMbDrun(std::shared_ptr<System> mbdSys);
+		int preMbDrun(std::shared_ptr<System> mbdSys);
 		void postMbDrun();
 		void calcCharacteristicDimensions();
 		double calcCharacteristicTime();
@@ -78,12 +78,12 @@ namespace MbD {
 		std::shared_ptr<std::vector<std::shared_ptr<ASMTItemIJ>>> connectorList();
 		std::shared_ptr<std::map<std::string, std::shared_ptr<ASMTMarker>>>markerMap();
 		void deleteMbD();
-		void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
+		int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits) override;
 
 		/* This function performs a one shot solve of the assembly.*/
-		void solve();
+		int solve();
 
-		void runKINEMATIC();
+		int runKINEMATIC();
 		void initprincipalMassMarker();
 		std::shared_ptr<ASMTSpatialContainer> spatialContainerAt(std::shared_ptr<ASMTAssembly> self, std::string& longname);
 		std::shared_ptr<ASMTMarker> markerAt(std::string& longname);

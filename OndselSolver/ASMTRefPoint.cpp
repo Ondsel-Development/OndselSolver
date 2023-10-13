@@ -24,9 +24,11 @@ std::string MbD::ASMTRefPoint::fullName(std::string partialName)
 	return owner->fullName(partialName);
 }
 
-void MbD::ASMTRefPoint::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int ASMTRefPoint::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	for (auto& marker : *markers) {
-		marker->createMbD(mbdSys, mbdUnits);
+		int ret = marker->createMbD(mbdSys, mbdUnits);
+		if (ret != 0) { return ret; }
 	}
+	return 0;
 }

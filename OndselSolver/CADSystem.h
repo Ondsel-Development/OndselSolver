@@ -31,8 +31,8 @@ namespace MbD {
 		void runOndselDoublePendulum();
 		void runOndselPiston();
 		void runPiston();
-		void preMbDrun(std::shared_ptr<System> mbdSys);
-		void postMbDrun();
+		int preMbDrun(std::shared_ptr<System> mbdSys);
+		int postMbDrun();
 		void updateFromMbD();
 
 		std::shared_ptr<System> mbdSystem = std::make_shared<System>();

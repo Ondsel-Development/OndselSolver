@@ -35,7 +35,7 @@ namespace MbD {
 		virtual std::string fullName(std::string partialName);
 		void readDoublesInto(std::string& str, std::string label, FRowDsptr& row);
 		virtual void deleteMbD();
-		virtual void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits);
+		virtual int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits);
 		virtual void updateFromMbD();
 		virtual void compareResults(AnalysisType type);
 		virtual void outputResults(AnalysisType type);

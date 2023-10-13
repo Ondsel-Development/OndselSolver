@@ -240,7 +240,7 @@ void MbD::ASMTSpatialContainer::readAlphaZs(std::vector<std::string>& lines)
 	lines.erase(lines.begin());
 }
 
-void MbD::ASMTSpatialContainer::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTSpatialContainer::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	auto mbdPart = CREATE<Part>::With();
 	mbdObject = mbdPart;
@@ -263,6 +263,7 @@ void MbD::ASMTSpatialContainer::createMbD(std::shared_ptr<System> mbdSys, std::s
 	for (auto& refSurface : *refSurfaces) {
 		refSurface->createMbD(mbdSys, mbdUnits);
 	}
+	return 0;
 }
 
 FColDsptr MbD::ASMTSpatialContainer::rOcmO()

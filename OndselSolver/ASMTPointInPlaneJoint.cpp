@@ -31,10 +31,12 @@ void MbD::ASMTPointInPlaneJoint::readOffset(std::vector<std::string>& lines)
 
 }
 
-void MbD::ASMTPointInPlaneJoint::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int ASMTPointInPlaneJoint::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	ASMTJoint::createMbD(mbdSys, mbdUnits);
 	auto pointInPlaneJoint = std::static_pointer_cast<PointInPlaneJoint>(mbdObject);
 	pointInPlaneJoint->offset = offset;
+
+	return 0;
 }
 

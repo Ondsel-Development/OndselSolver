@@ -173,10 +173,9 @@ double Symbolic::getValue()
 	return 0.0;
 }
 
-void MbD::Symbolic::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::Symbolic::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
-	assert(false);
-	return;
+	return ERR_CREATEMBD_SYMBOLIC;
 }
 
 Symsptr MbD::Symbolic::clonesptr()

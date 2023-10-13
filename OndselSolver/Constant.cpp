@@ -50,9 +50,9 @@ bool MbD::Constant::isOne()
 	return value == 1.0;
 }
 
-void MbD::Constant::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int Constant::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
-	return;
+	return 0;
 }
 
 double MbD::Constant::getValue()

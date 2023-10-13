@@ -24,7 +24,7 @@ namespace MbD {
 	{
 		//
 	public:
-		void preMbDrun(std::shared_ptr<System> mbdSys);
+		int preMbDrun(std::shared_ptr<System> mbdSys);
 		void outputFor(AnalysisType type);
 		void logString(std::string& str);
 		void logString(double value);

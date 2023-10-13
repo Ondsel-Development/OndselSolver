@@ -47,7 +47,7 @@ void MbD::ASMTRotationalMotion::initMarkers()
 	markerJ = jt->markerJ;
 }
 
-void MbD::ASMTRotationalMotion::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTRotationalMotion::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	ASMTMotion::createMbD(mbdSys, mbdUnits);
 	auto parser = CREATE<SymbolicParser>::With();
@@ -60,6 +60,8 @@ void MbD::ASMTRotationalMotion::createMbD(std::shared_ptr<System> mbdSys, std::s
 	geoPhi = Symbolic::times(geoPhi, std::make_shared<Constant>(1.0 / mbdUnits->angle));
 	geoPhi->createMbD(mbdSys, mbdUnits);
 	std::static_pointer_cast<ZRotation>(mbdObject)->phiBlk = geoPhi->simplified(geoPhi);
+
+	return 0;
 }
 
 std::shared_ptr<Joint> MbD::ASMTRotationalMotion::mbdClassNew()

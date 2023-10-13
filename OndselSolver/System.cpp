@@ -65,9 +65,13 @@ void MbD::System::addForceTorque(std::shared_ptr<ForceTorqueItem> forTor)
 	forcesTorques->push_back(forTor);
 }
 
-void System::runKINEMATIC(std::shared_ptr<System> self)
+int System::runKINEMATIC(std::shared_ptr<System> self)
 {
-	externalSystem->preMbDrun(self);
+	int ret = externalSystem->preMbDrun(self);
+	if (ret != 0) {
+		return ret;
+	}
+
 	while (true)
 	{
 		initializeLocally();
@@ -80,6 +84,7 @@ void System::runKINEMATIC(std::shared_ptr<System> self)
 	externalSystem->outputFor(INITIALCONDITION);
 	systemSolver->runBasicKinematic();
 	externalSystem->postMbDrun();
+	return 0;
 }
 
 void System::initializeLocally()

@@ -46,7 +46,7 @@ namespace MbD {
 		virtual std::shared_ptr<std::vector<Symsptr>> getTerms();
 		virtual void addTerm(Symsptr trm);
 		virtual double getValue();
-		virtual void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits);
+		virtual int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits);
 		virtual Symsptr clonesptr();
 		std::shared_ptr<Constant> sptrConstant(double value);
 

@@ -21,12 +21,13 @@ void MbD::ASMTConstantGravity::parseASMT(std::vector<std::string>& lines)
 	lines.erase(lines.begin());
 }
 
-void MbD::ASMTConstantGravity::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTConstantGravity::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
 	auto mbdGravity = CREATE<ConstantGravity>::With();
 	mbdObject = mbdGravity;
 	mbdGravity->gXYZ = g->times(1.0 / mbdUnits->acceleration);
 	mbdSys->addForceTorque(mbdGravity);
+	return 0;
 }
 
 void MbD::ASMTConstantGravity::setg(FColDsptr gravity)

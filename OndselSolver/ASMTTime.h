@@ -18,7 +18,7 @@ namespace MbD {
         //
     public:
         void deleteMbD();
-        void createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits);
+        int createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits);
 
     };
 }

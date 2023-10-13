@@ -47,39 +47,49 @@ void MbD::ASMTAssembly::runSinglePendulumSuperSimplified()
 {
 	//In this version we skip declaration of variables that don't need as they use default values.
 	auto assembly = CREATE<ASMTAssembly>::With();
-
-	assembly->setName("Assembly1");
+	assembly->setName("OndselAssembly");
 
 	auto mkr = CREATE<ASMTMarker>::With();
-	mkr->setName("Marker1");
+	mkr->setName("marker1");
 	assembly->addMarker(mkr);
 
 	auto part = CREATE<ASMTPart>::With();
-	part->setName("Part1");
-	part->setPosition3D(-0.1, -0.1, -0.1);
+	part->setName("part1");
 	assembly->addPart(part);
 
-	mkr = CREATE<ASMTMarker>::With();
-	mkr->setName("Marker1");
-	mkr->setPosition3D(0.1, 0.1, 0.1);
-	part->addMarker(mkr);
+	auto marker1 = CREATE<ASMTMarker>::With();
+	marker1->setName("FixingMarker");
+	part->addMarker(marker1);
 
+	auto marker2 = CREATE<ASMTMarker>::With();
+	marker2->setName("marker2");
+	marker2->setPosition3D(20.0, 10.0, 0.0);
+	part->addMarker(marker2);
+
+	auto part2 = CREATE<ASMTPart>::With();
+	part2->setName("part2");
+	part2->setPosition3D(20.0, 10.0, 0.0);
+	assembly->addPart(part2);
+
+	auto marker3 = CREATE<ASMTMarker>::With();
+	marker3->setName("marker2");
+	marker3->setPosition3D(50.0, 10.0, 0.0);
+	part2->addMarker(marker3);
+
+	/*Ground joint*/
 	auto joint = CREATE<ASMTFixedJoint>::With();
 	joint->setName("Joint1");
-	joint->setMarkerI("/Assembly1/Marker1");
-	joint->setMarkerJ("/Assembly1/Part1/Marker1");
+	joint->setMarkerI("/OndselAssembly/marker1");
+	joint->setMarkerJ("/OndselAssembly/part1/FixingMarker");
 	assembly->addJoint(joint);
 
-	auto simulationParameters = CREATE<ASMTSimulationParameters>::With();
-	simulationParameters->settstart(0.0);
-	simulationParameters->settend(0.0);	//tstart == tend Initial Conditions only.
-	simulationParameters->sethmin(1.0e-9);
-	simulationParameters->sethmax(1.0);
-	simulationParameters->sethout(0.04);
-	simulationParameters->seterrorTol(1.0e-6);
-	assembly->setSimulationParameters(simulationParameters);
+	auto joint2 = CREATE<ASMTRevoluteJoint>::With();
+	joint2->setName("Joint2");
+	joint2->setMarkerI("/OndselAssembly/part1/marker2");
+	joint2->setMarkerJ("/OndselAssembly/part2/marker2");
+	assembly->addJoint(joint2);
 
-	assembly->runKINEMATIC();
+	assembly->solve();
 }
 
 void MbD::ASMTAssembly::runSinglePendulumSimplified()
@@ -709,12 +719,32 @@ void MbD::ASMTAssembly::logString(double value)
 	assert(false);
 }
 
-void MbD::ASMTAssembly::preMbDrun(std::shared_ptr<System> mbdSys)
+int MbD::ASMTAssembly::preMbDrun(std::shared_ptr<System> mbdSys)
 {
+	if (!simulationParameters) {
+		return ERR_PREMBDRUN_SIMPARAMETERMISSING;
+	}
+
 	calcCharacteristicDimensions();
+
+	// prevent division by 0 down the road.
+	if (mbdUnits->time == 0.0) { return ERR_CREATEMBD_DIVBY0_TIME; }
+	if (mbdUnits->length == 0.0) { return ERR_CREATEMBD_DIVBY0_LENGTH; }
+	if (mbdUnits->mass == 0.0) { return ERR_CREATEMBD_DIVBY0_MASS; }
+	if (mbdUnits->velocity == 0.0) { return ERR_CREATEMBD_DIVBY0_VELOCITY; }
+	if (mbdUnits->omega == 0.0) { return ERR_CREATEMBD_DIVBY0_OMEGA; }
+	if (mbdUnits->aJ == 0.0) { return ERR_CREATEMBD_DIVBY0_AJ; }
+	if (mbdUnits->acceleration == 0.0) { return ERR_CREATEMBD_DIVBY0_ACCELERATION; }
+	if (mbdUnits->angle == 0.0) { return ERR_CREATEMBD_DIVBY0_ANGLE; }
+
 	deleteMbD();
-	createMbD(mbdSys, mbdUnits);
+
+	int ret = createMbD(mbdSys, mbdUnits);
+	if (ret != 0) {return ret;}
+
 	std::static_pointer_cast<Part>(mbdObject)->asFixed();
+
+	return 0;
 }
 
 void MbD::ASMTAssembly::postMbDrun()
@@ -809,20 +839,34 @@ void MbD::ASMTAssembly::deleteMbD()
 
 }
 
-void MbD::ASMTAssembly::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+int MbD::ASMTAssembly::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
-	ASMTSpatialContainer::createMbD(mbdSys, mbdUnits);
-	constantGravity->createMbD(mbdSys, mbdUnits);
-	asmtTime->createMbD(mbdSys, mbdUnits);
+	int ret = ASMTSpatialContainer::createMbD(mbdSys, mbdUnits);
+	if (ret != 0) { return ret; }
+	ret = constantGravity->createMbD(mbdSys, mbdUnits);
+	if (ret != 0) { return ret; }
+	ret = asmtTime->createMbD(mbdSys, mbdUnits);
+	if (ret != 0) { return ret; }
+
 	std::sort(parts->begin(), parts->end(), [](std::shared_ptr<ASMTPart> a, std::shared_ptr<ASMTPart> b) { return a->name < b->name; });
 	auto jointsMotions = std::make_shared<std::vector<std::shared_ptr<ASMTConstraintSet>>>();
 	jointsMotions->insert(jointsMotions->end(), joints->begin(), joints->end());
 	jointsMotions->insert(jointsMotions->end(), motions->begin(), motions->end());
 	std::sort(jointsMotions->begin(), jointsMotions->end(), [](std::shared_ptr<ASMTConstraintSet> a, std::shared_ptr<ASMTConstraintSet> b) { return a->name < b->name; });
 	std::sort(forcesTorques->begin(), forcesTorques->end(), [](std::shared_ptr<ASMTForceTorque> a, std::shared_ptr<ASMTForceTorque> b) { return a->name < b->name; });
-	for (auto& part : *parts) { part->createMbD(mbdSys, mbdUnits); }
-	for (auto& joint : *jointsMotions) { joint->createMbD(mbdSys, mbdUnits); }
-	for (auto& forceTorque : *forcesTorques) { forceTorque->createMbD(mbdSys, mbdUnits); }
+	
+	for (auto& part : *parts) {
+		ret = part->createMbD(mbdSys, mbdUnits);
+		if (ret != 0) { return ret; }
+	}
+	for (auto& joint : *jointsMotions) {
+		ret = joint->createMbD(mbdSys, mbdUnits);
+		if (ret != 0) { return ret; }
+	}
+	for (auto& forceTorque : *forcesTorques) {
+		ret = forceTorque->createMbD(mbdSys, mbdUnits);
+		if (ret != 0) { return ret; }
+	}
 
 	auto& mbdSysSolver = mbdSys->systemSolver;
 	mbdSysSolver->errorTolPosKine = simulationParameters->errorTolPosKine;
@@ -843,9 +887,11 @@ void MbD::ASMTAssembly::createMbD(std::shared_ptr<System> mbdSys, std::shared_pt
 	mbdSysSolver->translationLimit = simulationParameters->translationLimit / mbdUnits->length;
 	mbdSysSolver->rotationLimit = simulationParameters->rotationLimit;
 	animationParameters = nullptr;
+
+	return 0;
 }
 
-void MbD::ASMTAssembly::solve()
+int MbD::ASMTAssembly::solve()
 {
 	auto simulationParameters = CREATE<ASMTSimulationParameters>::With();
 	simulationParameters->settstart(0.0);
@@ -856,15 +902,15 @@ void MbD::ASMTAssembly::solve()
 	simulationParameters->seterrorTol(1.0e-6);
 	setSimulationParameters(simulationParameters);
 
-	runKINEMATIC();
+	return runKINEMATIC();
 }
 
-void MbD::ASMTAssembly::runKINEMATIC()
+int MbD::ASMTAssembly::runKINEMATIC()
 {
 	auto mbdSystem = CREATE<System>::With();
 	mbdObject = mbdSystem;
 	mbdSystem->externalSystem->asmtAssembly = this;
-	mbdSystem->runKINEMATIC(mbdSystem);
+	return mbdSystem->runKINEMATIC(mbdSystem);
 }
 //
 //void MbD::ASMTAssembly::initprincipalMassMarker()
