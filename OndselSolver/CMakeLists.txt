@@ -1,4 +1,4 @@
-target_sources(ondsel-solver PUBLIC
+target_sources(OndselSolver PRIVATE
         Abs.cpp
         AbsConstraint.cpp
         AccICKineNewtonRaphson.cpp
@@ -281,9 +281,10 @@ target_sources(ondsel-solver PUBLIC
         ZRotation.cpp
         ZTranslation.cpp
         ASMTAssembly.cpp
-)
-
-target_sources(OndselSolver PUBLIC
+        
+        PUBLIC FILE_SET HEADERS
+        BASE_DIRS "${PROJECT_SOURCE_DIR}"
+        FILES
         Abs.h
         AbsConstraint.h
         AccICKineNewtonRaphson.h
