@@ -95,7 +95,7 @@ void MbD::MBDynSystem::createASMT()
 	for (auto& node : *nodes) node->createASMT();
 	for (auto& body : *bodies) body->createASMT();
 	for (auto& joint : *joints) joint->createASMT();
-	gravity->createASMT();
+	if (gravity) gravity->createASMT();
 }
 
 std::shared_ptr<MBDynNode> MbD::MBDynSystem::nodeAt(std::string nodeName)
