@@ -64,7 +64,7 @@ namespace MbD {
 	//inline void ASMTItem::storeOnLevelArray(std::ofstream& os, int level, std::vector<T> array)
 	//{
 	//	storeOnLevelTabs(os, level);
-	//	for (int i = 0; i < array.size(); i++)
+	//	for (size_t i = 0; i < array.size(); i++)
 	//	{
 	//		os << array[i] << '\t';
 	//	}
