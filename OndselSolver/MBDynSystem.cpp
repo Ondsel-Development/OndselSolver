@@ -249,7 +249,7 @@ void MbD::MBDynSystem::eraseComments(std::vector<std::string>& lines)
 			lines[i] = line.substr(0, it);
 		}
 	}
-	for (size_t i = lines.size() - 1; i >= 0; i--) {
+	for (int i = lines.size() - 1; i >= 0; i--) {
 		auto& line = lines[i];
 		auto it = std::find_if(line.begin(), line.end(), [](unsigned char ch) { return !std::isspace(ch); });
 		if (it == line.end()) lines.erase(lines.begin() + i);

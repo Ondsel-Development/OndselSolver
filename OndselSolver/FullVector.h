@@ -71,7 +71,7 @@ namespace MbD {
 	inline double FullVector<double>::sumOfSquares()
 	{
 		double sum = 0.0;
-		for (size_t i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i);
 			sum += element * element;
@@ -92,7 +92,7 @@ namespace MbD {
 	template<>
 	inline void FullVector<double>::zeroSelf()
 	{
-		for (size_t i = 0; i < (int)this->size(); i++) {
+		for (size_t i = 0; i < this->size(); i++) {
 			this->at(i) = 0.0;
 		}
 	}
@@ -131,7 +131,7 @@ namespace MbD {
 	inline double FullVector<double>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (size_t i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i);
 			if (element < 0.0) element = -element;
@@ -173,7 +173,7 @@ namespace MbD {
 	template<>
 	inline void FullVector<double>::conditionSelfWithTol(double tol)
 	{
-		for (size_t i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i);
 			if (element < 0.0) element = -element;
