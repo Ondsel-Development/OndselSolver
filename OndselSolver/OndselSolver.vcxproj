@@ -230,6 +230,7 @@
     <ClCompile Include="MBDynData.cpp" />
     <ClCompile Include="MBDynDrive.cpp" />
     <ClCompile Include="MBDynElement.cpp" />
+    <ClCompile Include="MBDynGravity.cpp" />
     <ClCompile Include="MBDynInitialValue.cpp" />
     <ClCompile Include="MBDynItem.cpp" />
     <ClCompile Include="MBDynJoint.cpp" />
@@ -527,6 +528,7 @@
     <ClInclude Include="MBDynData.h" />
     <ClInclude Include="MBDynDrive.h" />
     <ClInclude Include="MBDynElement.h" />
+    <ClInclude Include="MBDynGravity.h" />
     <ClInclude Include="MBDynInitialValue.h" />
     <ClInclude Include="MBDynItem.h" />
     <ClInclude Include="MBDynJoint.h" />
@@ -729,8 +731,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\testapp\00backhoe.asmt" />
-    <None Include="..\testapp\assembly.asmt" />
-    <None Include="..\testapp\assembly2.asmt" />
     <None Include="..\testapp\circular.asmt" />
     <None Include="..\testapp\cirpendu.asmt" />
     <None Include="..\testapp\cirpendu2.asmt" />
@@ -750,7 +750,6 @@
     <None Include="..\testapp\piston.asmt" />
     <None Include="..\testapp\quasikine.asmt" />
     <None Include="..\testapp\robot.asmt" />
-    <None Include="..\testapp\smalltalk.asmt" />
     <None Include="..\testapp\SphericalHinge.mbd" />
     <None Include="..\testapp\wobpump.asmt" />
   </ItemGroup>
