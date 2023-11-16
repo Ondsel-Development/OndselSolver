@@ -20,6 +20,7 @@ namespace MbD {
 	{
 		//
 	public:
+		virtual ~ASMTItem() {}
 		virtual ASMTAssembly* root();
 		virtual ASMTSpatialContainer* partOrAssembly();
 		virtual ASMTPart* part();
