@@ -195,10 +195,4 @@ namespace MbD {
         }
         return answer;
     }
-    template<typename T>
-    std::shared_ptr<FullColumn<T>> FullColumn<T>::clonesptr()
-    {
-        return std::make_shared<FullColumn<T>>(*this);
-    }
-
 }
