@@ -10,8 +10,8 @@
 
 #include <memory>
 
-#include "KinematicIeJe.h"
 #include "FullColumn.h"
+#include "KinematicIeJe.h"
 
 namespace MbD {
 
@@ -25,8 +25,8 @@ namespace MbD {
         void calcPostDynCorrectorIteration() override;
         double value() override;
 
-        int axisI, axisJ;   //0, 1, 2 = x, y, z
-        double aAijIeJe;
+        int axisI{}, axisJ{};   //0, 1, 2 = x, y, z
+        double aAijIeJe{};
         FColDsptr aAjOIe, aAjOJe;
     };
 }
