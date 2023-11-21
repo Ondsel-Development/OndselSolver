@@ -71,4 +71,15 @@ namespace MbD {
     {
         return std::make_shared<FullColumn<T>>(*this);
     }
+    template<typename T>
+    double FullColumn<T>::fcDot(std::shared_ptr<FullVector<T>> vec)
+    {
+        int n = (int)this->size();
+        double answer = 0.0;
+        for (int i = 0; i < n; i++) {
+            answer += this->at(i) * vec->at(i);
+        }
+        return answer;
+    }
+
 }
