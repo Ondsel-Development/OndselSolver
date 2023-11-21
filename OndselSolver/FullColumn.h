@@ -48,7 +48,7 @@ namespace MbD {
 		FColsptr<T> cross(FColsptr<T> fullCol);
 		FColsptr<T> simplified();
 		std::shared_ptr<FullColumn<T>> cloneFcSptr();
-		double fcDot(std::shared_ptr<FullVector<T>> vec);
+		double dotVec(std::shared_ptr<FullVector<T>> vec);
 		std::shared_ptr<FullVector<T>> dot(std::shared_ptr<std::vector<std::shared_ptr<FullColumn<T>>>> vecvec);
 
 		std::ostream& printOn(std::ostream& s) const override;
@@ -72,7 +72,7 @@ namespace MbD {
         return std::make_shared<FullColumn<T>>(*this);
     }
     template<typename T>
-    double FullColumn<T>::fcDot(std::shared_ptr<FullVector<T>> vec)
+    double FullColumn<T>::dotVec(std::shared_ptr<FullVector<T>> vec)
     {
         int n = (int)this->size();
         double answer = 0.0;

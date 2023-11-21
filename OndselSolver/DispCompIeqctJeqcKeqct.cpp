@@ -23,7 +23,7 @@ void DispCompIeqctJeqcKeqct::preVelIC()
 {
 	DispCompIeqcJeqcKeqct::preVelIC();
 	auto& mprIeJeOpt = std::static_pointer_cast<EndFrameqct>(frmI)->prOeOpt;
-	priIeJeKept -= aAjOKe->fcDot(mprIeJeOpt);
+	priIeJeKept -= aAjOKe->dotVec(mprIeJeOpt);
 }
 
 void DispCompIeqctJeqcKeqct::preAccIC()
@@ -36,8 +36,8 @@ void DispCompIeqctJeqcKeqct::preAccIC()
 	auto& mpprIeJeOptpt = efrmIqct->pprOeOptpt;
 	for (int i = 0; i < 4; i++)
 	{
-		ppriIeJeKepEIpt->atiminusNumber(i, aAjOKe->fcDot(mpprIeJeOpEITpt->at(i)));
+		ppriIeJeKepEIpt->atiminusNumber(i, aAjOKe->dotVec(mpprIeJeOpEITpt->at(i)));
 		ppriIeJeKepEKpt->atiminusNumber(i, pAjOKepEKT->at(i)->dot(mprIeJeOpt));
 	}
-	ppriIeJeKeptpt += -(2.0 * pAjOKept->fcDot(mprIeJeOpt)) - aAjOKe->fcDot(mpprIeJeOptpt);
+	ppriIeJeKeptpt += -(2.0 * pAjOKept->dotVec(mprIeJeOpt)) - aAjOKe->dotVec(mpprIeJeOptpt);
 }

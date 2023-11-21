@@ -24,7 +24,7 @@ void VelSolver::basicSolveEquations()
 
 void VelSolver::handleSingularMatrix()
 {
-    auto& r = *matrixSolver; // TODO: correct?
+    auto& r = *matrixSolver;
 	std::string str = typeid(r).name();
 	if (str.find("GESpMatParPvMarkoFast") != std::string::npos) {
 		matrixSolver = CREATE<GESpMatParPvPrecise>::With();

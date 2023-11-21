@@ -34,8 +34,8 @@ void MbD::DispCompIeqctJeqcIe::calc_ppvaluepEIpt()
 		auto mprIeJeOpEITi = mprIeJeOpEIT->at(i);
 		auto mpprIeJeOpEITpti = mpprIeJeOpEITpt->at(i);
 		auto ppriIeJeIepEIpti = ppAjOIepEITpti->dot(rIeJeO) - pAjOIepEITi->dot(mprIeJeOpt) -
-                pAjOIept->fcDot(mprIeJeOpEITi) -
-                                aAjOIe->fcDot(mpprIeJeOpEITpti);
+                pAjOIept->dotVec(mprIeJeOpEITi) -
+                                aAjOIe->dotVec(mpprIeJeOpEITpti);
 		ppriIeJeIepEIpt->atiput(i, ppriIeJeIepEIpti);
 	}
 }
@@ -48,7 +48,7 @@ void MbD::DispCompIeqctJeqcIe::calc_ppvaluepEJpt()
 	auto prIeJeOpEJT = frmJeqct->prOeOpE->transpose();
 	for (int i = 0; i < 4; i++)
 	{
-		ppriIeJeIepEJpt->atiput(i, pAjOIept->fcDot(prIeJeOpEJT->at(i)));
+		ppriIeJeIepEJpt->atiput(i, pAjOIept->dotVec(prIeJeOpEJT->at(i)));
 	}
 }
 
@@ -59,8 +59,8 @@ void MbD::DispCompIeqctJeqcIe::calc_ppvalueptpt()
 	auto ppAjOIeptpt = frmIeqct->ppAjOeptpt(axis);
 	auto mprIeJeOpt = frmIeqct->prOeOpt;
 	auto mpprIeJeOptpt = frmIeqct->pprOeOptpt;
-	ppriIeJeIeptpt = ppAjOIeptpt->fcDot(rIeJeO) - pAjOIept->fcDot(mprIeJeOpt) - pAjOIept->fcDot(mprIeJeOpt) -
-                     aAjOIe->fcDot(mpprIeJeOptpt);
+	ppriIeJeIeptpt = ppAjOIeptpt->dotVec(rIeJeO) - pAjOIept->dotVec(mprIeJeOpt) - pAjOIept->dotVec(mprIeJeOpt) -
+                     aAjOIe->dotVec(mpprIeJeOptpt);
 }
 
 void MbD::DispCompIeqctJeqcIe::calc_ppvaluepXIpt()
@@ -88,7 +88,7 @@ void MbD::DispCompIeqctJeqcIe::calc_pvaluept()
 	auto frmIeqct = std::static_pointer_cast<EndFrameqct>(frmI);
 	auto pAjOIept = frmIeqct->pAjOept(axis);
 	auto mprIeJeOpt = frmIeqct->prOeOpt;
-	priIeJeIept = pAjOIept->fcDot(rIeJeO) - aAjOIe->fcDot(mprIeJeOpt);
+	priIeJeIept = pAjOIept->dotVec(rIeJeO) - aAjOIe->dotVec(mprIeJeOpt);
 }
 
 void MbD::DispCompIeqctJeqcIe::calcPostDynCorrectorIteration()

@@ -102,7 +102,7 @@ void PosICNewtonRaphson::handleSingularMatrix()
 		matrixSolver = this->matrixSolverClassNew();
 	}
 	else {
-        auto& r = *matrixSolver; // TODO: correct?
+        auto& r = *matrixSolver;
 		std::string str = typeid(r).name();
 		if (str.find("GESpMatParPvMarkoFast") != std::string::npos) {
 		    matrixSolver = CREATE<GESpMatParPvPrecise>::With();

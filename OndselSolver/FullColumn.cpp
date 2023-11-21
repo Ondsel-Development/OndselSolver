@@ -126,7 +126,7 @@ namespace MbD {
     template<typename T>
     T FullColumn<T>::transposeTimesFullColumn(const FColsptr<T> fullCol)
     {
-        return this->fcDot(fullCol);
+        return this->dotVec(fullCol);
     }
     template<typename T>
     void FullColumn<T>::equalSelfPlusFullColumntimes(FColsptr<T> fullCol, T factor)

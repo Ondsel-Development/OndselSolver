@@ -25,7 +25,7 @@ namespace MbD {
     {
         aAjOIe = frmI->aAjOe(axisI);
         aAjOJe = frmJ->aAjOe(axisJ);
-        aAijIeJe = aAjOIe->fcDot(aAjOJe);
+        aAijIeJe = aAjOIe->dotVec(aAjOJe);
     }
 
     double MbD::DirectionCosineIecJec::value()

@@ -23,7 +23,7 @@ void MbD::DispCompIecJecIe::calc_value()
 {
 	aAjOIe = frmI->aAjOe(axis);
 	rIeJeO = frmJ->rOeO->minusFullColumn(frmI->rOeO);
-	riIeJeIe = aAjOIe->fcDot(rIeJeO);
+	riIeJeIe = aAjOIe->dotVec(rIeJeO);
 }
 
 void MbD::DispCompIecJecIe::calcPostDynCorrectorIteration()
