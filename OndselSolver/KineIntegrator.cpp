@@ -44,6 +44,7 @@ void KineIntegrator::runInitialConditionTypeSolution()
 
 void KineIntegrator::iStep(int i)
 {
+    (void) i; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

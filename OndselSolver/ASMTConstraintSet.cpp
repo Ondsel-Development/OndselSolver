@@ -16,6 +16,7 @@ using namespace MbD;
 
 void MbD::ASMTConstraintSet::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
+    (void) mbdUnits; // used to suppress compiler warning
 	//self dataSeries : OrderedCollection new.
 	//self discontinuities : OrderedCollection new.
 	auto mbdJt = this->mbdClassNew();
@@ -61,10 +62,10 @@ void MbD::ASMTConstraintSet::compareResults(AnalysisType type)
 {
 	if (infxs == nullptr || infxs->empty()) return;
 	auto mbdUnts = mbdUnits();
-	auto factor = 1.0e-6;
-	auto forceTol = mbdUnts->force * factor;
-	auto torqueTol = mbdUnts->torque * factor;
-	auto i = fxs->size() - 1;
+	// auto factor = 1.0e-6;
+    // auto forceTol = mbdUnts->force * factor;
+    // auto torqueTol = mbdUnts->torque * factor;
+    // auto i = fxs->size() - 1;
 	//assert(Numeric::equaltol(fxs->at(i), infxs->at(i), forceTol));
 	//assert(Numeric::equaltol(fys->at(i), infys->at(i), forceTol));
 	//assert(Numeric::equaltol(fzs->at(i), infzs->at(i), forceTol));
@@ -75,4 +76,5 @@ void MbD::ASMTConstraintSet::compareResults(AnalysisType type)
 
 void MbD::ASMTConstraintSet::outputResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning
 }

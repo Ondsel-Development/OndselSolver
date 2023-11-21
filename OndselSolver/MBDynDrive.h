@@ -13,6 +13,7 @@ namespace MbD {
 	class MBDynDrive : public MBDynElement
 	{
 	public:
+        void parseMBDyn(std::vector<std::string>& lines) override;
         void parseMBDyn(std::string line);
 		void readFunction(std::vector<std::string>& args);
 		void createASMT() override;

@@ -82,12 +82,14 @@ void Symbolic::initialize()
 
 Symsptr MbD::Symbolic::differentiateWRT(Symsptr var)
 {
+    (void) var; // to suppress compiler warning of unused parameters
 	assert(false);
 	return Symsptr();
 }
 
 Symsptr MbD::Symbolic::integrateWRT(Symsptr var)
 {
+    (void) var; // to suppress compiler warning of unused parameters
 	assert(false);
 	return Symsptr();
 }
@@ -123,12 +125,14 @@ Symsptr MbD::Symbolic::expandUntil(std::shared_ptr<std::unordered_set<Symsptr>> 
 
 Symsptr Symbolic::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) set; // to suppress compiler warning of unused parameters
 	assert(false);
 	return sptr;
 }
 
 Symsptr Symbolic::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) set; // to suppress compiler warning of unused parameters
 	assert(false);
 	return sptr;
 }
@@ -185,6 +189,7 @@ double Symbolic::getValue()
 
 double MbD::Symbolic::getValue(double arg)
 {
+    (void) arg; // to suppress compiler warning of unused parameters
 	assert(false);
 	return 0.0;
 }

@@ -46,6 +46,7 @@ void MbD::ASMTItem::setName(std::string str)
 
 void MbD::ASMTItem::parseASMT(std::vector<std::string>& lines)
 {
+    (void) lines; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -144,6 +145,8 @@ void MbD::ASMTItem::deleteMbD()
 
 void MbD::ASMTItem::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
+    (void) mbdSys; // to suppress compiler warning of unused parameters
+    (void) mbdUnits; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -154,11 +157,13 @@ void MbD::ASMTItem::updateFromMbD()
 
 void MbD::ASMTItem::compareResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::ASMTItem::outputResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -177,6 +182,8 @@ std::shared_ptr<Constant> MbD::ASMTItem::sptrConstant(double value)
 
 void MbD::ASMTItem::storeOnLevel(std::ofstream& os, int level)
 {
+    (void) os; // to suppress compiler warning of unused parameters
+    (void) level; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -235,5 +242,6 @@ void MbD::ASMTItem::storeOnLevelName(std::ofstream& os, int level)
 
 void MbD::ASMTItem::storeOnTimeSeries(std::ofstream& os)
 {
+    (void) os; // to suppress compiler warning of unused parameters
 	assert(false);
 }

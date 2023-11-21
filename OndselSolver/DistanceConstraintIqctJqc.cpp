@@ -12,6 +12,8 @@ using namespace MbD;
 
 MbD::DistanceConstraintIqctJqc::DistanceConstraintIqctJqc(EndFrmsptr frmi, EndFrmsptr frmj) : DistanceConstraintIqcJqc(frmi, frmj)
 {
+    (void) frmi; // to suppress compiler warning of unused parameters
+    (void) frmj; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

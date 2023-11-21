@@ -110,6 +110,7 @@ void Constraint::fillPosICError(FColDsptr col)
 void Constraint::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redundantEqnNos)
 {
 	//My owner should handle this.
+    (void) redundantEqnNos; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

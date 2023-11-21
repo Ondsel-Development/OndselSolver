@@ -61,6 +61,7 @@ void Solver::postRun()
 
 void Solver::logString(std::string& str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

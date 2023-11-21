@@ -51,5 +51,8 @@ void GEFullMatParPv::postSolve()
 
 void GEFullMatParPv::preSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 }

@@ -46,6 +46,7 @@ Symsptr MbD::Product::differentiateWRT(Symsptr var)
 Symsptr MbD::Product::integrateWRT(Symsptr var)
 {
 	//ToDo: Integration by parts
+    (void) var; // to suppress compiler warning of unused parameters
 	assert(false);
 	return Symsptr();
 }

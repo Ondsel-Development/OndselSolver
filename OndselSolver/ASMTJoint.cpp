@@ -38,10 +38,13 @@ void MbD::ASMTJoint::readJointSeries(std::vector<std::string>& lines)
 
 void MbD::ASMTJoint::storeOnLevel(std::ofstream& os, int level)
 {
+    (void) os; // to suppress compiler warning of unused parameters
+    (void) level; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::ASMTJoint::storeOnTimeSeries(std::ofstream& os)
 {
+    (void) os; // to suppress compiler warning of unused parameters
 	assert(false);
 }

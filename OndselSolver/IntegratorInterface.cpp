@@ -72,6 +72,7 @@ void IntegratorInterface::postFirstStep()
 void IntegratorInterface::interpolateAt(double tArg)
 {
 	//"Interpolate for system state at tArg and leave system in that state."
+    (void) tArg; // to suppress compiler warning of unused parameters
 	assert(false);
 	//auto yout = integrator->yDerivat(0, tArg);
 	//auto ydotout = integrator->yDerivat(1, tArg);

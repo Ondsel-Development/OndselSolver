@@ -507,7 +507,8 @@ void MbD::ASMTAssembly::readKinematicIJs(std::vector<std::string>& lines)
 
 void MbD::ASMTAssembly::readKinematicIJ(std::vector<std::string>& lines)
 {
-	assert(false);
+    (void) lines; // to suppress compiler warning of unused parameters
+    assert(false);
 }
 
 void MbD::ASMTAssembly::readConstraintSets(std::vector<std::string>& lines)

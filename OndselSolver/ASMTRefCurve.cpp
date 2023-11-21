@@ -13,10 +13,13 @@ using namespace MbD;
 
 void MbD::ASMTRefCurve::parseASMT(std::vector<std::string>& lines)
 {
-	assert(false);
+    (void) lines; // to suppress compiler warning of unused parameters
+    assert(false);
 }
 
 void MbD::ASMTRefCurve::storeOnLevel(std::ofstream& os, int level)
 {
-	assert(false);
+    (void) os; // to suppress compiler warning of unused parameters
+    (void) level; // to suppress compiler warning of unused parameters
+    assert(false);
 }

@@ -34,11 +34,14 @@ namespace MbD {
 
     void ASMTMotion::storeOnLevel(std::ofstream& os, int level)
     {
+        (void) os; // to suppress compiler warning of unused parameters
+        (void) level; // to suppress compiler warning of unused parameters
         assert(false);
     }
 
     void ASMTMotion::storeOnTimeSeries(std::ofstream& os)
     {
+        (void) os; // to suppress compiler warning of unused parameters
         assert(false);
     }
 }

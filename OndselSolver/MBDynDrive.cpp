@@ -76,3 +76,7 @@ void MbD::MBDynDrive::createASMT()
 {
 	assert(false);
 }
+
+void MBDynDrive::parseMBDyn(std::vector<std::string> &lines) {
+    MBDynItem::parseMBDyn(lines);
+}

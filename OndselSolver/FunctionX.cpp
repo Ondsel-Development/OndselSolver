@@ -26,6 +26,7 @@ void MbD::FunctionX::arguments(Symsptr args)
 
 Symsptr MbD::FunctionX::copyWith(Symsptr arg)
 {
+    (void) arg; // to suppress compiler warning of unused parameters
 	assert(false);
 	return Symsptr();
 }

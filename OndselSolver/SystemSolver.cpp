@@ -36,6 +36,7 @@ using namespace MbD;
 void SystemSolver::setSystem(Solver* sys)
 {
 	//Do not use
+    (void) sys; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

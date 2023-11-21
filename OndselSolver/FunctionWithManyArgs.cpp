@@ -49,6 +49,7 @@ void MbD::FunctionWithManyArgs::createMbD(std::shared_ptr<System> mbdSys, std::s
 
 void MbD::FunctionWithManyArgs::arguments(Symsptr args)
 {
+    (void) args; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

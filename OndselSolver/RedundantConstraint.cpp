@@ -106,6 +106,8 @@ void RedundantConstraint::setqsuddotlam(FColDsptr col)
 void RedundantConstraint::discontinuityAtaddTypeTo(double t, std::shared_ptr<std::vector<DiscontinuityType>> disconTypes)
 {
 	//"Reactivate all constraints."
+    (void) t; // to suppress compiler warning of unused parameters
+    (void) disconTypes; // to suppress compiler warning of unused parameters
 	assert(false);
 	//| newSelf |
 	//newSelf : = self constraint.

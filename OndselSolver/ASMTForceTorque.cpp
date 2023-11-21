@@ -17,10 +17,12 @@ void MbD::ASMTForceTorque::updateFromMbD()
 
 void MbD::ASMTForceTorque::compareResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameter
 	assert(false);
 }
 
 void MbD::ASMTForceTorque::outputResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameter
 	assert(false);
 }

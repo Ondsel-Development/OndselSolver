@@ -10,6 +10,7 @@ void MbD::MBDynNode::initialize()
 
 void MbD::MBDynNode::parseMBDyn(std::vector<std::string>& lines)
 {
+    (void) lines; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

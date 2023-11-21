@@ -14,6 +14,7 @@ using namespace MbD;
 
 void GEFullMat::forwardEliminateWithPivot(int p)
 {
+    (void) p; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -40,11 +41,17 @@ void GEFullMat::postSolve()
 
 void GEFullMat::preSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void GEFullMat::preSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) spMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

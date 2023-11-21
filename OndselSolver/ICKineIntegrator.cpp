@@ -20,6 +20,7 @@ void ICKineIntegrator::runInitialConditionTypeSolution()
 
 void ICKineIntegrator::iStep(int i)
 {
+    (void) i; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
