@@ -43,10 +43,12 @@ void MbD::ExternalSystem::outputFor(AnalysisType type)
 
 void MbD::ExternalSystem::logString(std::string& str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::ExternalSystem::logString(double value)
 {
+    (void) value; // to suppress compiler warning of unused parameters
 }
 
 void MbD::ExternalSystem::runOndselPiston()

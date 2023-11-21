@@ -32,11 +32,13 @@ void MbD::ASMTTime::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Un
 
 Symsptr MbD::ASMTTime::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) set; // to suppress compiler warning of unused parameters
 	return sptr;
 }
 
 Symsptr MbD::ASMTTime::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) set; // to suppress compiler warning of unused parameters
 	return sptr;
 }
 

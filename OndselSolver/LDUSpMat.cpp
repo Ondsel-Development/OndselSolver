@@ -18,18 +18,28 @@ FColDsptr LDUSpMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullC
 	return answer;
 }
 
+FColDsptr LDUSpMat::basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal) {
+    return MatrixDecomposition::basicSolvewithsaveOriginal(aMatrix, aVector, saveOriginal);
+}
+
 void LDUSpMat::decomposesaveOriginal(FMatDsptr fullMat, bool saveOriginal)
 {
+    (void) fullMat; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void LDUSpMat::decomposesaveOriginal(SpMatDsptr spMat, bool saveOriginal)
 {
+    (void) spMat; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 FColDsptr LDUSpMat::forAndBackSubsaveOriginal(FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 	return FColDsptr();
 }
@@ -81,3 +91,4 @@ void LDUSpMat::backSubstituteIntoDU()
 		answerX->at(i) = rightHandSideB->at(i) - sum;
 	}
 }
+

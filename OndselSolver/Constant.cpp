@@ -23,6 +23,7 @@ Constant::Constant(double val) : Variable(val)
 
 Symsptr MbD::Constant::differentiateWRT(Symsptr var)
 {
+    (void) var; // to suppress compiler warning of unused parameters
 	return sptrConstant(0.0);
 }
 
@@ -39,7 +40,8 @@ Symsptr MbD::Constant::integrateWRT(Symsptr var)
 
 Symsptr MbD::Constant::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
-	return sptr;
+    (void) set; // to suppress compiler warning of unused parameters
+    return sptr;
 }
 
 bool Constant::isConstant()
@@ -64,6 +66,8 @@ bool MbD::Constant::isOne()
 
 void MbD::Constant::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
+    (void) mbdSys; // to suppress compiler warning of unused parameters
+    (void) mbdUnits; // to suppress compiler warning of unused parameters
 	return;
 }
 
@@ -74,6 +78,7 @@ double MbD::Constant::getValue()
 
 double MbD::Constant::getValue(double arg)
 {
+    (void) arg; // to suppress compiler warning of unused parameters
 	return value;
 }
 

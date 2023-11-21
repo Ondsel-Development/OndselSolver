@@ -75,6 +75,9 @@ FColDsptr GEFullMat::basicSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr ful
 
 FColDsptr GEFullMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) spMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 	return FColDsptr();
 }

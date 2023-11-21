@@ -12,4 +12,5 @@ using namespace MbD;
 
 void Integrator::setSystem(Solver* sys)
 {
+    (void) sys; // to suppress compiler warning of unused parameters
 }

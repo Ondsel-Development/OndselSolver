@@ -32,6 +32,10 @@ FColDsptr MbD::MatrixDecomposition::basicSolvewithsaveOriginal(FMatDsptr aMatrix
 	return FColDsptr();
 }
 
+FColDsptr MatrixDecomposition::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal) {
+    return MbD::MatrixSolver::basicSolvewithsaveOriginal(spMat, fullCol, saveOriginal);
+}
+
 void MbD::MatrixDecomposition::forwardSubstituteIntoL()
 {
 	assert(false);
@@ -56,3 +60,4 @@ void MbD::MatrixDecomposition::preSolvesaveOriginal(FMatDsptr aMatrix, bool save
 {
 	assert(false);
 }
+

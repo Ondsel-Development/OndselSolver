@@ -97,6 +97,7 @@ void MbD::Item::checkForCollisionDiscontinuityBetweenand(double impulsePrevious,
 
 void Item::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redunEqnNos)
 {
+    (void) redunEqnNos; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::setpqsumu(FColDsptr col)
@@ -128,10 +129,12 @@ void MbD::Item::registerName()
 
 void Item::fillPosKineError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillPosKineJacob(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::fillpqsumu(FColDsptr col)
@@ -172,52 +175,63 @@ void MbD::Item::fillpFpydot(SpMatDsptr mat)
 
 void Item::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints)
 {
+    (void) redunConstraints; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::fillStaticError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillStaticJacob(FMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void Item::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints)
 {
+    (void) allConstraints; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillDispConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> dispConstraints)
 {
+    (void) dispConstraints; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillDynError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void Item::fillqsu(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillqsuWeights(DiagMatDsptr diagMat)
 {
+    (void) diagMat; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::fillqsuWeightsSmall(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void Item::fillqsulam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::setqsulam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::simUpdateAll()
@@ -325,12 +339,14 @@ void Item::storeDynState()
 
 double MbD::Item::suggestSmallerOrAcceptCollisionFirstStepSize(double hnew)
 {
+    (void) hnew; // to suppress compiler warning of unused parameters
 	assert(false);
 	return 0.0;
 }
 
 double MbD::Item::suggestSmallerOrAcceptCollisionStepSize(double hnew)
 {
+    (void) hnew; // to suppress compiler warning of unused parameters
 	assert(false);
 	return 0.0;
 }
@@ -369,42 +385,51 @@ void Item::fillqsudot(FColDsptr col)
 
 void MbD::Item::fillqsudotPlam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillqsudotPlamDeriv(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void Item::fillqsudotWeights(DiagMatDsptr diagMat)
 {
+    (void) diagMat; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillVelICError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillVelICJacob(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::getString(std::string str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void Item::setqsudotlam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::setqsudotPlam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::setqsudotPlamDeriv(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -478,47 +503,57 @@ void MbD::Item::postCollisionStep()
 
 void Item::fillqsuddotlam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillAccICIterError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillAccICIterJacob(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::fillCollisionDerivativeICError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillCollisionDerivativeICJacob(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillCollisionError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillCollisionpFpy(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::fillCollisionpFpydot(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void Item::setqsudot(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::setqsuddotlam(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 std::shared_ptr<StateData> Item::stateData()
@@ -534,10 +569,13 @@ void MbD::Item::storeCollisionState()
 
 void Item::discontinuityAtaddTypeTo(double t, std::shared_ptr<std::vector<DiscontinuityType>> disconTypes)
 {
+    (void) t; // to suppress compiler warning of unused parameters
+    (void) disconTypes; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::discontinuityAtICAddTo(std::shared_ptr<std::vector<DiscontinuityType>> disconTypes)
 {
+    (void) disconTypes; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -546,6 +584,7 @@ double Item::checkForDynDiscontinuityBetweenand(double tprev, double t)
 	//"Check for discontinuity in the last step defined by the interval (tprevious,t]."
 	//"Default is assume no discontinuity and return t."
 
+    (void) tprev; // to suppress compiler warning of unused parameters
 	return t;
 }
 
@@ -555,6 +594,7 @@ void Item::constraintsReport()
 
 void Item::setqsu(FColDsptr qsuOld)
 {
+    (void) qsuOld; // to suppress compiler warning of unused parameters
 }
 
 void Item::useEquationNumbers()
@@ -574,16 +614,21 @@ void Item::logString(const char* chars)
 
 void MbD::Item::logStringwithArgument(const char* chars, const char* chars1)
 {
+    (void) chars; // to suppress compiler warning of unused parameters
+    (void) chars1; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::logStringwithArguments(const char* chars, std::shared_ptr<std::vector<char*>> arrayOfChars)
 {
+    (void) chars; // to suppress compiler warning of unused parameters
+    (void) arrayOfChars; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Item::normalImpulse(double imp)
 {
+    (void) imp; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -627,12 +672,15 @@ void MbD::Item::postStaticIteration()
 
 void Item::fillPosICError(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillPosICJacob(FMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 }
 
 void Item::fillPosICJacob(SpMatDsptr mat)
 {
+    (void) mat; // to suppress compiler warning of unused parameters
 }

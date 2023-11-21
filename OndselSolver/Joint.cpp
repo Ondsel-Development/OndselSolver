@@ -136,6 +136,7 @@ void Joint::fillqsudot(FColDsptr col)
 
 void Joint::fillqsudotWeights(DiagMatDsptr diagMat)
 {
+    (void) diagMat; // to suppress compiler warning of unused parameters
 }
 
 void Joint::useEquationNumbers()

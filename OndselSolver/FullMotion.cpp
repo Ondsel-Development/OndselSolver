@@ -18,6 +18,7 @@ MbD::FullMotion::FullMotion()
 
 MbD::FullMotion::FullMotion(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::FullMotion::connectsItoJ(EndFrmsptr frmi, EndFrmsptr frmj)

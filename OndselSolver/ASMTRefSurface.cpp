@@ -19,5 +19,7 @@ void MbD::ASMTRefSurface::parseASMT(std::vector<std::string>& lines)
 
 void MbD::ASMTRefSurface::storeOnLevel(std::ofstream& os, int level)
 {
+    (void) os; // to suppress compiler warning of unused parameters
+    (void) level; // to suppress compiler warning of unused parameters
 	assert(false);
 }

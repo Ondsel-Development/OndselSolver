@@ -196,7 +196,8 @@ void MbD::GeneralSpline::calcNonCyclicIndexAndDelta()
 
 void MbD::GeneralSpline::calcIndexAndDelta()
 {
-	if (!(index < xs->size() - 1) || !(xs->at(index) <= xvalue) || !(xvalue < xs->at((size_t)index + 1))) {
+    int xsLast = int(xs->size()) - 1;
+	if (!(index < xsLast) || !(xs->at(index) <= xvalue) || !(xvalue < xs->at((size_t)index + 1))) {
 		searchIndexFromto(0, (int)xs->size());	//Using range.
 	}
 	delta = xvalue - xs->at(index);

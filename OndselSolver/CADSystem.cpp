@@ -30,6 +30,7 @@ using namespace MbD;
 
 void CADSystem::outputFor(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameters
 	auto str = std::to_string(mbdSystem->mbdTimeValue());
 	this->logString(str);
 	mbdSystem->partsJointsMotionsForcesTorquesDo([](std::shared_ptr<Item> item) {
@@ -47,6 +48,7 @@ void CADSystem::logString(std::string& str)
 
 void CADSystem::logString(double value)
 {
+    (void) value; // to suppress compiler warning of unused parameters
 }
 
 void CADSystem::runOndselSinglePendulum()
@@ -836,6 +838,7 @@ void CADSystem::runPiston()
 
 void MbD::CADSystem::preMbDrun(std::shared_ptr<System> mbdSys)
 {
+    (void) mbdSys; // to suppress compiler warning of unused parameters
 }
 
 void CADSystem::postMbDrun()

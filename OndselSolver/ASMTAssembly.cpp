@@ -788,16 +788,19 @@ void MbD::ASMTAssembly::readMotionSeries(std::vector<std::string>& lines)
 
 void MbD::ASMTAssembly::outputFor(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::ASMTAssembly::logString(std::string& str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::ASMTAssembly::logString(double value)
 {
+    (void) value; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -833,7 +836,7 @@ double MbD::ASMTAssembly::calcCharacteristicMass()
 {
 	auto n = parts->size();
 	double sumOfSquares = 0.0;
-	for (int i = 0; i < n; i++)
+	for (unsigned long i = 0; i < n; i++)
 	{
 		auto mass = parts->at(i)->principalMassMarker->mass;
 		sumOfSquares += mass * mass;

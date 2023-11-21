@@ -116,6 +116,7 @@ void Constraint::removeRedundantConstraints(std::shared_ptr<std::vector<int>> re
 
 void MbD::Constraint::setConstant(double value)
 {
+    (void) value; // to suppress compiler warning of unused parameters
 }
 
 void Constraint::reactivateRedundantConstraints()
@@ -163,10 +164,12 @@ void Constraint::setqsuddotlam(FColDsptr col)
 
 void Constraint::addToJointForceI(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Constraint::addToJointTorqueI(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void Constraint::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints) {

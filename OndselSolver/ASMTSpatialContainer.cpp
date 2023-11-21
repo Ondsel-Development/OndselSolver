@@ -119,6 +119,7 @@ void MbD::ASMTSpatialContainer::readRefCurves(std::vector<std::string>& lines)
 
 void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>& lines)
 {
+    (void) lines; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -139,6 +140,7 @@ void MbD::ASMTSpatialContainer::readRefSurfaces(std::vector<std::string>& lines)
 
 void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>& lines)
 {
+    (void) lines; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
@@ -371,6 +373,7 @@ void MbD::ASMTSpatialContainer::updateFromMbD()
 
 void MbD::ASMTSpatialContainer::compareResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameters
 	if (inxs == nullptr || inxs->empty()) return;
 	auto mbdUnts = mbdUnits();
 	auto factor = 1.0e-6;
@@ -442,6 +445,7 @@ void MbD::ASMTSpatialContainer::compareResults(AnalysisType type)
 
 void MbD::ASMTSpatialContainer::outputResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning of unused parameters
 	if (inxs != nullptr && !inxs->empty()) return;
 	auto i = xs->size() - 1;
 	std::cout << i << " ";
