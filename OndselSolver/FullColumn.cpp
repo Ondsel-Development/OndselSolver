@@ -46,6 +46,7 @@ namespace MbD {
     template<typename T>
     FColsptr<T> FullColumn<T>::times(T a)
     {
+        assert(a == a); // suppress warning
         assert(false);
         auto answer = std::make_shared<FullColumn<T>>();
         return answer;
