@@ -334,13 +334,13 @@ namespace MbD {
     }
     std::shared_ptr<FullMatrixFullMatrixDouble> FullMatrixFullMatrixDouble::times(double a)
     {
-        // TODO: correct action?
+        assert(a == a); // for warning suppression; this function never called when T == FullMatrixFullMatrixDouble
         assert(false);
         return std::make_shared<FullMatrixFullMatrixDouble>();
     }
     std::shared_ptr<FullMatrixFullColumnDouble> FullMatrixFullColumnDouble::times(double a)
     {
-        // TODO: correct action?
+        assert(a == a); // for warning suppression; this function never called when T == FullMatrixFullColumnDouble
         assert(false);
         return std::make_shared<FullMatrixFullColumnDouble>();
     }

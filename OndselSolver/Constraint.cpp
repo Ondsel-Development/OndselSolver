@@ -167,3 +167,23 @@ void Constraint::addToJointForceI(FColDsptr col)
 void Constraint::addToJointTorqueI(FColDsptr col)
 {
 }
+
+void Constraint::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints) {
+    Item::fillConstraints(allConstraints);
+}
+
+void Constraint::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints) {
+    Item::fillRedundantConstraints(redunConstraints);
+}
+
+void Constraint::fillDispConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> dispConstraints) {
+    Item::fillDispConstraints(dispConstraints);
+}
+
+void Constraint::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> essenConstraints) {
+    Item::fillEssenConstraints(essenConstraints);
+}
+
+void Constraint::fillPerpenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> perpenConstraints) {
+    Item::fillPerpenConstraints(perpenConstraints);
+}

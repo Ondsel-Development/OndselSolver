@@ -63,6 +63,7 @@ namespace MbD {
 	template<typename T>
 	inline FRowsptr<T> FullRow<T>::times(T a)
 	{
+        assert(a == a); // for warning suppression; this function never called when T != double
 		assert(false);
 	}
 	template<typename T>
