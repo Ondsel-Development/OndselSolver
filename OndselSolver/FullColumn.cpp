@@ -126,7 +126,7 @@ namespace MbD {
     template<typename T>
     T FullColumn<T>::transposeTimesFullColumn(const FColsptr<T> fullCol)
     {
-        return this->dot(fullCol);
+        return this->fcDot(fullCol);
     }
     template<typename T>
     void FullColumn<T>::equalSelfPlusFullColumntimes(FColsptr<T> fullCol, T factor)
@@ -170,7 +170,7 @@ namespace MbD {
     template class FullColumn<double>;
     template class FullColumn<int>;
     template<typename T>
-    double FullColumn<T>::dot(std::shared_ptr<FullVector<T>> vec)
+    double FullColumn<T>::fcDot(std::shared_ptr<FullVector<T>> vec)
     {
         int n = (int)this->size();
         double answer = 0.0;

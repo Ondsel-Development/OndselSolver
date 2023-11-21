@@ -48,7 +48,7 @@ namespace MbD {
 		FColsptr<T> cross(FColsptr<T> fullCol);
 		FColsptr<T> simplified();
 		std::shared_ptr<FullColumn<T>> cloneFcSptr();
-		double dot(std::shared_ptr<FullVector<T>> vec);
+		double fcDot(std::shared_ptr<FullVector<T>> vec);
 		std::shared_ptr<FullVector<T>> dot(std::shared_ptr<std::vector<std::shared_ptr<FullColumn<T>>>> vecvec);
 
 		std::ostream& printOn(std::ostream& s) const override;

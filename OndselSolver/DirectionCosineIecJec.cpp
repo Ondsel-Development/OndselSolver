@@ -28,7 +28,7 @@ void DirectionCosineIecJec::calcPostDynCorrectorIteration()
 {
 	aAjOIe = frmI->aAjOe(axisI);
 	aAjOJe = frmJ->aAjOe(axisJ);
-	aAijIeJe = aAjOIe->dot(aAjOJe);
+	aAijIeJe = aAjOIe->fcDot(aAjOJe);
 }
 
 double MbD::DirectionCosineIecJec::value()
