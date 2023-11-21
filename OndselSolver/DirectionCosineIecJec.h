@@ -11,10 +11,9 @@
 #include <memory>
 
 #include "KinematicIeJe.h"
+#include "FullColumn.h"
 
 namespace MbD {
-    template<typename T>
-    class FullColumn;
 
     class DirectionCosineIecJec : public KinematicIeJe
     {
