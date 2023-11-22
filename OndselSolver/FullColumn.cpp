@@ -111,6 +111,17 @@ namespace MbD {
         return answer;
     }
     template<typename T>
+    FColsptr<T> FullColumn<T>::copy()
+    {
+        auto n = (int) this->size();
+        auto answer = std::make_shared<FullColumn<T>>(n);
+        for (int i = 0; i < n; i++)
+        {
+            answer->at(i) = this->at(i);
+        }
+        return answer;
+    }
+    template<typename T>
     FRowsptr<T> FullColumn<T>::transpose()
     {
         return std::make_shared<FullRow<T>>(*this);
