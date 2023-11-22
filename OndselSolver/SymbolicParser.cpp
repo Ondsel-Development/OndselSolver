@@ -424,6 +424,7 @@ bool MbD::SymbolicParser::raisedTo()
 
 bool MbD::SymbolicParser::expected(std::string msg)
 {
+    (void) msg; // to suppress compiler warning of unused parameters
 	return false;
 }
 
@@ -471,6 +472,8 @@ void MbD::SymbolicParser::notify(std::string msg)
 void MbD::SymbolicParser::notifyat(std::string msg, int mrk)
 {
 	//"Temporarily reset source in order to get full contents"
+    (void) msg; // to suppress compiler warning of unused parameters
+    (void) mrk; // to suppress compiler warning of unused parameters
 	auto p = source->tellg();
 	source->seekg(0);
 	auto contents = source->str();

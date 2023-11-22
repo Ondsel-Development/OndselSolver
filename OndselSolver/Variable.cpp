@@ -55,11 +55,13 @@ void Variable::setValue(double val)
 
 Symsptr MbD::Variable::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) set; // to suppress compiler warning of unused parameters
 	return sptr;
 }
 
 Symsptr MbD::Variable::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) set; // to suppress compiler warning of unused parameters
 	return sptr;
 }
 

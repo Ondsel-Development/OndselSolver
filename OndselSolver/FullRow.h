@@ -159,8 +159,8 @@ namespace MbD {
 	template<typename T>
 	inline std::shared_ptr<FullVector<T>> FullRow<T>::dot(std::shared_ptr<std::vector<std::shared_ptr<FullColumn<T>>>> vecvec)
 	{
-		auto ncol = (int)this->size();
-		auto nelem = vecvec->at(0)->size();
+		int ncol = this->size();
+		int nelem = vecvec->at(0)->size();
 		auto answer = std::make_shared<FullVector<T>>(nelem);
 		for (int k = 0; k < nelem; k++) {
 			auto sum = 0.0;

@@ -39,8 +39,15 @@ double MbD::StableBackwardDifference::pvdotpv()
 	return sum;
 }
 
-FColDsptr MbD::StableBackwardDifference::derivativepresentpastpresentDerivativepastDerivative(int n, FColDsptr y, std::shared_ptr<std::vector<FColDsptr>> ypast, FColDsptr ydot, std::shared_ptr<std::vector<FColDsptr>> ydotpast)
+FColDsptr MbD::StableBackwardDifference::derivativepresentpastpresentDerivativepastDerivative(
+        int n, FColDsptr y, std::shared_ptr<std::vector<FColDsptr>> ypast, FColDsptr ydot,
+        std::shared_ptr<std::vector<FColDsptr>> ydotpast)
 {
+    (void) n; // to suppress compiler warning of unused parameters
+    (void) y; // to suppress compiler warning of unused parameters
+    (void) ypast; // to suppress compiler warning of unused parameters
+    (void) ydot; // to suppress compiler warning of unused parameters
+    (void) ydotpast; // to suppress compiler warning of unused parameters
 	assert(false);
 	return FColDsptr();
 }

@@ -18,6 +18,7 @@ MbD::ZTranslation::ZTranslation()
 
 MbD::ZTranslation::ZTranslation(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::ZTranslation::initializeGlobally()

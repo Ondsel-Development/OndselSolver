@@ -196,13 +196,15 @@ double MbD::Symbolic::getValue(double arg)
 
 void MbD::Symbolic::setValue(double val)
 {
+    (void) val; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
 void MbD::Symbolic::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
+    (void) mbdSys; // to suppress compiler warning of unused parameters
+    (void) mbdUnits; // to suppress compiler warning of unused parameters
 	assert(false);
-	return;
 }
 
 Symsptr MbD::Symbolic::clonesptr()
@@ -224,6 +226,7 @@ bool MbD::Symbolic::isVariable()
 
 void MbD::Symbolic::integrationConstant(double integConstant)
 {
+    (void) integConstant; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 
