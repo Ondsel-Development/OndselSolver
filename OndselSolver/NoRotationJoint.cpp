@@ -19,6 +19,7 @@ MbD::NoRotationJoint::NoRotationJoint()
 
 MbD::NoRotationJoint::NoRotationJoint(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::NoRotationJoint::initializeGlobally()

@@ -60,6 +60,7 @@ void MbD::ASMTConstraintSet::updateFromMbD()
 
 void MbD::ASMTConstraintSet::compareResults(AnalysisType type)
 {
+    (void) type; // to suppress compiler warning
 	if (infxs == nullptr || infxs->empty()) return;
 	auto mbdUnts = mbdUnits();
 	// auto factor = 1.0e-6;

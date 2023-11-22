@@ -381,6 +381,7 @@ void Item::postVelIC()
 
 void Item::fillqsudot(FColDsptr col)
 {
+    (void) col; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Item::fillqsudotPlam(FColDsptr col)

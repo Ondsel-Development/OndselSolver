@@ -30,6 +30,7 @@ MbD::PiecewiseFunction::PiecewiseFunction(Symsptr var, std::shared_ptr<std::vect
 
 Symsptr MbD::PiecewiseFunction::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) sptr; // to suppress compiler warning of unused parameters
 	auto expansions = std::make_shared<std::vector<Symsptr>>();
 	std::transform(functions->begin(),
 		functions->end(),
@@ -41,6 +42,7 @@ Symsptr MbD::PiecewiseFunction::expandUntil(Symsptr sptr, std::shared_ptr<std::u
 
 Symsptr MbD::PiecewiseFunction::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) sptr; // to suppress compiler warning of unused parameters
 	auto simplifications = std::make_shared<std::vector<Symsptr>>();
 	std::transform(functions->begin(),
 		functions->end(),

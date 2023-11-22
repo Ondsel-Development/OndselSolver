@@ -15,6 +15,7 @@ MbD::InPlaneJoint::InPlaneJoint()
 
 MbD::InPlaneJoint::InPlaneJoint(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::InPlaneJoint::createInPlaneConstraint()

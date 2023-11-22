@@ -18,6 +18,7 @@ MbD::Orientation::Orientation()
 
 MbD::Orientation::Orientation(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::Orientation::initializeGlobally()

@@ -18,10 +18,6 @@ FColDsptr LDUSpMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullC
 	return answer;
 }
 
-FColDsptr LDUSpMat::basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal) {
-    return MatrixDecomposition::basicSolvewithsaveOriginal(aMatrix, aVector, saveOriginal);
-}
-
 void LDUSpMat::decomposesaveOriginal(FMatDsptr fullMat, bool saveOriginal)
 {
     (void) fullMat; // to suppress compiler warning of unused parameters

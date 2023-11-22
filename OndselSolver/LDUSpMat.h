@@ -16,7 +16,6 @@ namespace MbD {
     {
         //matrixL matrixD matrixU markowitzPivotRowCount markowitzPivotColCount privateIndicesOfNonZerosInPivotRow rowPositionsOfNonZerosInPivotColumn 
     public:
-        FColDsptr basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal) override;
         FColDsptr basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal) override;
         void decomposesaveOriginal(FMatDsptr fullMat, bool saveOriginal);
         void decomposesaveOriginal(SpMatDsptr spMat, bool saveOriginal);

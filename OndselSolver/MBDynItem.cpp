@@ -29,6 +29,7 @@ void MbD::MBDynItem::noop()
 
 void MbD::MBDynItem::parseMBDyn(std::vector<std::string>& lines)
 {
+    (void) lines; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

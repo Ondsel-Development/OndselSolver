@@ -37,6 +37,8 @@ Symsptr MbD::Power::differentiateWRTy()
 
 Symsptr MbD::Power::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) sptr; // to suppress compiler warning of unused parameters
+    (void) set; // to suppress compiler warning of unused parameters
 	assert(false);
 	return Symsptr();
 }

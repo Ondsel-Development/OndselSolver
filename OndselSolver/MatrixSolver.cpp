@@ -26,6 +26,7 @@ void MatrixSolver::initialize()
 
 void MatrixSolver::setSystem(Solver* sys)
 {
+    (void) sys; // to suppress compiler warning of unused parameters
 }
 
 FColDsptr MatrixSolver::solvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
@@ -55,6 +56,9 @@ FColDsptr MatrixSolver::timedSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr f
 
 FColDsptr MatrixSolver::timedSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	return FColDsptr();
 }
 

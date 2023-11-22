@@ -236,7 +236,6 @@ void Part::iqX(int eqnNo)
 void Part::iqE(int eqnNo)
 {
 	partFrame->iqE = eqnNo;
-
 }
 
 void Part::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> essenConstraints)
@@ -246,6 +245,7 @@ void Part::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Cons
 
 void Part::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints)
 {
+    (void) redunConstraints; // to suppress compiler warning of unused parameters
 }
 
 void Part::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints)

@@ -31,6 +31,7 @@ MbD::Polynomial::Polynomial(Symsptr var, std::shared_ptr<std::vector<Symsptr>> c
 
 Symsptr MbD::Polynomial::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) sptr; // to suppress compiler warning of unused parameters
 	auto newCoeffs = std::make_shared<std::vector<Symsptr>>();
 	for (size_t i = 0; i < coeffs->size(); i++)
 	{
@@ -43,6 +44,7 @@ Symsptr MbD::Polynomial::expandUntil(Symsptr sptr, std::shared_ptr<std::unordere
 
 Symsptr MbD::Polynomial::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) sptr; // to suppress compiler warning of unused parameters
 	auto newCoeffs = std::make_shared<std::vector<Symsptr>>();
 	for (size_t i = 0; i < coeffs->size(); i++)
 	{

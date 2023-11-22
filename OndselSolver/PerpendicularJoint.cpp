@@ -18,6 +18,7 @@ MbD::PerpendicularJoint::PerpendicularJoint()
 
 MbD::PerpendicularJoint::PerpendicularJoint(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::PerpendicularJoint::initializeGlobally()

@@ -364,7 +364,7 @@ void MbD::MBDynSystem::parseMBDynVariables(std::vector<std::string>& lines)
 {
 	variables = std::make_shared<std::map<std::string, Symsptr>>();
 	std::string str, variable;
-	double doubleValue;
+	// double doubleValue;
 	std::vector<std::string> tokens{ "set:", "real" };
 	while (true) {
 		auto it = findLineWith(lines, tokens);
@@ -380,7 +380,7 @@ void MbD::MBDynSystem::parseMBDynVariables(std::vector<std::string>& lines)
 			auto userFunc = std::make_shared<BasicUserFunction>(str, 1.0);
 			parser->parseUserFunction(userFunc);
 			auto sym = parser->stack->top();
-			auto val = sym->getValue();
+			// auto val = sym->getValue();
 			variables->insert(std::make_pair(variable, sym));
 			lines.erase(it);
 		}
@@ -418,7 +418,7 @@ void MbD::MBDynSystem::parseMBDynReferences(std::vector<std::string>& lines)
 {
 	references = std::make_shared<std::map<std::string, std::shared_ptr<MBDynReference>>>();
 	std::string str, refName;
-	double doubleValue;
+	// double doubleValue;
 	std::vector<std::string> tokens{ "reference:" };
 	while (true) {
 		auto it = findLineWith(lines, tokens);

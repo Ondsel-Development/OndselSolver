@@ -85,6 +85,7 @@ Symsptr Product::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Sy
 
 Symsptr Product::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+    (void) sptr; // to suppress compiler warning of unused parameters
 	auto itr = std::find_if(set->begin(), set->end(), [this](Symsptr sym) {return this == (sym.get()); });
 	if (itr != set->end()) {
 		auto answer = std::make_shared<Sum>();

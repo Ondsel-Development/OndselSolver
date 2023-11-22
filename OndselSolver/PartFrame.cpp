@@ -252,6 +252,7 @@ void PartFrame::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr
 
 void PartFrame::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints)
 {
+    (void) redunConstraints; // to suppress compiler warning of unused parameters
 }
 
 void PartFrame::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints)

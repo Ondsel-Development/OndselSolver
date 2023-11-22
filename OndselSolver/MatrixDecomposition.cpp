@@ -12,6 +12,8 @@ using namespace MbD;
 
 FColDsptr MbD::MatrixDecomposition::forAndBackSubsaveOriginal(FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 	return FColDsptr();
 }
@@ -28,12 +30,11 @@ void MatrixDecomposition::applyRowOrderOnRightHandSideB()
 
 FColDsptr MbD::MatrixDecomposition::basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal)
 {
+    (void) aMatrix; // to suppress compiler warning of unused parameters
+    (void) aVector; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 	return FColDsptr();
-}
-
-FColDsptr MatrixDecomposition::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal) {
-    return MbD::MatrixSolver::basicSolvewithsaveOriginal(spMat, fullCol, saveOriginal);
 }
 
 void MbD::MatrixDecomposition::forwardSubstituteIntoL()
@@ -58,6 +59,8 @@ void MbD::MatrixDecomposition::postSolve()
 
 void MbD::MatrixDecomposition::preSolvesaveOriginal(FMatDsptr aMatrix, bool saveOriginal)
 {
+    (void) aMatrix; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	assert(false);
 }
 

@@ -20,7 +20,6 @@ namespace MbD {
         virtual void forwardSubstituteIntoL();
         virtual void backSubstituteIntoU();
         virtual FColDsptr basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal);
-        virtual FColDsptr basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal);
         virtual void forwardSubstituteIntoLD();
         virtual void postSolve();
         virtual void preSolvesaveOriginal(FMatDsptr aMatrix, bool saveOriginal);

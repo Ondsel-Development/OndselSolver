@@ -17,6 +17,7 @@ MbD::PointInPlaneJoint::PointInPlaneJoint()
 
 MbD::PointInPlaneJoint::PointInPlaneJoint(const char* str)
 {
+    (void) str; // to suppress compiler warning of unused parameters
 }
 
 void MbD::PointInPlaneJoint::initializeGlobally()

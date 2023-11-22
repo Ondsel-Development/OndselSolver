@@ -101,29 +101,43 @@ void MbD::MomentOfInertiaSolver::postSolve()
 
 FColDsptr MbD::MomentOfInertiaSolver::basicSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	return FColDsptr();
 }
 
 FColDsptr MbD::MomentOfInertiaSolver::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) spMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 	return FColDsptr();
 }
 
 void MbD::MomentOfInertiaSolver::preSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) fullMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 }
 
 void MbD::MomentOfInertiaSolver::preSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
 {
+    (void) spMat; // to suppress compiler warning of unused parameters
+    (void) fullCol; // to suppress compiler warning of unused parameters
+    (void) saveOriginal; // to suppress compiler warning of unused parameters
 }
 
 double MbD::MomentOfInertiaSolver::getmatrixArowimaxMagnitude(int i)
 {
+    (void) i; // to suppress compiler warning of unused parameters
 	return 0.0;
 }
 
 void MbD::MomentOfInertiaSolver::doPivoting(int p)
 {
+    (void) p; // to suppress compiler warning of unused parameters
 }
 
 void MbD::MomentOfInertiaSolver::setm(double mass)
@@ -267,7 +281,7 @@ FColDsptr MbD::MomentOfInertiaSolver::eigenvectorFor(double lam)
 	auto row1 = aJcmPcopy->at(1);
 	auto row2 = aJcmPcopy->at(2);
 	auto norm0 = row0->length();
-	auto aaaa = row2->length();
+	// auto aaaa = row2->length();
 	if ((row2->length() / norm0) > 1.0e-5) throw std::runtime_error("3rd row should be very small.");
 	if ((row1->length() / norm0) > 1.0e-5) {
 		e2 = 1.0;
