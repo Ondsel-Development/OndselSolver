@@ -10,12 +10,25 @@
 
 namespace MbD {
     template<typename T>
-    inline void EulerAngles<T>::initialize()
+    void EulerAngles<T>::initialize()
+    {
+        assert(false);
+    }
+    // type-specific 'initialize' versions specifically created for Windows compiler builds
+    // it is not appropriate to actually call either of them.
+    template<>
+    void EulerAngles<double>::initialize()
     {
         assert(false);
     }
     template<>
-    inline void EulerAngles<Symsptr>::calc()
+    void EulerAngles<std::shared_ptr<MbD::Symbolic>>::initialize()
+    {
+        assert(false);
+    }
+
+    template<>
+    void EulerAngles<Symsptr>::calc()
     {
         cA = std::make_shared<FullColumn<FMatDsptr>>(3);
         for (int i = 0; i < 3; i++)
@@ -38,7 +51,7 @@ namespace MbD {
         aA = cA->at(0)->timesFullMatrix(cA->at(1)->timesFullMatrix(cA->at(2)));
     }
     template<>
-    inline void EulerAngles<double>::calc()
+    void EulerAngles<double>::calc()
     {
         cA = std::make_shared<FullColumn<FMatDsptr>>(3);
         for (int i = 0; i < 3; i++)
@@ -60,8 +73,9 @@ namespace MbD {
         }
         aA = cA->at(0)->timesFullMatrix(cA->at(1)->timesFullMatrix(cA->at(2)));
     }
+    // the generic version should never be called; only the specific types above
     template<typename T>
-    inline void EulerAngles<T>::calc()
+    void EulerAngles<T>::calc()
     {
         assert(false);
     }

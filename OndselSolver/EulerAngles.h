@@ -33,11 +33,13 @@ namespace MbD {
 		FColFMatDsptr cA;
 		FMatDsptr aA;
 	};
+    // instantiations for two specific types:
     template class EulerAngles<std::shared_ptr<MbD::Symbolic>>;
     template class EulerAngles<double>;
-    std::shared_ptr<EulerAnglesDot<std::shared_ptr<MbD::Symbolic>>> differentiateWRT(EulerAngles<std::shared_ptr<MbD::Symbolic>>& ref, std::shared_ptr<MbD::Symbolic> var);
-    template<typename T>
 
+    std::shared_ptr<EulerAnglesDot<std::shared_ptr<MbD::Symbolic>>> differentiateWRT(EulerAngles<std::shared_ptr<MbD::Symbolic>>& ref, std::shared_ptr<MbD::Symbolic> var);
+
+    template<typename T>
     void EulerAngles<T>::setRotOrder(int i, int j, int k)
     {
         rotOrder = std::make_shared<FullColumn<int>>(3);

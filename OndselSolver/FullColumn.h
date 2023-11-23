@@ -25,8 +25,8 @@ namespace MbD {
 	{
 	public:
 		FullColumn() : FullVector<T>() {}
-		FullColumn(std::vector<T> vec) : FullVector<T>(vec) {}
-		FullColumn(int count) : FullVector<T>(count) {}
+		explicit FullColumn(std::vector<T> vec) : FullVector<T>(vec) {}
+		explicit FullColumn(int count) : FullVector<T>(count) {}
 		FullColumn(int count, const T& value) : FullVector<T>(count, value) {}
 		FullColumn(typename std::vector<T>::iterator begin, typename std::vector<T>::iterator end) : FullVector<T>(begin, end) {}
 		FullColumn(std::initializer_list<T> list) : FullVector<T>{ list } {}
@@ -50,7 +50,6 @@ namespace MbD {
 		std::shared_ptr<FullColumn<T>> cloneFcSptr();
 		double dotVec(std::shared_ptr<FullVector<T>> vec);
 		std::shared_ptr<FullVector<T>> dot(std::shared_ptr<std::vector<std::shared_ptr<FullColumn<T>>>> vecvec);
-
 		std::ostream& printOn(std::ostream& s) const override;
 	};
     // the following "printOn" needs to be in the header for unknown reasons linker
