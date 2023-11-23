@@ -16,6 +16,7 @@ namespace MbD {
     FMatFColDsptr EulerParameters<T>::ppApEpEtimesColumn(FColDsptr col) {
         (void) col; // to suppress compiler warning of unused parameters
         assert(false);
+        return {};
     }
     template<>
     FMatFColDsptr EulerParameters<double>::ppApEpEtimesColumn(FColDsptr col)
@@ -65,6 +66,7 @@ namespace MbD {
     {
         (void) col; // to suppress compiler warning of unused parameters
         assert(false);
+        return {};
     }
     template<>
     FMatDsptr EulerParameters<double>::pCpEtimesColumn(FColDsptr col)
@@ -135,6 +137,7 @@ namespace MbD {
     {
         (void) mat; // to suppress compiler warning of unused parameters
         assert(false);
+        return {};
     }
     template<>
     FMatFMatDsptr EulerParameters<double>::ppApEpEtimesMatrix(FMatDsptr mat)
