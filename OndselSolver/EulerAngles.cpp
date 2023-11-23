@@ -9,6 +9,16 @@
 #include "EulerAngles.h"
 
 namespace MbD {
+
+
+    template<typename T>
+    void EulerAngles<T>::setRotOrder(int i, int j, int k)
+    {
+        rotOrder = std::make_shared<FullColumn<int>>(3);
+        rotOrder->at(0) = i;
+        rotOrder->at(1) = j;
+        rotOrder->at(2) = k;
+    }
     template<typename T>
     void EulerAngles<T>::initialize()
     {
@@ -89,5 +99,9 @@ namespace MbD {
         derivatives->aEulerAngles = &ref;
         return derivatives;
     }
+
+    // instantiations for two specific types:
+    template class EulerAngles<std::shared_ptr<MbD::Symbolic>>;
+    template class EulerAngles<double>;
 }
 
