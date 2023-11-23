@@ -12,6 +12,11 @@
 #include "FullMatrix.h"
 
 namespace MbD {
+    template<typename T>
+    FMatFColDsptr EulerParameters<T>::ppApEpEtimesColumn(FColDsptr col) {
+        (void) col; // to suppress compiler warning of unused parameters
+        assert(false);
+    }
     template<>
     FMatFColDsptr EulerParameters<double>::ppApEpEtimesColumn(FColDsptr col)
     {
@@ -55,6 +60,12 @@ namespace MbD {
         return answer;
     }
 
+    template<typename T>
+    FMatDsptr EulerParameters<T>::pCpEtimesColumn(FColDsptr col)
+    {
+        (void) col; // to suppress compiler warning of unused parameters
+        assert(false);
+    }
     template<>
     FMatDsptr EulerParameters<double>::pCpEtimesColumn(FColDsptr col)
     {
@@ -119,6 +130,12 @@ namespace MbD {
         return answer;
     }
 
+    template<typename T>
+    FMatFMatDsptr EulerParameters<T>::ppApEpEtimesMatrix(FMatDsptr mat)
+    {
+        (void) mat; // to suppress compiler warning of unused parameters
+        assert(false);
+    }
     template<>
     FMatFMatDsptr EulerParameters<double>::ppApEpEtimesMatrix(FMatDsptr mat)
     {
@@ -189,6 +206,11 @@ namespace MbD {
         this->calcABC();
         this->calcpApE();
     }
+
+    template<typename T>
+    void EulerParameters<T>::calcABC() {
+        assert(false);
+    }
     template<>
     void EulerParameters<double>::calcABC()
     {
@@ -233,6 +255,12 @@ namespace MbD {
         aCi->at(3) = mE2;
 
         aA = aB->timesTransposeFullMatrix(aC);
+    }
+
+    template<typename T>
+    void EulerParameters<T>::calcpApE()
+    {
+        assert(false);
     }
     template<>
     void EulerParameters<double>::calcpApE()
@@ -310,5 +338,6 @@ namespace MbD {
         this->normalizeSelf();
     }
 
+    // instantiation
     template class EulerParameters<double>;
 }

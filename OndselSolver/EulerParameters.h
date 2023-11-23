@@ -12,8 +12,6 @@
 #include "FullMatrix.ref.h"
 #include "EulerParameters.ref.h"
 #include "EulerArray.h"
-// #include "FullColumn.h"
-// #include "FullMatrix.h"
 
 namespace MbD {
 
