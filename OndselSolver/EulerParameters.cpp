@@ -340,5 +340,6 @@ namespace MbD {
         EulerArray<T>::conditionSelf();
         this->normalizeSelf();
     }
-
+    // instantiation
+    template class EulerParameters<double>;
 }
