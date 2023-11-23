@@ -17,8 +17,6 @@
 #include "EulerAngleszxzDDot.h"
 
 namespace MbD {
-    template class EulerParameters<double>;
-
     EndFrameqct::EndFrameqct() {
     }
 

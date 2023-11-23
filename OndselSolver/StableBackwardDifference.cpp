@@ -100,7 +100,8 @@ FColDsptr MbD::StableBackwardDifference::derivativepresentpast(int deriv, FColDs
 			return std::static_pointer_cast<FullColumn<double>>(answer);
 		}
 		else {
-			return std::make_shared<FullColumn<double>>(y->size(), 0.0);
+            int sz = (int) y->size();
+			return std::make_shared<FullColumn<double>>(sz, 0.0);
 		}
 	}
 }

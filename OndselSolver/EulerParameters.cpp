@@ -341,6 +341,4 @@ namespace MbD {
         this->normalizeSelf();
     }
 
-    // instantiation
-    template class EulerParameters<double>;
 }
