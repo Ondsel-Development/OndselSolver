@@ -286,6 +286,7 @@ set(ONDSELSOLVER_SRC
         OndselSolver/SphSphJoint.cpp
         OndselSolver/StableBackwardDifference.cpp
         OndselSolver/StateData.cpp
+        OndselSolver/StepFunction.cpp
         OndselSolver/Sum.cpp
         OndselSolver/Symbolic.cpp
         OndselSolver/SymbolicParser.cpp
@@ -320,8 +321,10 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/FullVector.h
         OndselSolver/RowTypeMatrix.h
         OndselSolver/FullRow.h
+        OndselSolver/FullRow.ref.h
         OndselSolver/FullColumn.h
         OndselSolver/FullMatrix.h
+        OndselSolver/FullMatrix.ref.h
         OndselSolver/Abs.h
         OndselSolver/AbsConstraint.h
         OndselSolver/AccICKineNewtonRaphson.h
@@ -397,6 +400,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/CylindricalJoint.h
         OndselSolver/CylSphJoint.h
         OndselSolver/DiagonalMatrix.h
+        OndselSolver/DiagonalMatrix.ref.h
         OndselSolver/DifferenceOperator.h
         OndselSolver/DifferentiatedGeneralSpline.h
         OndselSolver/DirectionCosineConstraintIJ.h
@@ -452,6 +456,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/EulerArray.h
         OndselSolver/EulerConstraint.h
         OndselSolver/EulerParameters.h
+        OndselSolver/EulerParameters.ref.h
         OndselSolver/EulerParametersDDot.h
         OndselSolver/EulerParametersDot.h
         OndselSolver/Exponential.h
@@ -487,6 +492,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/IndependentVariable.h
         OndselSolver/InLineJoint.h
         OndselSolver/InPlaneJoint.h
+        OndselSolver/Integral.h
         OndselSolver/Integrator.h
         OndselSolver/IntegratorInterface.h
         OndselSolver/Item.h
@@ -515,6 +521,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/MBDynBody.h
         OndselSolver/MBDynControlData.h
         OndselSolver/MBDynData.h
+        OndselSolver/MBDynDrive.h
         OndselSolver/MBDynElement.h
         OndselSolver/MBDynInitialValue.h
         OndselSolver/MBDynItem.h
@@ -539,9 +546,11 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/Part.h
         OndselSolver/PartFrame.h
         OndselSolver/PerpendicularJoint.h
+        OndselSolver/PiecewiseFunction.h
         OndselSolver/PlanarJoint.h
         OndselSolver/PointInLineJoint.h
         OndselSolver/PointInPlaneJoint.h
+        OndselSolver/Polynomial.h
         OndselSolver/PosICKineNewtonRaphson.h
         OndselSolver/PosICNewtonRaphson.h
         OndselSolver/PosKineNewtonRaphson.h
@@ -555,6 +564,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/RackPinConstraintIqcJc.h
         OndselSolver/RackPinConstraintIqcJqc.h
         OndselSolver/RackPinJoint.h
+        OndselSolver/RampStepFunction.h
         OndselSolver/Reciprocal.h
         OndselSolver/RedundantConstraint.h
         OndselSolver/resource.h
@@ -577,6 +587,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/SphSphJoint.h
         OndselSolver/StableBackwardDifference.h
         OndselSolver/StateData.h
+        OndselSolver/StepFunction.h
         OndselSolver/Sum.h
         OndselSolver/Symbolic.h
         OndselSolver/SymbolicParser.h
