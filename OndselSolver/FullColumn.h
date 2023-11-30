@@ -31,7 +31,7 @@ namespace MbD {
 		FullColumn(typename std::vector<T>::iterator begin, typename std::vector<T>::iterator end) : FullVector<T>(begin, end) {}
 		FullColumn(std::initializer_list<T> list) : FullVector<T>{ list } {}
 		FColsptr<T> plusFullColumn(FColsptr<T> fullCol);
-		// FColsptr<T> plusFullColumntimes(FColsptr<T> fullCol, double factor);
+		FColsptr<T> plusFullColumntimes(FColsptr<T> fullCol, double factor);
 		FColsptr<T> minusFullColumn(FColsptr<T> fullCol);
 		FColsptr<T> times(T a);
 		FColsptr<T> negated();

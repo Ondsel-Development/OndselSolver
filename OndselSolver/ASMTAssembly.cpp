@@ -854,17 +854,17 @@ void MbD::ASMTAssembly::outputFor(AnalysisType type)
 	assert(false);
 }
 
-void MbD::ASMTAssembly::logString(std::string& str)
-{
-    (void) str; // to suppress compiler warning of unused parameters
-	assert(false);
-}
-
-void MbD::ASMTAssembly::logString(double value)
-{
-    (void) value; // to suppress compiler warning of unused parameters
-	assert(false);
-}
+//void MbD::ASMTAssembly::logString(std::string& str)
+//{
+//    (void) str; // to suppress compiler warning of unused parameters
+//	assert(false);
+//}
+//
+//void MbD::ASMTAssembly::logString(double value)
+//{
+//    (void) value; // to suppress compiler warning of unused parameters
+//	assert(false);
+//}
 
 void MbD::ASMTAssembly::preMbDrun(std::shared_ptr<System> mbdSys)
 {
