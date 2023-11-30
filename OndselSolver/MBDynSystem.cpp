@@ -21,6 +21,7 @@
 #include "BasicUserFunction.h"
 #include "MBDynReference.h"
 #include "MBDynDrive.h"
+#include "MBDynGravity.h"
 
 using namespace MbD;
 
@@ -94,6 +95,7 @@ void MbD::MBDynSystem::createASMT()
 	for (auto& node : *nodes) node->createASMT();
 	for (auto& body : *bodies) body->createASMT();
 	for (auto& joint : *joints) joint->createASMT();
+	if (gravity) gravity->createASMT();
 }
 
 std::shared_ptr<MBDynNode> MbD::MBDynSystem::nodeAt(std::string nodeName)
@@ -134,11 +136,12 @@ std::vector<std::string> MbD::MBDynSystem::nodeNames()
 void MbD::MBDynSystem::runKINEMATIC()
 {
 	createASMT();
-	asmtAssembly()->outputFile("assembly.asmt");
+	auto debugFile1 = filename.substr(0, filename.find_last_of('.')) + "debug1.asmt";
+	asmtAssembly()->outputFile(debugFile1);
 	std::static_pointer_cast<ASMTAssembly>(asmtItem)->runKINEMATIC();
 	outputFiles();
-	asmtAssembly()->outputFile("assembly2.asmt");
-	asmtAssembly()->outputFile("smalltalk.asmt");
+	auto debugFile2 = filename.substr(0, filename.find_last_of('.')) + "debug2.asmt";
+	asmtAssembly()->outputFile(debugFile2);
 }
 
 void MbD::MBDynSystem::outputFiles()
@@ -241,15 +244,15 @@ void MbD::MBDynSystem::readElementsBlock(std::vector<std::string>& lines)
 
 void MbD::MBDynSystem::eraseComments(std::vector<std::string>& lines)
 {
-	for (size_t i = 0; i < lines.size(); i++)
+	for (int i = 0; i < lines.size(); i++)
 	{
-		auto line = lines[i];
+		auto& line = lines[i];
 		auto it = line.find('#');
 		if (it != std::string::npos) {
 			lines[i] = line.substr(0, it);
 		}
 	}
-	for (int i = lines.size() - 1; i >= 0; i--) {
+	for (int i = (int)lines.size() - 1; i >= 0; i--) {
 		auto& line = lines[i];
 		auto it = std::find_if(line.begin(), line.end(), [](unsigned char ch) { return !std::isspace(ch); });
 		if (it == line.end()) lines.erase(lines.begin() + i);
@@ -262,7 +265,7 @@ std::vector<std::string> MbD::MBDynSystem::collectStatements(std::vector<std::st
 	while (!lines.empty()) {
 		std::stringstream ss;
 		while (!lines.empty()) {
-			auto line = lines[0];
+			std::string line = lines[0];	//Must copy string
 			lines.erase(lines.begin());
 			auto i = line.find(';');
 			if (i != std::string::npos) {
@@ -325,6 +328,7 @@ void MbD::MBDynSystem::parseMBDynElements(std::vector<std::string>& lines)
 	std::vector<std::string> bodyTokens{ "body:" };
 	std::vector<std::string> jointTokens{ "joint:" };
 	std::vector<std::string> driveTokens{ "drive", "caller:" };
+	std::vector<std::string> gravityTokens{ "gravity" };
 	std::vector<std::string>::iterator it;
 	while (true) {
 		it = findLineWith(lines, bodyTokens);
@@ -354,6 +358,15 @@ void MbD::MBDynSystem::parseMBDynElements(std::vector<std::string>& lines)
 			lines.erase(it);
 			continue;
 		}
+		it = findLineWith(lines, gravityTokens);
+		if (it != lines.end()) {
+			auto grav = std::make_shared<MBDynGravity>();
+			grav->owner = this;
+			grav->parseMBDyn(*it);
+			gravity = grav;
+			lines.erase(it);
+			continue;
+		}
 		break;
 	}
 	assert(lines[0].find("end: elements") != std::string::npos);
@@ -364,7 +377,6 @@ void MbD::MBDynSystem::parseMBDynVariables(std::vector<std::string>& lines)
 {
 	variables = std::make_shared<std::map<std::string, Symsptr>>();
 	std::string str, variable;
-	// double doubleValue;
 	std::vector<std::string> tokens{ "set:", "real" };
 	while (true) {
 		auto it = findLineWith(lines, tokens);
@@ -379,8 +391,8 @@ void MbD::MBDynSystem::parseMBDynVariables(std::vector<std::string>& lines)
 			parser->variables = variables;
 			auto userFunc = std::make_shared<BasicUserFunction>(str, 1.0);
 			parser->parseUserFunction(userFunc);
-			auto sym = parser->stack->top();
-			// auto val = sym->getValue();
+			auto& sym = parser->stack->top();
+			auto val = sym->getValue();
 			variables->insert(std::make_pair(variable, sym));
 			lines.erase(it);
 		}
@@ -418,7 +430,6 @@ void MbD::MBDynSystem::parseMBDynReferences(std::vector<std::string>& lines)
 {
 	references = std::make_shared<std::map<std::string, std::shared_ptr<MBDynReference>>>();
 	std::string str, refName;
-	// double doubleValue;
 	std::vector<std::string> tokens{ "reference:" };
 	while (true) {
 		auto it = findLineWith(lines, tokens);

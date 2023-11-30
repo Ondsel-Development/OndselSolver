@@ -39,6 +39,13 @@ void MbD::ASMTItem::noop()
 	//No Operations
 }
 
+std::string MbD::ASMTItem::classname()
+{
+	std::string str = typeid(*this).name();
+	auto answer = str.substr(11, str.size() - 11);
+	return answer;
+}
+
 void MbD::ASMTItem::setName(std::string str)
 {
 	name = str;
@@ -227,7 +234,7 @@ void MbD::ASMTItem::storeOnLevelBool(std::ofstream& os, int level, bool value)
 void MbD::ASMTItem::storeOnLevelArray(std::ofstream& os, int level, std::vector<double> array)
 {
 	storeOnLevelTabs(os, level);
-	for (size_t i = 0; i < array.size(); i++)
+	for (int i = 0; i < array.size(); i++)
 	{
 		os << array[i] << '\t';
 	}
@@ -244,4 +251,14 @@ void MbD::ASMTItem::storeOnTimeSeries(std::ofstream& os)
 {
     (void) os; // to suppress compiler warning of unused parameters
 	assert(false);
+}
+
+void MbD::ASMTItem::logString(std::string& str)
+{
+	std::cout << str << std::endl;
+}
+
+void MbD::ASMTItem::logString(const char* chars)
+{
+	std::cout << chars << std::endl;
 }

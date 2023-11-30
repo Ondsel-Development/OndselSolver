@@ -5,7 +5,7 @@
  *                                                                         *
  *   See LICENSE file for details about copyright.                         *
  ***************************************************************************/
- 
+
 #include <functional>
 #include <chrono>
 
@@ -15,8 +15,9 @@
 
 using namespace MbD;
 
-Constraint::Constraint()
+Constraint::Constraint() : Item()
 {
+	aConstant = 0.0;
 }
 
 Constraint::Constraint(const char* str) : Item(str)
@@ -116,7 +117,7 @@ void Constraint::removeRedundantConstraints(std::shared_ptr<std::vector<int>> re
 
 void MbD::Constraint::setConstant(double value)
 {
-    (void) value; // to suppress compiler warning of unused parameters
+	aConstant = value;
 }
 
 void Constraint::reactivateRedundantConstraints()

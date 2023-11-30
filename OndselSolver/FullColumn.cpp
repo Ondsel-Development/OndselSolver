@@ -16,7 +16,7 @@ namespace MbD {
     template<typename T>
     FColsptr<T> FullColumn<T>::plusFullColumn(FColsptr<T> fullCol)
     {
-        int n = (int) this->size();
+        int n = (int)this->size();
         auto answer = std::make_shared<FullColumn<T>>(n);
         for (int i = 0; i < n; i++) {
             answer->at(i) = this->at(i) + fullCol->at(i);
@@ -24,9 +24,15 @@ namespace MbD {
         return answer;
     }
     template<typename T>
+    FColsptr<T> FullColumn<T>::plusFullColumntimes(FColsptr<T> fullCol, double factor)
+    {
+        assert(false);
+        return FColsptr<T>();
+    }
+    template<typename T>
     FColsptr<T> FullColumn<T>::minusFullColumn(FColsptr<T> fullCol)
     {
-        int n = (int) this->size();
+        int n = (int)this->size();
         auto answer = std::make_shared<FullColumn<T>>(n);
         for (int i = 0; i < n; i++) {
             answer->at(i) = this->at(i) - fullCol->at(i);
@@ -54,13 +60,12 @@ namespace MbD {
     template<typename T>
     FColsptr<T> FullColumn<T>::negated()
     {
-        return this->times(-1.0);
+        return this->times((T) - 1.0);
     }
     template<typename T>
     void FullColumn<T>::atiputFullColumn(int i, FColsptr<T> fullCol)
     {
-        int n = (int)fullCol->size();
-        for (int ii = 0; ii < n; ii++)
+        for (int ii = 0; ii < fullCol->size(); ii++)
         {
             this->at(i + ii) = fullCol->at(ii);
         }
@@ -68,8 +73,7 @@ namespace MbD {
     template<typename T>
     void FullColumn<T>::atiplusFullColumn(int i, FColsptr<T> fullCol)
     {
-        int n = (int)fullCol->size();
-        for (int ii = 0; ii < n; ii++)
+        for (int ii = 0; ii < fullCol->size(); ii++)
         {
             this->at(i + ii) += fullCol->at(ii);
         }
@@ -87,8 +91,7 @@ namespace MbD {
     template<typename T>
     void FullColumn<T>::atiminusFullColumn(int i1, FColsptr<T> fullCol)
     {
-        int n = fullCol->size();
-        for (int ii = 0; ii < n; ii++)
+        for (int ii = 0; ii < fullCol->size(); ii++)
         {
             int i = i1 + ii;
             this->at(i) -= fullCol->at(ii);
@@ -106,7 +109,7 @@ namespace MbD {
     template<>
     FColDsptr FullColumn<double>::copy()
     {
-        int n = (int) this->size();
+        auto n = (int)this->size();
         auto answer = std::make_shared<FullColumn<double>>(n);
         for (int i = 0; i < n; i++)
         {
@@ -133,8 +136,7 @@ namespace MbD {
     template<typename T>
     void FullColumn<T>::atiplusFullColumntimes(int i1, FColsptr<T> fullCol, T factor)
     {
-        int n = fullCol->size();
-        for (int ii = 0; ii < n; ii++)
+        for (int ii = 0; ii < fullCol->size(); ii++)
         {
             int i = i1 + ii;
             this->at(i) += fullCol->at(ii) * factor;
@@ -168,7 +170,7 @@ namespace MbD {
     //template<>
     //inline std::shared_ptr<FullColumn<Symsptr>> FullColumn<Symsptr>::simplified()
     //{
-    //	auto n = this->size();
+    //	auto n = (int)this->size();
     //	auto answer = std::make_shared<FullColumn<Symsptr>>(n);
     //	for (int i = 0; i < n; i++)
     //	{
@@ -187,13 +189,23 @@ namespace MbD {
     template class FullColumn<double>;
     template class FullColumn<int>;
     template<typename T>
+    double FullColumn<T>::dot(std::shared_ptr<FullVector<T>> vec)
+    {
+        int n = (int)this->size();
+        double answer = 0.0;
+        for (int i = 0; i < n; i++) {
+            answer += this->at(i) * vec->at(i);
+        }
+        return answer;
+    }
+    template<typename T>
     std::shared_ptr<FullVector<T>> FullColumn<T>::dot(std::shared_ptr<std::vector<std::shared_ptr<FullColumn<T>>>> vecvec)
     {
         int ncol = (int)this->size();
         int nelem = vecvec->at(0)->size();
         auto answer = std::make_shared<FullVector<T>>(nelem);
         for (int k = 0; k < nelem; k++) {
-            auto sum = 0.0;
+            auto sum = (T)0;
             for (int i = 0; i < ncol; i++)
             {
                 sum += this->at(i) * vecvec->at(i)->at(k);

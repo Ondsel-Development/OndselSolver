@@ -29,7 +29,10 @@ namespace MbD {
     template<>
     void EulerAngles<double>::initialize()
     {
-        assert(false);
+        rotOrder = std::make_shared<FullColumn<int>>(3);
+        rotOrder->at(0) = 0;
+        rotOrder->at(1) = 1;
+        rotOrder->at(2) = 2;
     }
     template<>
     void EulerAngles<std::shared_ptr<MbD::Symbolic>>::initialize()

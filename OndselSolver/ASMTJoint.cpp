@@ -38,13 +38,18 @@ void MbD::ASMTJoint::readJointSeries(std::vector<std::string>& lines)
 
 void MbD::ASMTJoint::storeOnLevel(std::ofstream& os, int level)
 {
-    (void) os; // to suppress compiler warning of unused parameters
-    (void) level; // to suppress compiler warning of unused parameters
-	assert(false);
+	auto jointType = classname();
+	jointType = jointType.substr(4, jointType.size() - 4);	//Remove ASMT in name
+	storeOnLevelString(os, level, jointType);
+	storeOnLevelString(os, level + 1, "Name");
+	storeOnLevelString(os, level + 2, name);
+	ASMTItemIJ::storeOnLevel(os, level);
 }
 
 void MbD::ASMTJoint::storeOnTimeSeries(std::ofstream& os)
 {
-    (void) os; // to suppress compiler warning of unused parameters
-	assert(false);
+	std::string label = typeid(*this).name();
+	label = label.substr(15, label.size() - 15);
+	os << label << "Series\t" << fullName("") << std::endl;
+	ASMTItemIJ::storeOnTimeSeries(os);
 }
