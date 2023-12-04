@@ -117,7 +117,7 @@ void MbD::ASMTSpatialContainer::readRefCurves(std::vector<std::string>& lines)
 	lines.erase(lines.begin(), it);
 }
 
-void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>& lines)
+void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>&)
 {
 	assert(false);
 }
@@ -137,7 +137,7 @@ void MbD::ASMTSpatialContainer::readRefSurfaces(std::vector<std::string>& lines)
 	lines.erase(lines.begin(), it);
 }
 
-void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>& lines)
+void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>&)
 {
 	assert(false);
 }
@@ -371,7 +371,7 @@ void MbD::ASMTSpatialContainer::updateFromMbD()
 	alpzs->push_back(alpOPO->at(2));
 }
 
-void MbD::ASMTSpatialContainer::compareResults(AnalysisType type)
+void MbD::ASMTSpatialContainer::compareResults(AnalysisType)
 {
 	if (inxs == nullptr || inxs->empty()) return;
 	auto mbdUnts = mbdUnits();
@@ -442,7 +442,7 @@ void MbD::ASMTSpatialContainer::compareResults(AnalysisType type)
 	}
 }
 
-void MbD::ASMTSpatialContainer::outputResults(AnalysisType type)
+void MbD::ASMTSpatialContainer::outputResults(AnalysisType)
 {
 	if (inxs != nullptr && !inxs->empty()) return;
 	auto i = xs->size() - 1;
@@ -603,111 +603,111 @@ void MbD::ASMTSpatialContainer::storeOnLevelRefSurfaces(std::ofstream& os, int l
 void MbD::ASMTSpatialContainer::storeOnTimeSeries(std::ofstream& os)
 {
 	os << "X\t";
-	for (int i = 0; i < xs->size(); i++)
+	for (double i : *xs)
 	{
-		os << xs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "Y\t";
-	for (int i = 0; i < ys->size(); i++)
+	for (double i : *ys)
 	{
-		os << ys->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "Z\t";
-	for (int i = 0; i < zs->size(); i++)
+	for (double i : *zs)
 	{
-		os << zs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "Bryantx\t";
-	for (int i = 0; i < bryxs->size(); i++)
+	for (double i : *bryxs)
 	{
-		os << bryxs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "Bryanty\t";
-	for (int i = 0; i < bryys->size(); i++)
+	for (double i : *bryys)
 	{
-		os << bryys->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "Bryantz\t";
-	for (int i = 0; i < bryzs->size(); i++)
+	for (double i : *bryzs)
 	{
-		os << bryzs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "VX\t";
-	for (int i = 0; i < vxs->size(); i++)
+	for (double i : *vxs)
 	{
-		os << vxs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "VY\t";
-	for (int i = 0; i < vys->size(); i++)
+	for (double i : *vys)
 	{
-		os << vys->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "VZ\t";
-	for (int i = 0; i < vzs->size(); i++)
+	for (double i : *vzs)
 	{
-		os << vzs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "OmegaX\t";
-	for (int i = 0; i < omexs->size(); i++)
+	for (double i : *omexs)
 	{
-		os << omexs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "OmegaY\t";
-	for (int i = 0; i < omeys->size(); i++)
+	for (double i : *omeys)
 	{
-		os << omeys->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "OmegaZ\t";
-	for (int i = 0; i < omezs->size(); i++)
+	for (double i : *omezs)
 	{
-		os << omezs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "AX\t";
-	for (int i = 0; i < axs->size(); i++)
+	for (double i : *axs)
 	{
-		os << axs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "AY\t";
-	for (int i = 0; i < ays->size(); i++)
+	for (double i : *ays)
 	{
-		os << ays->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "AZ\t";
-	for (int i = 0; i < azs->size(); i++)
+	for (double i : *azs)
 	{
-		os << azs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "AlphaX\t";
-	for (int i = 0; i < alpxs->size(); i++)
+	for (double i : *alpxs)
 	{
-		os << alpxs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "AlphaY\t";
-	for (int i = 0; i < alpys->size(); i++)
+	for (double i : *alpys)
 	{
-		os << alpys->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 	os << "AlphaZ\t";
-	for (int i = 0; i < alpzs->size(); i++)
+	for (double i : *alpzs)
 	{
-		os << alpzs->at(i) << '\t';
+		os << i << '\t';
 	}
 	os << std::endl;
 }

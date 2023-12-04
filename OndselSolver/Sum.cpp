@@ -38,7 +38,7 @@ void MbD::Sum::parse(std::istringstream& iss)
 	}
 }
 
-void MbD::Sum::parseTerm(std::istringstream& iss)
+void MbD::Sum::parseTerm(std::istringstream&)
 {
 }
 
@@ -174,7 +174,7 @@ std::ostream& Sum::printOn(std::ostream& s) const
 {
 	s << "(";
 	s << *(this->terms->at(0));
-	for (int i = 1; i < this->terms->size(); i++)
+	for (unsigned long i = 1; i < this->terms->size(); i++)
 	{
 		s << " + " << *(this->terms->at(i));
 	}

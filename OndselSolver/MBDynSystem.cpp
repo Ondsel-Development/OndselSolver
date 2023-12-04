@@ -149,12 +149,9 @@ void MbD::MBDynSystem::outputFiles()
 	auto movFile = filename.substr(0, filename.find_last_of('.')) + ".mov";
 	auto asmtAsm = asmtAssembly();
 	auto& asmtTimes = asmtAsm->times;
-	auto& asmtParts = asmtAsm->parts;
-	auto& asmtJoints = asmtAsm->joints;
-	auto& asmtMotions = asmtAsm->motions;
 	std::ofstream os(movFile);
 	os << std::setprecision(static_cast<std::streamsize>(std::numeric_limits<double>::digits10) + 1);
-	for (int i = 1; i < asmtTimes->size(); i++)
+	for (unsigned long i = 1; i < asmtTimes->size(); i++)
 	{
 		for (auto& node : *nodes) {
 			node->outputLine(i, os);

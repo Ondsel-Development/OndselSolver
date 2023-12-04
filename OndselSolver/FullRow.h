@@ -107,7 +107,7 @@ namespace MbD {
 	inline T FullRow<T>::timesFullColumn(FullColumn<T>* fullCol)
 	{
 		auto answer = this->at(0) * fullCol->at(0);
-		for (int i = 1; i < this->size(); i++)
+		for (unsigned long i = 1; i < this->size(); i++)
 		{
 			answer += this->at(i) * fullCol->at(i);
 		}
@@ -202,9 +202,9 @@ namespace MbD {
 	{
 		s << "FullRow{";
 		s << this->at(0);
-		for (int i = 1; i < this->size(); i++)
+		for (const auto &element: *this)
 		{
-			s << ", " << this->at(i);
+			s << ", " << element;
 		}
 		s << "}";
 		return s;

@@ -98,9 +98,8 @@ namespace MbD {
 	inline double DiagonalMatrix<double>::sumOfSquares()
 	{
 		double sum = 0.0;
-		for (int i = 0; i < this->size(); i++)
+		for (double element: *this)
 		{
-			double element = this->at(i);
 			sum += element * element;
 		}
 		return sum;
@@ -114,17 +113,17 @@ namespace MbD {
 	template<>
 	inline void DiagonalMatrix<double>::zeroSelf()
 	{
-		for (int i = 0; i < this->size(); i++) {
-			this->at(i) = 0.0;
+		for (double& element: *this)
+		{
+			element = 0;
 		}
 	}
 	template<>
 	inline double DiagonalMatrix<double>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (int i = 0; i < this->size(); i++)
+		for (double element: *this)
 		{
-			double element = this->at(i);
 			if (element < 0.0) element = -element;
 			if (max < element) max = element;
 		}
@@ -141,9 +140,9 @@ namespace MbD {
 	{
 		s << "DiagMat[";
 		s << this->at(0);
-		for (int i = 1; i < this->size(); i++)
+		for (const T& element: *this)
 		{
-			s << ", " << this->at(i);
+			s << ", " << element;
 		}
 		s << "]";
 		return s;

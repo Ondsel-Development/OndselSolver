@@ -98,17 +98,17 @@ namespace MbD {
 	inline double SparseMatrix<T>::sumOfSquares()
 	{
 		double sum = 0.0;
-		for (int i = 0; i < this->size(); i++)
+		for (const auto& element : *this)
 		{
-			sum += this->at(i)->sumOfSquares();
+			sum += element->sumOfSquares();
 		}
 		return sum;
 	}
 	template<>
 	inline void SparseMatrix<double>::zeroSelf()
 	{
-		for (int i = 0; i < this->size(); i++) {
-			this->at(i)->zeroSelf();
+		for (const auto& element: *this) {
+			element->zeroSelf();
 		}
 	}
 	template<typename T>
@@ -119,7 +119,7 @@ namespace MbD {
 	template<typename T>
 	inline void SparseMatrix<T>::atijplusFullColumn(int i, int j, FColsptr<T> fullCol)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (unsigned long ii = 0; ii < fullCol->size(); ii++)
 		{
 			this->atijplusNumber(i + ii, j, fullCol->at(ii));
 		}
@@ -127,7 +127,7 @@ namespace MbD {
 	template<typename T>
 	inline void SparseMatrix<T>::atijminusFullColumn(int i, int j, FColDsptr fullCol)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (unsigned long ii = 0; ii < fullCol->size(); ii++)
 		{
 			this->atijminusNumber(i + ii, j, fullCol->at(ii));
 		}
@@ -191,7 +191,7 @@ namespace MbD {
 	inline double SparseMatrix<T>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (int i = 0; i < this->size(); i++)
+		for (unsigned long i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i)->maxMagnitude();
 			if (max < element) max = element;
@@ -202,7 +202,7 @@ namespace MbD {
 	inline std::ostream& SparseMatrix<T>::printOn(std::ostream& s) const
 	{
 		s << "SpMat[" << std::endl;
-		for (int i = 0; i < this->size(); i++)
+		for (unsigned long i = 0; i < this->size(); i++)
 		{
 			s << *(this->at(i)) << std::endl;
 		}

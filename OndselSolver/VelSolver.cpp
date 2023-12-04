@@ -58,7 +58,7 @@ void VelSolver::solveEquations()
 	try {
 		this->basicSolveEquations();
 	}
-	catch (SingularMatrixError ex) {
+	catch (SingularMatrixError&) {
 		this->handleSingularMatrix();
 	}
 }

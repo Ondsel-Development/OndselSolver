@@ -33,7 +33,7 @@ using namespace MbD;
 
 //class PosICNewtonRaphson;
 
-void SystemSolver::setSystem(Solver* sys)
+void SystemSolver::setSystem(Solver*)
 {
 	//Do not use
 	assert(false);
@@ -159,7 +159,7 @@ void SystemSolver::runBasicKinematic()
 		basicIntegrator->setSystem(this);
 		basicIntegrator->run();
 	}
-	catch (NotKinematicError ex) {
+	catch (NotKinematicError&) {
 		this->runQuasiKinematic();
 	}
 }
@@ -171,7 +171,7 @@ void SystemSolver::runQuasiKinematic()
 		basicIntegrator->setSystem(this);
 		basicIntegrator->run();
 	}
-	catch (DiscontinuityError ex) {
+	catch (DiscontinuityError&) {
 		this->discontinuityBlock();
 	}
 }

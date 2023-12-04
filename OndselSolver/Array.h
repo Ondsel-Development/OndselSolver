@@ -73,8 +73,8 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::zeroSelf()
 	{
-		for (int i = 0; i < this->size(); i++) {
-			this->at(i) = (T)0;
+		for (T& element: *this){
+			element = static_cast<T>(0);
 		}
 	}
 	template<typename T>
@@ -120,7 +120,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::equalArrayAt(std::shared_ptr<Array<T>> array, int i)
 	{
-		for (int ii = 0; ii < this->size(); ii++)
+		for (unsigned long ii = 0; ii < this->size(); ii++)
 		{
 			this->at(ii) = array->at((int)i + ii);
 		}
@@ -168,7 +168,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::magnifySelf(T factor)
 	{
-		for (int i = 0; i < this->size(); i++)
+		for (unsigned long i = 0; i < this->size(); i++)
 		{
 			this->atitimes(i, factor);
 		}
