@@ -31,11 +31,13 @@ void MbD::MBDynItem::noop()
 
 void MbD::MBDynItem::parseMBDyn(std::vector<std::string>& lines)
 {
+	(void)lines;
 	assert(false);
 }
 
 void MbD::MBDynItem::parseMBDyn(std::string line)
 {
+	(void)line;
 	assert(false);
 }
 

@@ -16,8 +16,9 @@ MbD::FullMotion::FullMotion()
 {
 }
 
-MbD::FullMotion::FullMotion(const char*)
+MbD::FullMotion::FullMotion(const char* str)
 {
+	(void)str;
 }
 
 void MbD::FullMotion::connectsItoJ(EndFrmsptr frmi, EndFrmsptr frmj)

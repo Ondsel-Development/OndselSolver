@@ -521,8 +521,9 @@ void MbD::ASMTAssembly::readKinematicIJs(std::vector<std::string>& lines)
 
 }
 
-void MbD::ASMTAssembly::readKinematicIJ(std::vector<std::string>&)
+void MbD::ASMTAssembly::readKinematicIJ(std::vector<std::string>& lines)
 {
+	(void)lines;
 	assert(false);
 }
 

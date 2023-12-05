@@ -12,8 +12,9 @@
 
 using namespace MbD;
 
-void GEFullMat::forwardEliminateWithPivot(int)
+void GEFullMat::forwardEliminateWithPivot(int p)
 {
+	(void)p;
 	assert(false);
 }
 

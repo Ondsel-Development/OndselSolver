@@ -117,8 +117,9 @@ void MbD::ASMTSpatialContainer::readRefCurves(std::vector<std::string>& lines)
 	lines.erase(lines.begin(), it);
 }
 
-void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>&)
+void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>& lines)
 {
+	(void)lines;
 	assert(false);
 }
 
@@ -137,8 +138,9 @@ void MbD::ASMTSpatialContainer::readRefSurfaces(std::vector<std::string>& lines)
 	lines.erase(lines.begin(), it);
 }
 
-void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>&)
+void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>& lines)
 {
+	(void)lines;
 	assert(false);
 }
 
@@ -371,8 +373,9 @@ void MbD::ASMTSpatialContainer::updateFromMbD()
 	alpzs->push_back(alpOPO->at(2));
 }
 
-void MbD::ASMTSpatialContainer::compareResults(AnalysisType)
+void MbD::ASMTSpatialContainer::compareResults(AnalysisType type)
 {
+	(void)type;
 	if (inxs == nullptr || inxs->empty()) return;
 	auto mbdUnts = mbdUnits();
 	auto factor = 1.0e-6;
@@ -442,8 +445,9 @@ void MbD::ASMTSpatialContainer::compareResults(AnalysisType)
 	}
 }
 
-void MbD::ASMTSpatialContainer::outputResults(AnalysisType)
+void MbD::ASMTSpatialContainer::outputResults(AnalysisType type)
 {
+	(void)type;
 	if (inxs != nullptr && !inxs->empty()) return;
 	auto i = xs->size() - 1;
 	std::cout << i << " ";

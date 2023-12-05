@@ -103,7 +103,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullVector<T>::atiplusFullVector(int i1, std::shared_ptr<FullVector<T>> fullVec)
 	{
-		for (unsigned long ii = 0; ii < fullVec->size(); ii++)
+		for (std::size_t ii = 0; ii < fullVec->size(); ii++)
 		{
 			auto i = i1 + ii;
 			this->at(i) += fullVec->at(ii);
@@ -112,7 +112,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullVector<T>::atiplusFullVectortimes(int i1, std::shared_ptr<FullVector<T>> fullVec, T factor)
 	{
-		for (unsigned long ii = 0; ii < fullVec->size(); ii++)
+		for (std::size_t ii = 0; ii < fullVec->size(); ii++)
 		{
 			auto i = i1 + ii;
 			this->at(i) += fullVec->at(ii) * factor;
@@ -121,7 +121,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullVector<T>::equalSelfPlusFullVectortimes(std::shared_ptr<FullVector<T>> fullVec, T factor)
 	{
-		for (unsigned long i = 0; i < this->size(); i++)
+		for (std::size_t i = 0; i < this->size(); i++)
 		{
 			this->atiplusNumber(i, fullVec->at(i) * factor);
 		}
@@ -130,7 +130,7 @@ namespace MbD {
 	inline double FullVector<double>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (auto element: *this)
+		for (double element: *this)
 		{
 			if (element < 0.0) element = -element;
 			if (max < element) max = element;

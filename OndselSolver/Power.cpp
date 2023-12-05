@@ -37,6 +37,7 @@ Symsptr MbD::Power::differentiateWRTy()
 
 Symsptr MbD::Power::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;(void)set;
 	assert(false);
 	return Symsptr();
 }

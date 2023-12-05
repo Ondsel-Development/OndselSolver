@@ -49,7 +49,8 @@ void GEFullMatParPv::postSolve()
 	assert(false);
 }
 
-void GEFullMatParPv::preSolvewithsaveOriginal(FMatDsptr, FColDsptr, bool)
+void GEFullMatParPv::preSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+	(void)fullMat;(void)fullCol;(void)saveOriginal;
 	assert(false);
 }

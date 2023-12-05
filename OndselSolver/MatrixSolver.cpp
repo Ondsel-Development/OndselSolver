@@ -26,6 +26,7 @@ void MatrixSolver::initialize()
 
 void MatrixSolver::setSystem(Solver* sys)
 {
+	(void)sys;
 }
 
 FColDsptr MatrixSolver::solvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
@@ -55,6 +56,7 @@ FColDsptr MatrixSolver::timedSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr f
 
 FColDsptr MatrixSolver::timedSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
 {
+	(void)fullMat;(void)fullCol;(void)saveOriginal;
 	return FColDsptr();
 }
 

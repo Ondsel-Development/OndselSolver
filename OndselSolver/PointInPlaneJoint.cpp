@@ -17,6 +17,7 @@ MbD::PointInPlaneJoint::PointInPlaneJoint()
 
 MbD::PointInPlaneJoint::PointInPlaneJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::PointInPlaneJoint::initializeGlobally()

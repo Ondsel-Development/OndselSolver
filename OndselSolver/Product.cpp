@@ -7,6 +7,7 @@
  ***************************************************************************/
  
 #include <algorithm>
+#include <cstddef>
 #include <iterator>
 
 #include "Product.h"
@@ -29,7 +30,7 @@ Symsptr MbD::Product::differentiateWRT(Symsptr var)
 		}
 	);
 	auto derivativeTerms = std::make_shared<std::vector<Symsptr>>();
-	for (int i = 0; i < terms->size(); i++)
+	for (std::size_t i = 0; i < terms->size(); i++)
 	{
 		auto& derivative = derivatives->at(i);
 		auto newTermFunctions = std::make_shared<std::vector<Symsptr>>(*terms);
@@ -105,6 +106,7 @@ Symsptr Product::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Sy
 
 Symsptr Product::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;
 	auto itr = std::find_if(set->begin(), set->end(), [this](Symsptr sym) {return this == (sym.get()); });
 	if (itr != set->end()) {
 		auto answer = std::make_shared<Sum>();
@@ -146,7 +148,7 @@ std::ostream& Product::printOn(std::ostream& s) const
 {
 	s << "(";
 	s << *(this->terms->at(0));
-	for (int i = 1; i < this->terms->size(); i++)
+	for (std::size_t i = 1; i < this->terms->size(); i++)
 	{
 		s << "*" << *(this->terms->at(i));
 	}
@@ -162,7 +164,7 @@ bool Product::isProduct()
 double Product::getValue()
 {
 	double answer = 1.0;
-	for (int i = 0; i < terms->size(); i++) answer *= terms->at(i)->getValue();
+	for (const auto & i : *terms) answer *= i->getValue();
 	return answer;
 }
 

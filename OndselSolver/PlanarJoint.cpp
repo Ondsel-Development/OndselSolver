@@ -18,6 +18,7 @@ MbD::PlanarJoint::PlanarJoint()
 
 MbD::PlanarJoint::PlanarJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::PlanarJoint::initializeGlobally()

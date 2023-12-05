@@ -25,14 +25,16 @@ Symsptr MbD::Negative::differentiateWRTx()
 	return sptrConstant(-1);
 }
 
-Symsptr MbD::Negative::expandUntil(Symsptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
+Symsptr MbD::Negative::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;
 	auto expand = xx->expandUntil(xx, set);
 	return std::make_shared<Negative>(expand);
 }
 
-Symsptr MbD::Negative::simplifyUntil(Symsptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
+Symsptr MbD::Negative::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;
 	auto simple = xx->simplifyUntil(xx, set);
 	if (simple->isConstant()) {
 		return sptrConstant(-simple->getValue());

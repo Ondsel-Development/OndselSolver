@@ -20,16 +20,19 @@ FColDsptr LDUSpMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullC
 
 void LDUSpMat::decomposesaveOriginal(FMatDsptr fullMat, bool saveOriginal)
 {
+	(void)fullMat;(void)saveOriginal;
 	assert(false);
 }
 
 void LDUSpMat::decomposesaveOriginal(SpMatDsptr spMat, bool saveOriginal)
 {
+	(void)spMat;(void)saveOriginal;
 	assert(false);
 }
 
 FColDsptr LDUSpMat::forAndBackSubsaveOriginal(FColDsptr fullCol, bool saveOriginal)
 {
+	(void)fullCol;(void)saveOriginal;
 	assert(false);
 	return FColDsptr();
 }

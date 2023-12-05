@@ -92,27 +92,32 @@ void Item::calcPostDynCorrectorIteration()
 {
 }
 
-void MbD::Item::checkForCollisionDiscontinuityBetweenand(double, double)
+void MbD::Item::checkForCollisionDiscontinuityBetweenand(double impulsePrevious, double impulse)
 {
+	(void)impulsePrevious;(void)impulse;
 	assert(false);
 }
 
-void Item::removeRedundantConstraints(std::shared_ptr<std::vector<int>>)
+void Item::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redunEqnNos)
 {
+	(void)redunEqnNos;
 }
 
-void MbD::Item::setpqsumu(FColDsptr)
+void MbD::Item::setpqsumu(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::setpqsumuddot(FColDsptr)
+void MbD::Item::setpqsumuddot(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::setpqsumudot(FColDsptr)
+void MbD::Item::setpqsumudot(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
@@ -125,92 +130,111 @@ void MbD::Item::registerName()
 	assert(false);
 }
 
-void Item::fillPosKineError(FColDsptr)
+void Item::fillPosKineError(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::fillPosKineJacob(SpMatDsptr)
+void Item::fillPosKineJacob(SpMatDsptr mat)
 {
+	(void)mat;
 }
 
-void MbD::Item::fillpqsumu(FColDsptr)
+void MbD::Item::fillpqsumu(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::fillpqsumudot(FColDsptr)
+void MbD::Item::fillpqsumudot(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void Item::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
+void Item::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> essenConstraints)
 {
+	(void)essenConstraints;
 	assert(false);
 }
 
-void MbD::Item::fillPerpenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
+void MbD::Item::fillPerpenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> perpenConstraints)
 {
+	(void)perpenConstraints;
 	assert(false);
 }
 
-void MbD::Item::fillpFpy(SpMatDsptr)
+void MbD::Item::fillpFpy(SpMatDsptr mat)
 {
+	(void)mat;
 	assert(false);
 }
 
-void MbD::Item::fillpFpydot(SpMatDsptr)
+void MbD::Item::fillpFpydot(SpMatDsptr mat)
 {
+	(void)mat;
 	assert(false);
 }
 
-void Item::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
+void Item::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints)
 {
+	(void)redunConstraints;
 }
 
-void MbD::Item::fillStaticError(FColDsptr)
+void MbD::Item::fillStaticError(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::fillStaticJacob(FMatDsptr)
+void MbD::Item::fillStaticJacob(FMatDsptr mat)
 {
+	(void)mat;
 	assert(false);
 }
 
-void Item::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
+void Item::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints)
 {
+	(void)allConstraints;
 	assert(false);
 }
 
-void MbD::Item::fillDispConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
+void MbD::Item::fillDispConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> dispConstraints)
 {
+	(void)dispConstraints;
 	assert(false);
 }
 
-void MbD::Item::fillDynError(FColDsptr)
+void MbD::Item::fillDynError(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void Item::fillqsu(FColDsptr)
+void Item::fillqsu(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::fillqsuWeights(DiagMatDsptr)
+void Item::fillqsuWeights(DiagMatDsptr diagMat)
 {
+	(void)diagMat;
 }
 
-void MbD::Item::fillqsuWeightsSmall(FColDsptr)
+void MbD::Item::fillqsuWeightsSmall(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void Item::fillqsulam(FColDsptr)
+void Item::fillqsulam(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::setqsulam(FColDsptr)
+void Item::setqsulam(FColDsptr col)
 {
+	(void)col;
 }
 
 void MbD::Item::simUpdateAll()
@@ -316,14 +340,16 @@ void Item::storeDynState()
 {
 }
 
-double MbD::Item::suggestSmallerOrAcceptCollisionFirstStepSize(double)
+double MbD::Item::suggestSmallerOrAcceptCollisionFirstStepSize(double hnew)
 {
+	(void)hnew;
 	assert(false);
 	return 0.0;
 }
 
-double MbD::Item::suggestSmallerOrAcceptCollisionStepSize(double)
+double MbD::Item::suggestSmallerOrAcceptCollisionStepSize(double hnew)
 {
+	(void)hnew;
 	assert(false);
 	return 0.0;
 }
@@ -356,48 +382,58 @@ void Item::postVelIC()
 {
 }
 
-void Item::fillqsudot(FColDsptr)
+void Item::fillqsudot(FColDsptr col)
 {
+	(void)col;
 }
 
-void MbD::Item::fillqsudotPlam(FColDsptr)
+void MbD::Item::fillqsudotPlam(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::fillqsudotPlamDeriv(FColDsptr)
+void MbD::Item::fillqsudotPlamDeriv(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void Item::fillqsudotWeights(DiagMatDsptr)
+void Item::fillqsudotWeights(DiagMatDsptr diagMat)
 {
+	(void)diagMat;
 }
 
-void Item::fillVelICError(FColDsptr)
+void Item::fillVelICError(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::fillVelICJacob(SpMatDsptr)
+void Item::fillVelICJacob(SpMatDsptr mat)
 {
+	(void)mat;
 }
 
-void MbD::Item::getString(std::string)
+void MbD::Item::getString(std::string str)
 {
+	(void)str;
 	assert(false);
 }
 
-void Item::setqsudotlam(FColDsptr)
+void Item::setqsudotlam(FColDsptr col)
 {
+	(void)col;
 }
 
-void MbD::Item::setqsudotPlam(FColDsptr)
+void MbD::Item::setqsudotPlam(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::setqsudotPlamDeriv(FColDsptr)
+void MbD::Item::setqsudotPlamDeriv(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
@@ -469,49 +505,59 @@ void MbD::Item::postCollisionStep()
 	assert(false);
 }
 
-void Item::fillqsuddotlam(FColDsptr)
+void Item::fillqsuddotlam(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::fillAccICIterError(FColDsptr)
+void Item::fillAccICIterError(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::fillAccICIterJacob(SpMatDsptr)
+void Item::fillAccICIterJacob(SpMatDsptr mat)
 {
+	(void)mat;
 }
 
-void MbD::Item::fillCollisionDerivativeICError(FColDsptr)
+void MbD::Item::fillCollisionDerivativeICError(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::fillCollisionDerivativeICJacob(SpMatDsptr)
+void MbD::Item::fillCollisionDerivativeICJacob(SpMatDsptr mat)
 {
+	(void)mat;
 	assert(false);
 }
 
-void MbD::Item::fillCollisionError(FColDsptr)
+void MbD::Item::fillCollisionError(FColDsptr col)
 {
+	(void)col;
 	assert(false);
 }
 
-void MbD::Item::fillCollisionpFpy(SpMatDsptr)
+void MbD::Item::fillCollisionpFpy(SpMatDsptr mat)
 {
+	(void)mat;
 	assert(false);
 }
 
-void MbD::Item::fillCollisionpFpydot(SpMatDsptr)
+void MbD::Item::fillCollisionpFpydot(SpMatDsptr mat)
 {
+	(void)mat;
 	assert(false);
 }
 
-void Item::setqsudot(FColDsptr)
+void Item::setqsudot(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::setqsuddotlam(FColDsptr)
+void Item::setqsuddotlam(FColDsptr col)
 {
+	(void)col;
 }
 
 std::shared_ptr<StateData> Item::stateData()
@@ -525,17 +571,20 @@ void MbD::Item::storeCollisionState()
 	assert(false);
 }
 
-void Item::discontinuityAtaddTypeTo(double, std::shared_ptr<std::vector<DiscontinuityType>>)
+void Item::discontinuityAtaddTypeTo(double t, std::shared_ptr<std::vector<DiscontinuityType>> disconTypes)
 {
+	(void)t;(void)disconTypes;
 }
 
-void MbD::Item::discontinuityAtICAddTo(std::shared_ptr<std::vector<DiscontinuityType>>)
+void MbD::Item::discontinuityAtICAddTo(std::shared_ptr<std::vector<DiscontinuityType>> disconTypes)
 {
+	(void)disconTypes;
 	assert(false);
 }
 
-double Item::checkForDynDiscontinuityBetweenand(double, double t)
+double Item::checkForDynDiscontinuityBetweenand(double tprev, double t)
 {
+	(void)tprev;(void)t;
 	//"Check for discontinuity in the last step defined by the interval (tprevious,t]."
 	//"Default is assume no discontinuity and return t."
 
@@ -546,8 +595,9 @@ void Item::constraintsReport()
 {
 }
 
-void Item::setqsu(FColDsptr)
+void Item::setqsu(FColDsptr qsuOld)
 {
+	(void)qsuOld;
 }
 
 void Item::useEquationNumbers()
@@ -565,18 +615,21 @@ void Item::logString(const char* chars)
 	this->logString(str);
 }
 
-void MbD::Item::logStringwithArgument(const char*, const char*)
+void MbD::Item::logStringwithArgument(const char* chars, const char* chars1)
 {
+	(void)chars;(void)chars1;
 	assert(false);
 }
 
-void MbD::Item::logStringwithArguments(const char*, std::shared_ptr<std::vector<char*>>)
+void MbD::Item::logStringwithArguments(const char* chars, std::shared_ptr<std::vector<char*>> arrayOfChars)
 {
+	(void)chars;(void)arrayOfChars;
 	assert(false);
 }
 
-void MbD::Item::normalImpulse(double)
+void MbD::Item::normalImpulse(double imp)
 {
+	(void)imp;
 	assert(false);
 }
 
@@ -618,14 +671,17 @@ void MbD::Item::postStaticIteration()
 	assert(false);
 }
 
-void Item::fillPosICError(FColDsptr)
+void Item::fillPosICError(FColDsptr col)
 {
+	(void)col;
 }
 
-void Item::fillPosICJacob(FMatDsptr)
+void Item::fillPosICJacob(FMatDsptr mat)
 {
+	(void)mat;
 }
 
-void Item::fillPosICJacob(SpMatDsptr)
+void Item::fillPosICJacob(SpMatDsptr mat)
 {
+	(void)mat;
 }

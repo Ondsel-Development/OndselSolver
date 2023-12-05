@@ -18,6 +18,7 @@ MbD::PerpendicularJoint::PerpendicularJoint()
 
 MbD::PerpendicularJoint::PerpendicularJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::PerpendicularJoint::initializeGlobally()

@@ -7,6 +7,7 @@
  ***************************************************************************/
  
 #include<algorithm>
+#include <cstddef>
 
 #include "PartFrame.h"
 #include "Part.h"
@@ -150,7 +151,7 @@ void PartFrame::removeRedundantConstraints(std::shared_ptr<std::vector<int>> red
 		redunCon->constraint = aGeu;
 		aGeu = redunCon;
 	}
-	for (int i = 0; i < aGabs->size(); i++)
+	for (std::size_t i = 0; i < aGabs->size(); i++)
 	{
 		auto& constraint = aGabs->at(i);
 		if (std::find(redundantEqnNos->begin(), redundantEqnNos->end(), constraint->iG) != redundantEqnNos->end()) {
@@ -164,7 +165,7 @@ void PartFrame::removeRedundantConstraints(std::shared_ptr<std::vector<int>> red
 void PartFrame::reactivateRedundantConstraints()
 {
 	if (aGeu->isRedundant()) aGeu = std::dynamic_pointer_cast<RedundantConstraint>(aGeu)->constraint;
-	for (int i = 0; i < aGabs->size(); i++)
+	for (std::size_t i = 0; i < aGabs->size(); i++)
 	{
 		auto& con = aGabs->at(i);
 		if (con->isRedundant()) {
@@ -252,6 +253,7 @@ void PartFrame::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr
 
 void PartFrame::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints)
 {
+	(void)redunConstraints;
 }
 
 void PartFrame::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints)

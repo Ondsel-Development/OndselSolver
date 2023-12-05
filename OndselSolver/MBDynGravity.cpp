@@ -47,6 +47,7 @@ void MbD::MBDynGravity::parseMBDyn(std::string line)
 
 void MbD::MBDynGravity::readFunction(std::vector<std::string>& args)
 {
+	(void)args;
 	assert(false);
 	noop();
 }

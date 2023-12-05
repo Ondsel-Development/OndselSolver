@@ -7,6 +7,7 @@
  ***************************************************************************/
  
 #include<algorithm>
+#include <cstddef>
 
 #include "PartFrame.h"
 #include "MarkerFrame.h"
@@ -42,7 +43,7 @@ void MarkerFrame::initializeLocally()
 {
 	pprOmOpEpE = EulerParameters<double>::ppApEpEtimesColumn(rpmp);
 	ppAOmpEpE = EulerParameters<double>::ppApEpEtimesMatrix(aApm);
-	for (int i = 0; i < endFrames->size(); i++)
+	for (std::size_t i = 0; i < endFrames->size(); i++)
 	{
 		auto eFrmqc = std::dynamic_pointer_cast<EndFrameqc>(endFrames->at(i));
 		if (eFrmqc) {

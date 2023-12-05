@@ -13,8 +13,9 @@ MbD::InLineJoint::InLineJoint()
 {
 }
 
-MbD::InLineJoint::InLineJoint(const char*)
+MbD::InLineJoint::InLineJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::InLineJoint::createInLineConstraints()

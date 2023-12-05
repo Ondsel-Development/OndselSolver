@@ -119,7 +119,7 @@ namespace MbD {
 	template<typename T>
 	inline void SparseMatrix<T>::atijplusFullColumn(int i, int j, FColsptr<T> fullCol)
 	{
-		for (unsigned long ii = 0; ii < fullCol->size(); ii++)
+		for (std::size_t ii = 0; ii < fullCol->size(); ii++)
 		{
 			this->atijplusNumber(i + ii, j, fullCol->at(ii));
 		}
@@ -127,7 +127,7 @@ namespace MbD {
 	template<typename T>
 	inline void SparseMatrix<T>::atijminusFullColumn(int i, int j, FColDsptr fullCol)
 	{
-		for (unsigned long ii = 0; ii < fullCol->size(); ii++)
+		for (std::size_t ii = 0; ii < fullCol->size(); ii++)
 		{
 			this->atijminusNumber(i + ii, j, fullCol->at(ii));
 		}
@@ -191,7 +191,7 @@ namespace MbD {
 	inline double SparseMatrix<T>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (unsigned long i = 0; i < this->size(); i++)
+		for (std::size_t i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i)->maxMagnitude();
 			if (max < element) max = element;
@@ -202,7 +202,7 @@ namespace MbD {
 	inline std::ostream& SparseMatrix<T>::printOn(std::ostream& s) const
 	{
 		s << "SpMat[" << std::endl;
-		for (unsigned long i = 0; i < this->size(); i++)
+		for (std::size_t i = 0; i < this->size(); i++)
 		{
 			s << *(this->at(i)) << std::endl;
 		}

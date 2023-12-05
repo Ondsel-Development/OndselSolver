@@ -18,6 +18,7 @@ MbD::ParallelAxesJoint::ParallelAxesJoint()
 
 MbD::ParallelAxesJoint::ParallelAxesJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::ParallelAxesJoint::initializeGlobally()

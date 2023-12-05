@@ -8,6 +8,7 @@
  
 #pragma once
 
+#include <cstddef>
 #include <ostream>
 #include <vector>
 #include <memory>
@@ -66,7 +67,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::copyFrom(std::shared_ptr<Array<T>> x)
 	{
-		for (int i = 0; i < x->size(); i++) {
+		for (std::size_t i = 0; i < x->size(); i++) {
 			this->at(i) = x->at(i);
 		}
 	}

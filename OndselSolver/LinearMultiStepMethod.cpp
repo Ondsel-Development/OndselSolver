@@ -32,6 +32,7 @@ FColDsptr MbD::LinearMultiStepMethod::derivativeatpresentpast(int n, double t, F
 
 FColDsptr MbD::LinearMultiStepMethod::derivativepresentpast(int order, FColDsptr y, std::shared_ptr<std::vector<FColDsptr>> ypast)
 {
+	(void)order;(void)y;(void)ypast;
 	assert(false);
 	return FColDsptr();
 }
@@ -51,6 +52,7 @@ FColDsptr MbD::LinearMultiStepMethod::derivativepresentpastpresentDerivativepast
 	FColDsptr y, std::shared_ptr<std::vector<FColDsptr>> ypast,
 	FColDsptr ydot, std::shared_ptr<std::vector<FColDsptr>> ydotpast)
 {
+	(void)n;(void)y;(void)ypast;(void)ydot;(void)ydotpast;
 	assert(false);
 	return FColDsptr();
 }

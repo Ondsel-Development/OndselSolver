@@ -2,8 +2,9 @@
 
 using namespace MbD;
 
-MbD::Integral::Integral(Symsptr, Symsptr)
+MbD::Integral::Integral(Symsptr var, Symsptr integrand)
 {
+	(void)var;(void)integrand;
 	assert(false);
 }
 
@@ -15,8 +16,9 @@ void MbD::Integral::arguments(Symsptr args)
 	expression = integrand->integrateWRT(xx);
 }
 
-Symsptr MbD::Integral::expandUntil(Symsptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
+Symsptr MbD::Integral::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;(void)set;
 	auto expand = expression->expandUntil(expression, set);
 	auto answer = std::make_shared<Integral>();
 	answer->xx = xx;
@@ -26,8 +28,9 @@ Symsptr MbD::Integral::expandUntil(Symsptr, std::shared_ptr<std::unordered_set<S
 	return answer;
 }
 
-Symsptr MbD::Integral::simplifyUntil(Symsptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
+Symsptr MbD::Integral::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;(void)set;
 	auto simple = expression->simplifyUntil(expression, set);
 	auto answer = std::make_shared<Integral>();
 	answer->xx = xx;

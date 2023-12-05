@@ -16,8 +16,9 @@ MbD::Translation::Translation()
 {
 }
 
-MbD::Translation::Translation(const char*)
+MbD::Translation::Translation(const char* str)
 {
+	(void)str;
 }
 
 void MbD::Translation::initializeGlobally()

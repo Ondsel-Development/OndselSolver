@@ -6,6 +6,7 @@
  *   See LICENSE file for details about copyright.                         *
  ***************************************************************************/
 
+#include <cstddef>
 #include <sstream>
 #include <string>
 
@@ -38,8 +39,9 @@ void MbD::Sum::parse(std::istringstream& iss)
 	}
 }
 
-void MbD::Sum::parseTerm(std::istringstream&)
+void MbD::Sum::parseTerm(std::istringstream& iss)
 {
+	(void)iss;
 }
 
 void MbD::Sum::parsePlusTerm(std::istringstream& iss)
@@ -50,6 +52,7 @@ void MbD::Sum::parsePlusTerm(std::istringstream& iss)
 
 void MbD::Sum::parseMinusTerm(std::istringstream& iss)
 {
+	(void)iss;
 }
 
 Symsptr Sum::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
@@ -86,6 +89,7 @@ Symsptr Sum::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symspt
 
 Symsptr Sum::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)sptr;
 	auto itr = std::find_if(set->begin(), set->end(), [this](Symsptr sym) {return this == (sym.get()); });
 	if (itr != set->end()) {
 		auto answer = std::make_shared<Sum>();
@@ -128,7 +132,7 @@ bool Sum::isSum()
 double Sum::getValue()
 {
 	double answer = 0.0;
-	for (int i = 0; i < terms->size(); i++) answer += terms->at(i)->getValue();
+	for (std::size_t i = 0; i < terms->size(); i++) answer += terms->at(i)->getValue();
 	return answer;
 }
 
@@ -174,7 +178,7 @@ std::ostream& Sum::printOn(std::ostream& s) const
 {
 	s << "(";
 	s << *(this->terms->at(0));
-	for (unsigned long i = 1; i < this->terms->size(); i++)
+	for (std::size_t i = 1; i < this->terms->size(); i++)
 	{
 		s << " + " << *(this->terms->at(i));
 	}

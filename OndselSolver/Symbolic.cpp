@@ -80,14 +80,16 @@ void Symbolic::initialize()
 {
 }
 
-Symsptr MbD::Symbolic::differentiateWRT(Symsptr)
+Symsptr MbD::Symbolic::differentiateWRT(Symsptr var)
 {
+	(void)var;
 	assert(false);
 	return Symsptr();
 }
 
-Symsptr MbD::Symbolic::integrateWRT(Symsptr)
+Symsptr MbD::Symbolic::integrateWRT(Symsptr var)
 {
+	(void)var;
 	assert(false);
 	return Symsptr();
 }
@@ -121,14 +123,16 @@ Symsptr MbD::Symbolic::expandUntil(std::shared_ptr<std::unordered_set<Symsptr>> 
 	return expandUntil(clonesptr(), set);
 }
 
-Symsptr Symbolic::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>>)
+Symsptr Symbolic::expandUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)set;
 	assert(false);
 	return sptr;
 }
 
-Symsptr Symbolic::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>>)
+Symsptr Symbolic::simplifyUntil(Symsptr sptr, std::shared_ptr<std::unordered_set<Symsptr>> set)
 {
+	(void)set;
 	assert(false);
 	return sptr;
 }
@@ -185,17 +189,20 @@ double Symbolic::getValue()
 
 double MbD::Symbolic::getValue(double arg)
 {
+	(void)arg;
 	assert(false);
 	return 0.0;
 }
 
-void MbD::Symbolic::setValue(double)
+void MbD::Symbolic::setValue(double val)
 {
+	(void)val;
 	assert(false);
 }
 
-void MbD::Symbolic::createMbD(std::shared_ptr<System>, std::shared_ptr<Units>)
+void MbD::Symbolic::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
+	(void)mbdSys;(void)mbdUnits;
 	assert(false);
 	return;
 }
@@ -217,8 +224,9 @@ bool MbD::Symbolic::isVariable()
 	return false;
 }
 
-void MbD::Symbolic::integrationConstant(double)
+void MbD::Symbolic::integrationConstant(double integConstant)
 {
+	(void)integConstant;
 	assert(false);
 }
 

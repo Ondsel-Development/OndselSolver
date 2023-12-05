@@ -16,8 +16,9 @@ MbD::ZTranslation::ZTranslation()
 {
 }
 
-MbD::ZTranslation::ZTranslation(const char*)
+MbD::ZTranslation::ZTranslation(const char* str)
 {
+	(void)str;
 }
 
 void MbD::ZTranslation::initializeGlobally()

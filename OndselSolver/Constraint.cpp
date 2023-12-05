@@ -108,8 +108,9 @@ void Constraint::fillPosICError(FColDsptr col)
 	col->atiplusNumber(iG, aG);
 }
 
-void Constraint::removeRedundantConstraints(std::shared_ptr<std::vector<int>>)
+void Constraint::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redundantEqnNos)
 {
+	(void)redundantEqnNos;
 	//My owner should handle this.
 	assert(false);
 }
@@ -162,10 +163,12 @@ void Constraint::setqsuddotlam(FColDsptr col)
 	lam = col->at(iG);
 }
 
-void Constraint::addToJointForceI(FColDsptr)
+void Constraint::addToJointForceI(FColDsptr col)
 {
+	(void)col;
 }
 
-void Constraint::addToJointTorqueI(FColDsptr)
+void Constraint::addToJointTorqueI(FColDsptr col)
 {
+	(void)col;
 }

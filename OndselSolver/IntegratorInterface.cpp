@@ -69,8 +69,9 @@ void IntegratorInterface::postFirstStep()
 	//this->checkForOutputThrough(integrator->t);
 }
 
-void IntegratorInterface::interpolateAt(double)
+void IntegratorInterface::interpolateAt(double tArg)
 {
+	(void)tArg;
 	//"Interpolate for system state at tArg and leave system in that state."
 	assert(false);
 	//auto yout = integrator->yDerivat(0, tArg);

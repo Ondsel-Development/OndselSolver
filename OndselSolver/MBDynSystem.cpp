@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <string>
 #include <cassert>
 #include <fstream>	
@@ -151,7 +152,7 @@ void MbD::MBDynSystem::outputFiles()
 	auto& asmtTimes = asmtAsm->times;
 	std::ofstream os(movFile);
 	os << std::setprecision(static_cast<std::streamsize>(std::numeric_limits<double>::digits10) + 1);
-	for (unsigned long i = 1; i < asmtTimes->size(); i++)
+	for (std::size_t i = 1; i < asmtTimes->size(); i++)
 	{
 		for (auto& node : *nodes) {
 			node->outputLine(i, os);
@@ -245,7 +246,7 @@ void MbD::MBDynSystem::readElementsBlock(std::vector<std::string>& lines)
 
 void MbD::MBDynSystem::eraseComments(std::vector<std::string>& lines)
 {
-	for (int i = 0; i < lines.size(); i++)
+	for (std::size_t i = 0; i < lines.size(); i++)
 	{
 		auto& line = lines[i];
 		auto it = line.find('#');
@@ -393,7 +394,6 @@ void MbD::MBDynSystem::parseMBDynVariables(std::vector<std::string>& lines)
 			auto userFunc = std::make_shared<BasicUserFunction>(str, 1.0);
 			parser->parseUserFunction(userFunc);
 			auto& sym = parser->stack->top();
-			auto val = sym->getValue();
 			variables->insert(std::make_pair(variable, sym));
 			lines.erase(it);
 		}

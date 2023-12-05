@@ -13,8 +13,9 @@ MbD::InPlaneJoint::InPlaneJoint()
 {
 }
 
-MbD::InPlaneJoint::InPlaneJoint(const char*)
+MbD::InPlaneJoint::InPlaneJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::InPlaneJoint::createInPlaneConstraint()

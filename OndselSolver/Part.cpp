@@ -246,6 +246,7 @@ void Part::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Cons
 
 void Part::fillRedundantConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> redunConstraints)
 {
+	(void)redunConstraints;
 }
 
 void Part::fillConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> allConstraints)

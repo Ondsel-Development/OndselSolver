@@ -9,6 +9,7 @@
 #pragma once
 
 #include "corecrt_math_defines.h"
+#include <iterator>
 #include <memory>
 
 #include "RowTypeMatrix.h"
@@ -344,7 +345,7 @@ namespace MbD {
 	template<>
 	inline void FullMatrix<double>::identity() {
 		this->zeroSelf();
-		for (size_type i = 0; i < this->size(); i++) {
+		for (std::size_t i = 0; i < this->size(); i++) {
 			this->at(i)->at(i) = 1.0;
 		}
 	}
@@ -459,7 +460,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullMatrix<T>::atijputFullColumn(int i1, int j1, FColsptr<T> fullCol)
 	{
-		for (unsigned long ii = 0; ii < fullCol->size(); ii++)
+		for (std::size_t ii = 0; ii < fullCol->size(); ii++)
 		{
 			this->at(i1 + ii)->at(j1) = fullCol->at(ii);
 		}
@@ -532,7 +533,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullMatrix<T>::magnifySelf(T factor)
 	{
-		for (unsigned long i = 0; i < this->size(); i++) {
+		for (std::size_t i = 0; i < this->size(); i++) {
 			this->at(i)->magnifySelf(factor);
 		}
 	}
@@ -540,7 +541,7 @@ namespace MbD {
 	inline std::ostream& FullMatrix<T>::printOn(std::ostream& s) const
 	{
 		s << "FullMat[" << std::endl;
-		for (unsigned long i = 0; i < this->size(); i++)
+		for (std::size_t i = 0; i < this->size(); i++)
 		{
 			s << *(this->at(i)) << std::endl;
 		}
@@ -611,7 +612,7 @@ namespace MbD {
 	inline T FullMatrix<T>::trace()
 	{
 		T trace = 0.0;
-		for (unsigned long i = 0; i < this->size(); i++)
+		for (std::size_t i = 0; i < this->size(); i++)
 		{
 			trace += this->at(i)->at(i);
 		}
@@ -621,7 +622,7 @@ namespace MbD {
 	inline double FullMatrix<T>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (unsigned long i = 0; i < this->size(); i++)
+		for (std::size_t i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i)->maxMagnitude();
 			if (max < element) max = element;

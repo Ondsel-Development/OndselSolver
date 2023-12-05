@@ -11,12 +11,14 @@
 
 using namespace MbD;
 
-void MbD::ASMTRefSurface::parseASMT(std::vector<std::string>&)
+void MbD::ASMTRefSurface::parseASMT(std::vector<std::string>& lines)
 {
+	(void)lines;
 	assert(false);
 }
 
-void MbD::ASMTRefSurface::storeOnLevel(std::ofstream&, int)
+void MbD::ASMTRefSurface::storeOnLevel(std::ofstream& os, int level)
 {
+	(void)os;(void)level;
 	assert(false);
 }

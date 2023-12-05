@@ -46,8 +46,9 @@ void MbD::ExternalSystem::logString(std::string& str)
 	std::cout << str << std::endl;
 }
 
-void MbD::ExternalSystem::logString(double)
+void MbD::ExternalSystem::logString(double value)
 {
+	(void)value;
 	assert(false);
 }
 

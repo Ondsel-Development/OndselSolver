@@ -7,6 +7,7 @@
  ***************************************************************************/
 
 #include<algorithm>
+#include <cstddef>
 #include <memory>
 #include <typeinfo>
 
@@ -136,6 +137,7 @@ void Joint::fillqsudot(FColDsptr col)
 
 void Joint::fillqsudotWeights(DiagMatDsptr diagMat)
 {
+	(void)diagMat;
 }
 
 void Joint::useEquationNumbers()
@@ -170,7 +172,7 @@ void Joint::fillPosICJacob(SpMatDsptr mat)
 
 void Joint::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redundantEqnNos)
 {
-	for (int i = 0; i < constraints->size(); i++)
+	for (std::size_t i = 0; i < constraints->size(); i++)
 	{
 		auto& constraint = constraints->at(i);
 		if (std::find(redundantEqnNos->begin(), redundantEqnNos->end(), constraint->iG) != redundantEqnNos->end()) {
@@ -183,7 +185,7 @@ void Joint::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redunda
 
 void Joint::reactivateRedundantConstraints()
 {
-	for (int i = 0; i < constraints->size(); i++)
+	for (std::size_t i = 0; i < constraints->size(); i++)
 	{
 		auto& con = constraints->at(i);
 		if (con->isRedundant()) {

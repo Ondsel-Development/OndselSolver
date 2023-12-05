@@ -24,8 +24,9 @@ void MbD::FunctionX::arguments(Symsptr args)
 	xx = sum->terms->front();
 }
 
-Symsptr MbD::FunctionX::copyWith(Symsptr)
+Symsptr MbD::FunctionX::copyWith(Symsptr arg)
 {
+	(void)arg;
 	assert(false);
 	return Symsptr();
 }

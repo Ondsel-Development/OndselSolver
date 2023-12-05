@@ -9,6 +9,7 @@
 #pragma once
 
 #include "FullVector.h"
+#include <cstddef>
 //#include "FullColumn.h"
 
 namespace MbD {
@@ -107,7 +108,7 @@ namespace MbD {
 	inline T FullRow<T>::timesFullColumn(FullColumn<T>* fullCol)
 	{
 		auto answer = this->at(0) * fullCol->at(0);
-		for (unsigned long i = 1; i < this->size(); i++)
+		for (std::size_t i = 1; i < this->size(); i++)
 		{
 			answer += this->at(i) * fullCol->at(i);
 		}
@@ -187,7 +188,7 @@ namespace MbD {
 		auto ncol = (int)this->size();
 		auto nelem = vecvec->at(0)->size();
 		auto answer = std::make_shared<FullVector<T>>(nelem);
-		for (int k = 0; k < nelem; k++) {
+		for (std::size_t k = 0; k < nelem; k++) {
 			auto sum = 0.0;
 			for (int i = 0; i < ncol; i++)
 			{

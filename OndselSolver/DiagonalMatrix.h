@@ -11,6 +11,7 @@
 #include "Array.h"
 #include "FullColumn.h"
 #include "FullMatrix.h"
+#include <cstddef>
 
 namespace MbD {
 	template<typename T>
@@ -60,7 +61,7 @@ namespace MbD {
 	template<typename T>
 	inline void DiagonalMatrix<T>::atiputDiagonalMatrix(int i, std::shared_ptr<DiagonalMatrix<T>> diagMat)
 	{
-		for (int ii = 0; ii < diagMat->size(); ii++)
+		for (std::size_t ii = 0; ii < diagMat->size(); ii++)
 		{
 			this->at(i + ii) = diagMat->at(ii);
 		}

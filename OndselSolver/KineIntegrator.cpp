@@ -44,6 +44,7 @@ void KineIntegrator::runInitialConditionTypeSolution()
 
 void KineIntegrator::iStep(int i)
 {
+	(void)i;
 	assert(false);
 }
 

@@ -51,8 +51,9 @@ void MbD::ASMTItem::setName(std::string str)
 	name = str;
 }
 
-void MbD::ASMTItem::parseASMT(std::vector<std::string>&)
+void MbD::ASMTItem::parseASMT(std::vector<std::string>& lines)
 {
+	(void)lines;
 	assert(false);
 }
 
@@ -149,8 +150,9 @@ void MbD::ASMTItem::deleteMbD()
 	mbdObject = nullptr;
 }
 
-void MbD::ASMTItem::createMbD(std::shared_ptr<System>, std::shared_ptr<Units>)
+void MbD::ASMTItem::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
 {
+	(void)mbdSys;(void)mbdUnits;
 	noop();
 	assert(false);
 }
@@ -160,13 +162,15 @@ void MbD::ASMTItem::updateFromMbD()
 	assert(false);
 }
 
-void MbD::ASMTItem::compareResults(AnalysisType)
+void MbD::ASMTItem::compareResults(AnalysisType type)
 {
+	(void)type;
 	assert(false);
 }
 
-void MbD::ASMTItem::outputResults(AnalysisType)
+void MbD::ASMTItem::outputResults(AnalysisType type)
 {
+	(void)type;
 	assert(false);
 }
 

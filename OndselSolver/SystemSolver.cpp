@@ -33,8 +33,9 @@ using namespace MbD;
 
 //class PosICNewtonRaphson;
 
-void SystemSolver::setSystem(Solver*)
+void SystemSolver::setSystem(Solver* sys)
 {
+	(void)sys;
 	//Do not use
 	assert(false);
 }

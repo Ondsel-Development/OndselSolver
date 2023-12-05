@@ -19,6 +19,7 @@ MbD::NoRotationJoint::NoRotationJoint()
 
 MbD::NoRotationJoint::NoRotationJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::NoRotationJoint::initializeGlobally()

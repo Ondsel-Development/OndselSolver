@@ -18,6 +18,7 @@ MbD::Orientation::Orientation()
 
 MbD::Orientation::Orientation(const char* str)
 {
+	(void)str;
 }
 
 void MbD::Orientation::initializeGlobally()

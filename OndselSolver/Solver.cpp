@@ -61,6 +61,7 @@ void Solver::postRun()
 
 void Solver::logString(std::string& str)
 {
+	(void)str;
 	assert(false);
 }
 

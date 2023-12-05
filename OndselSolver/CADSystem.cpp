@@ -28,8 +28,9 @@
 
 using namespace MbD;
 
-void CADSystem::outputFor(AnalysisType)
+void CADSystem::outputFor(AnalysisType type)
 {
+	(void)type;
 	auto str = std::to_string(mbdSystem->mbdTimeValue());
 	this->logString(str);
 	mbdSystem->partsJointsMotionsForcesTorquesDo([](std::shared_ptr<Item> item) {
@@ -45,8 +46,9 @@ void CADSystem::logString(std::string& str)
 	std::cout << str << std::endl;
 }
 
-void CADSystem::logString(double)
+void CADSystem::logString(double value)
 {
+	(void)value;
 }
 
 void CADSystem::runOndselSinglePendulum()

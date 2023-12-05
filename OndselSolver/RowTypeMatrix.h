@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Array.h"
+#include <cstddef>
 
 namespace MbD {
 
@@ -34,7 +35,7 @@ namespace MbD {
 	template<typename T>
 	inline void RowTypeMatrix<T>::copyFrom(std::shared_ptr<RowTypeMatrix<T>> x)
 	{
-		for (int i = 0; i < x->size(); i++) {
+		for (std::size_t i = 0; i < x->size(); i++) {
 			this->at(i)->copyFrom(x->at(i));
 		}
 	}

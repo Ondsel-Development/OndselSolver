@@ -41,6 +41,7 @@ double MbD::StableBackwardDifference::pvdotpv()
 
 FColDsptr MbD::StableBackwardDifference::derivativepresentpastpresentDerivativepastDerivative(int n, FColDsptr y, std::shared_ptr<std::vector<FColDsptr>> ypast, FColDsptr ydot, std::shared_ptr<std::vector<FColDsptr>> ydotpast)
 {
+	(void)n;(void)y;(void)ypast;(void)ydot;(void)ydotpast;
 	assert(false);
 	return FColDsptr();
 }

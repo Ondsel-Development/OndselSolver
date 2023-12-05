@@ -18,6 +18,7 @@ MbD::LineInPlaneJoint::LineInPlaneJoint()
 
 MbD::LineInPlaneJoint::LineInPlaneJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::LineInPlaneJoint::initializeGlobally()

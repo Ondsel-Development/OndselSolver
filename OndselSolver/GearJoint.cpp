@@ -17,8 +17,9 @@ MbD::GearJoint::GearJoint()
 {
 }
 
-MbD::GearJoint::GearJoint(const char*)
+MbD::GearJoint::GearJoint(const char* str)
 {
+	(void)str;
 }
 
 void MbD::GearJoint::initializeLocally()

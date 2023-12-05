@@ -12,6 +12,7 @@ using namespace MbD;
 
 FColDsptr MbD::MatrixDecomposition::forAndBackSubsaveOriginal(FColDsptr fullCol, bool saveOriginal)
 {
+	(void)fullCol;(void)saveOriginal;
 	assert(false);
 	return FColDsptr();
 }
@@ -28,6 +29,7 @@ void MatrixDecomposition::applyRowOrderOnRightHandSideB()
 
 FColDsptr MbD::MatrixDecomposition::basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal)
 {
+	(void)aMatrix;(void)aVector;(void)saveOriginal;
 	assert(false);
 	return FColDsptr();
 }
@@ -54,5 +56,6 @@ void MbD::MatrixDecomposition::postSolve()
 
 void MbD::MatrixDecomposition::preSolvesaveOriginal(FMatDsptr aMatrix, bool saveOriginal)
 {
+	(void)aMatrix;(void)saveOriginal;
 	assert(false);
 }

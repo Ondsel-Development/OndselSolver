@@ -7,6 +7,7 @@
  ***************************************************************************/
  
 #include<algorithm>
+#include <memory>
 
 #include "System.h"
 #include "Part.h"
@@ -186,7 +187,7 @@ double System::maximumMass()
 double System::maximumMomentOfInertia()
 {
 	double max = 0.0;
-	for (auto & part : *parts)
+	for (std::shared_ptr<Part> & part : *parts)
 	{
 		for (int j = 0; j < 3; j++)
 		{
