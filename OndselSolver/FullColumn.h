@@ -87,7 +87,7 @@ namespace MbD {
 		return answer;
 	}
 	template<typename T>
-	inline FColsptr<T> FullColumn<T>::times(T a)
+	inline FColsptr<T> FullColumn<T>::times(T)
 	{
 		assert(false);
 	}
@@ -116,7 +116,7 @@ namespace MbD {
 	inline void FullColumn<T>::equalSelfPlusFullColumnAt(FColsptr<T> fullCol, int ii)
 	{
 		//self is subcolumn of fullCol
-		for (int i = 0; i < this->size(); i++)
+		for (int i = 0; i < (int)this->size(); i++)
 		{
 			this->at(i) += fullCol->at(ii + i);
 		}
@@ -238,7 +238,7 @@ namespace MbD {
 	{
 		s << "FullCol{";
 		s << this->at(0);
-		for (int i = 1; i < this->size(); i++)
+		for (int i = 1; i < (int)this->size(); i++)
 		{
 			s << ", " << this->at(i);
 		}

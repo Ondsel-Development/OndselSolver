@@ -141,7 +141,7 @@ namespace MbD {
 	{
 		s << "DiagMat[";
 		s << this->at(0);
-		for (int i = 1; i < this->size(); i++)
+		for (int i = 1; i < (int)this->size(); i++)
 		{
 			s << ", " << this->at(i);
 		}
