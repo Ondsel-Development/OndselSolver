@@ -149,7 +149,7 @@ void MbD::ASMTItem::deleteMbD()
 	mbdObject = nullptr;
 }
 
-void MbD::ASMTItem::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+void MbD::ASMTItem::createMbD(std::shared_ptr<System>, std::shared_ptr<Units>)
 {
 	noop();
 	assert(false);
@@ -183,7 +183,7 @@ std::shared_ptr<Constant> MbD::ASMTItem::sptrConstant(double value)
 	return std::make_shared<Constant>(value);
 }
 
-void MbD::ASMTItem::storeOnLevel(std::ofstream& os, int level)
+void MbD::ASMTItem::storeOnLevel(std::ofstream&, int)
 {
 	noop();
 	assert(false);
@@ -229,7 +229,7 @@ void MbD::ASMTItem::storeOnLevelBool(std::ofstream& os, int level, bool value)
 void MbD::ASMTItem::storeOnLevelArray(std::ofstream& os, int level, std::vector<double> array)
 {
 	storeOnLevelTabs(os, level);
-	for (int i = 0; i < array.size(); i++)
+	for (int i = 0; i < (int)array.size(); i++)
 	{
 		os << array[i] << '\t';
 	}

@@ -104,7 +104,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullVector<T>::atiplusFullVector(int i1, std::shared_ptr<FullVector<T>> fullVec)
 	{
-		for (int ii = 0; ii < fullVec->size(); ii++)
+		for (int ii = 0; ii < (int)fullVec->size(); ii++)
 		{
 			auto i = i1 + ii;
 			this->at(i) += fullVec->at(ii);
@@ -113,7 +113,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullVector<T>::atiplusFullVectortimes(int i1, std::shared_ptr<FullVector<T>> fullVec, T factor)
 	{
-		for (int ii = 0; ii < fullVec->size(); ii++)
+		for (int ii = 0; ii < (int)fullVec->size(); ii++)
 		{
 			auto i = i1 + ii;
 			this->at(i) += fullVec->at(ii) * factor;

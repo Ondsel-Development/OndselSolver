@@ -66,7 +66,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::copyFrom(std::shared_ptr<Array<T>> x)
 	{
-		for (int i = 0; i < x->size(); i++) {
+		for (int i = 0; i < (int)x->size(); i++) {
 			this->at(i) = x->at(i);
 		}
 	}
@@ -120,7 +120,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::equalArrayAt(std::shared_ptr<Array<T>> array, int i)
 	{
-		for (int ii = 0; ii < this->size(); ii++)
+		for (int ii = 0; ii < (int)this->size(); ii++)
 		{
 			this->at(ii) = array->at((int)i + ii);
 		}

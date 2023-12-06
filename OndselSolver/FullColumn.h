@@ -99,7 +99,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullColumn<T>::atiputFullColumn(int i, FColsptr<T> fullCol)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (int ii = 0; ii < (int)fullCol->size(); ii++)
 		{
 			this->at(i + ii) = fullCol->at(ii);
 		}
@@ -107,7 +107,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullColumn<T>::atiplusFullColumn(int i, FColsptr<T> fullCol)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (int ii = 0; ii < (int)fullCol->size(); ii++)
 		{
 			this->at(i + ii) += fullCol->at(ii);
 		}
@@ -124,7 +124,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullColumn<T>::atiminusFullColumn(int i1, FColsptr<T> fullCol)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (int ii = 0; ii < (int)fullCol->size(); ii++)
 		{
 			int i = i1 + ii;
 			this->at(i) -= fullCol->at(ii);
@@ -158,7 +158,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullColumn<T>::atiplusFullColumntimes(int i1, FColsptr<T> fullCol, T factor)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (int ii = 0; ii < (int)fullCol->size(); ii++)
 		{
 			int i = i1 + ii;
 			this->at(i) += fullCol->at(ii) * factor;

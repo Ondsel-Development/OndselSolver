@@ -60,7 +60,7 @@ namespace MbD {
 	template<typename T>
 	inline void DiagonalMatrix<T>::atiputDiagonalMatrix(int i, std::shared_ptr<DiagonalMatrix<T>> diagMat)
 	{
-		for (int ii = 0; ii < diagMat->size(); ii++)
+		for (int ii = 0; ii < (int)diagMat->size(); ii++)
 		{
 			this->at(i + ii) = diagMat->at(ii);
 		}
