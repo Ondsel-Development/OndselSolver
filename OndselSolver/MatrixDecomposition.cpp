@@ -52,7 +52,7 @@ void MbD::MatrixDecomposition::postSolve()
 	assert(false);
 }
 
-void MbD::MatrixDecomposition::preSolvesaveOriginal(FMatDsptr aMatrix, bool saveOriginal)
+void MbD::MatrixDecomposition::preSolvesaveOriginal(FMatDsptr, bool)
 {
 	assert(false);
 }

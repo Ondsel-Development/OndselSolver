@@ -2,7 +2,7 @@
 
 using namespace MbD;
 
-MbD::Integral::Integral(Symsptr var, Symsptr integrand)
+MbD::Integral::Integral(Symsptr, Symsptr)
 {
 	assert(false);
 }

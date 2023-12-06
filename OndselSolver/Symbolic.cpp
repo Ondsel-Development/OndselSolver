@@ -189,12 +189,12 @@ double MbD::Symbolic::getValue(double arg)
 	return 0.0;
 }
 
-void MbD::Symbolic::setValue(double val)
+void MbD::Symbolic::setValue(double)
 {
 	assert(false);
 }
 
-void MbD::Symbolic::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+void MbD::Symbolic::createMbD(std::shared_ptr<System>, std::shared_ptr<Units>)
 {
 	assert(false);
 	return;
@@ -217,7 +217,7 @@ bool MbD::Symbolic::isVariable()
 	return false;
 }
 
-void MbD::Symbolic::integrationConstant(double integConstant)
+void MbD::Symbolic::integrationConstant(double)
 {
 	assert(false);
 }

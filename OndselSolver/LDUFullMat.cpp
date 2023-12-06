@@ -23,12 +23,12 @@ FColDsptr LDUFullMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr ful
 	return FColDsptr();
 }
 
-void LDUFullMat::preSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
+void LDUFullMat::preSolvewithsaveOriginal(FMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 }
 
-void LDUFullMat::preSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
+void LDUFullMat::preSolvewithsaveOriginal(SpMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 }

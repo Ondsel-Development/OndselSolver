@@ -47,7 +47,7 @@ void MbD::FunctionWithManyArgs::createMbD(std::shared_ptr<System> mbdSys, std::s
 	for (auto& term : *terms) term->createMbD(mbdSys, mbdUnits);
 }
 
-void MbD::FunctionWithManyArgs::arguments(Symsptr args)
+void MbD::FunctionWithManyArgs::arguments(Symsptr)
 {
 	assert(false);
 }

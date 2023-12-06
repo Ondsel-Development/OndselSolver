@@ -92,7 +92,7 @@ void Item::calcPostDynCorrectorIteration()
 {
 }
 
-void MbD::Item::checkForCollisionDiscontinuityBetweenand(double impulsePrevious, double impulse)
+void MbD::Item::checkForCollisionDiscontinuityBetweenand(double, double)
 {
 	assert(false);
 }
@@ -101,17 +101,17 @@ void Item::removeRedundantConstraints(std::shared_ptr<std::vector<int>> redunEqn
 {
 }
 
-void MbD::Item::setpqsumu(FColDsptr col)
+void MbD::Item::setpqsumu(FColDsptr)
 {
 	assert(false);
 }
 
-void MbD::Item::setpqsumuddot(FColDsptr col)
+void MbD::Item::setpqsumuddot(FColDsptr)
 {
 	assert(false);
 }
 
-void MbD::Item::setpqsumudot(FColDsptr col)
+void MbD::Item::setpqsumudot(FColDsptr)
 {
 	assert(false);
 }
@@ -133,32 +133,32 @@ void Item::fillPosKineJacob(SpMatDsptr mat)
 {
 }
 
-void MbD::Item::fillpqsumu(FColDsptr col)
+void MbD::Item::fillpqsumu(FColDsptr)
 {
 	assert(false);
 }
 
-void MbD::Item::fillpqsumudot(FColDsptr col)
+void MbD::Item::fillpqsumudot(FColDsptr)
 {
 	assert(false);
 }
 
-void Item::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> essenConstraints)
+void Item::fillEssenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
 {
 	assert(false);
 }
 
-void MbD::Item::fillPerpenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>> perpenConstraints)
+void MbD::Item::fillPerpenConstraints(std::shared_ptr<std::vector<std::shared_ptr<Constraint>>>)
 {
 	assert(false);
 }
 
-void MbD::Item::fillpFpy(SpMatDsptr mat)
+void MbD::Item::fillpFpy(SpMatDsptr)
 {
 	assert(false);
 }
 
-void MbD::Item::fillpFpydot(SpMatDsptr mat)
+void MbD::Item::fillpFpydot(SpMatDsptr)
 {
 	assert(false);
 }

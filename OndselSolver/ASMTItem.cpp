@@ -51,7 +51,7 @@ void MbD::ASMTItem::setName(std::string str)
 	name = str;
 }
 
-void MbD::ASMTItem::parseASMT(std::vector<std::string>& lines)
+void MbD::ASMTItem::parseASMT(std::vector<std::string>&)
 {
 	assert(false);
 }
@@ -160,12 +160,12 @@ void MbD::ASMTItem::updateFromMbD()
 	assert(false);
 }
 
-void MbD::ASMTItem::compareResults(AnalysisType type)
+void MbD::ASMTItem::compareResults(AnalysisType)
 {
 	assert(false);
 }
 
-void MbD::ASMTItem::outputResults(AnalysisType type)
+void MbD::ASMTItem::outputResults(AnalysisType)
 {
 	assert(false);
 }
@@ -242,7 +242,7 @@ void MbD::ASMTItem::storeOnLevelName(std::ofstream& os, int level)
 	storeOnLevelString(os, level + 1, name);
 }
 
-void MbD::ASMTItem::storeOnTimeSeries(std::ofstream& os)
+void MbD::ASMTItem::storeOnTimeSeries(std::ofstream&)
 {
 	assert(false);
 }

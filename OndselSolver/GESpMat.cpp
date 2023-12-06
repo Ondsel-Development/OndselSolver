@@ -37,12 +37,12 @@ FColDsptr GESpMat::basicSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullC
 	return FColDsptr();
 }
 
-void GESpMat::preSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
+void GESpMat::preSolvewithsaveOriginal(FMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 }
 
-void GESpMat::preSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
+void GESpMat::preSolvewithsaveOriginal(SpMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 }

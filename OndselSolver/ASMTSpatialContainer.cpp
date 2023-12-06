@@ -117,7 +117,7 @@ void MbD::ASMTSpatialContainer::readRefCurves(std::vector<std::string>& lines)
 	lines.erase(lines.begin(), it);
 }
 
-void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>& lines)
+void MbD::ASMTSpatialContainer::readRefCurve(std::vector<std::string>&)
 {
 	assert(false);
 }
@@ -137,7 +137,7 @@ void MbD::ASMTSpatialContainer::readRefSurfaces(std::vector<std::string>& lines)
 	lines.erase(lines.begin(), it);
 }
 
-void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>& lines)
+void MbD::ASMTSpatialContainer::readRefSurface(std::vector<std::string>&)
 {
 	assert(false);
 }
