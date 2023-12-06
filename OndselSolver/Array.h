@@ -73,7 +73,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::zeroSelf()
 	{
-		for (int i = 0; i < this->size(); i++) {
+		for (int i = 0; i < (int)this->size(); i++) {
 			this->at(i) = (T)0;
 		}
 	}
@@ -168,7 +168,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::magnifySelf(T factor)
 	{
-		for (int i = 0; i < this->size(); i++)
+		for (int i = 0; i < (int)this->size(); i++)
 		{
 			this->atitimes(i, factor);
 		}

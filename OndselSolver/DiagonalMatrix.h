@@ -66,7 +66,7 @@ namespace MbD {
 		}
 	}
 	template<typename T>
-	inline DiagMatsptr<T> DiagonalMatrix<T>::times(T factor)
+	inline DiagMatsptr<T> DiagonalMatrix<T>::times(T)
 	{
 		assert(false);
 	}
@@ -98,7 +98,7 @@ namespace MbD {
 	inline double DiagonalMatrix<double>::sumOfSquares()
 	{
 		double sum = 0.0;
-		for (int i = 0; i < this->size(); i++)
+		for (int i = 0; i < (int)this->size(); i++)
 		{
 			double element = this->at(i);
 			sum += element * element;
@@ -114,7 +114,7 @@ namespace MbD {
 	template<>
 	inline void DiagonalMatrix<double>::zeroSelf()
 	{
-		for (int i = 0; i < this->size(); i++) {
+		for (int i = 0; i < (int)this->size(); i++) {
 			this->at(i) = 0.0;
 		}
 	}
@@ -122,7 +122,7 @@ namespace MbD {
 	inline double DiagonalMatrix<double>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (int i = 0; i < this->size(); i++)
+		for (int i = 0; i < (int)this->size(); i++)
 		{
 			double element = this->at(i);
 			if (element < 0.0) element = -element;
