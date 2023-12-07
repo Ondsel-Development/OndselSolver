@@ -10,7 +10,7 @@
 
 using namespace MbD;
 
-FColDsptr MbD::MatrixDecomposition::forAndBackSubsaveOriginal(FColDsptr fullCol, bool saveOriginal)
+FColDsptr MbD::MatrixDecomposition::forAndBackSubsaveOriginal(FColDsptr, bool)
 {
 	assert(false);
 	return FColDsptr();
@@ -26,7 +26,7 @@ void MatrixDecomposition::applyRowOrderOnRightHandSideB()
 	rightHandSideB = answer;
 }
 
-FColDsptr MbD::MatrixDecomposition::basicSolvewithsaveOriginal(FMatDsptr aMatrix, FColDsptr aVector, bool saveOriginal)
+FColDsptr MbD::MatrixDecomposition::basicSolvewithsaveOriginal(FMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 	return FColDsptr();

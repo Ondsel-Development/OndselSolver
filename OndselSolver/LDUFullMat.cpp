@@ -17,7 +17,7 @@ FColDsptr LDUFullMat::basicSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fu
 	return answer;
 }
 
-FColDsptr LDUFullMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCol, bool saveOriginal)
+FColDsptr LDUFullMat::basicSolvewithsaveOriginal(SpMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 	return FColDsptr();
@@ -105,7 +105,7 @@ void LDUFullMat::decomposesaveOriginal(FMatDsptr fullMat, bool saveOriginal)
 	}
 }
 
-void LDUFullMat::decomposesaveOriginal(SpMatDsptr spMat, bool saveOriginal)
+void LDUFullMat::decomposesaveOriginal(SpMatDsptr, bool)
 {
 	assert(false);
 }

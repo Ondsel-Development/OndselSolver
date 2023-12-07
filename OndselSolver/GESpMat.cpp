@@ -31,7 +31,7 @@ FColDsptr GESpMat::basicSolvewithsaveOriginal(SpMatDsptr spMat, FColDsptr fullCo
 	return answerX;
 }
 
-FColDsptr GESpMat::basicSolvewithsaveOriginal(FMatDsptr fullMat, FColDsptr fullCol, bool saveOriginal)
+FColDsptr GESpMat::basicSolvewithsaveOriginal(FMatDsptr, FColDsptr, bool)
 {
 	assert(false);
 	return FColDsptr();
