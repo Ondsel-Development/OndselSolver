@@ -119,7 +119,7 @@ namespace MbD {
 	template<typename T>
 	inline void SparseMatrix<T>::atijplusFullColumn(int i, int j, FColsptr<T> fullCol)
 	{
-		for (int ii = 0; ii < fullCol->size(); ii++)
+		for (int ii = 0; ii < (int)fullCol->size(); ii++)
 		{
 			this->atijplusNumber(i + ii, j, fullCol->at(ii));
 		}
