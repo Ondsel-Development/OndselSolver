@@ -46,6 +46,7 @@ set(ONDSELSOLVER_SRC
         OndselSolver/ArcSine.cpp
         OndselSolver/ArcTan.cpp
         OndselSolver/ArcTan2.cpp
+        OndselSolver/Arguments.cpp
         OndselSolver/ASMTAngleJoint.cpp
         OndselSolver/ASMTAnimationParameters.cpp
         OndselSolver/ASMTAssembly.cpp
@@ -364,6 +365,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/ArcSine.h
         OndselSolver/ArcTan.h
         OndselSolver/ArcTan2.h
+        OndselSolver/Arguments.h
         OndselSolver/ASMTAngleJoint.h
         OndselSolver/ASMTAnimationParameters.h
         OndselSolver/ASMTAssembly.h
