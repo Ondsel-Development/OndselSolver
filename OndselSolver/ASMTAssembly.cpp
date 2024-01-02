@@ -894,9 +894,9 @@ double MbD::ASMTAssembly::calcCharacteristicTime()
 
 double MbD::ASMTAssembly::calcCharacteristicMass()
 {
-	auto n = (int)parts->size();
+	auto n = parts->size();
 	double sumOfSquares = 0.0;
-	for (int i = 0; i < n; i++)
+	for (size_t i = 0; i < n; i++)
 	{
 		auto mass = parts->at(i)->principalMassMarker->mass;
 		sumOfSquares += mass * mass;
@@ -917,9 +917,9 @@ double MbD::ASMTAssembly::calcCharacteristicLength()
 		auto& mkrJ = markerMap->at(connector->markerJ);
 		lengths->push_back(mkrJ->rpmp()->length());
 	}
-	auto n = (int)lengths->size();
+	auto n = lengths->size();
 	double sumOfSquares = std::accumulate(lengths->begin(), lengths->end(), 0.0, [](double sum, double l) { return sum + l * l; });
-	auto unitLength = std::sqrt(sumOfSquares / std::max((int)n, 1));
+	auto unitLength = std::sqrt(sumOfSquares / std::max(n, size_t(1)));
 	if (unitLength <= 0) unitLength = 1.0;
 	return unitLength;
 }
@@ -1285,13 +1285,13 @@ void MbD::ASMTAssembly::storeOnTimeSeries(std::ofstream& os)
 	if (times->empty()) return;
 	os << "TimeSeries" << std::endl;
 	os << "Number\tInput\t";
-	for (int i = 1; i < (int)times->size(); i++)
+	for (size_t i = 1; i < times->size(); i++)
 	{
 		os << i << '\t';
 	}
 	os << std::endl;
 	os << "Time\tInput\t";
-	for (int i = 1; i < (int)times->size(); i++)
+	for (size_t i = 1; i < times->size(); i++)
 	{
 		os << times->at(i) << '\t';
 	}

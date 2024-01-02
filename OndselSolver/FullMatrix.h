@@ -338,22 +338,22 @@ namespace MbD {
 	template<>
 	inline void FullMatrix<double>::zeroSelf()
 	{
-		for (int i = 0; i < (int)this->size(); i++) {
+		for (size_t i = 0; i < this->size(); i++) {
 			this->at(i)->zeroSelf();
 		}
 	}
 	template<>
 	inline void FullMatrix<double>::identity() {
 		this->zeroSelf();
-		for (int i = 0; i < (int)this->size(); i++) {
+		for (size_t i = 0; i < this->size(); i++) {
 			this->at(i)->at(i) = 1.0;
 		}
 	}
 	template<typename T>
 	inline FColsptr<T> FullMatrix<T>::column(int j) {
-		int n = (int)this->size();
+		auto n = this->size();
 		auto answer = std::make_shared<FullColumn<T>>(n);
-		for (int i = 0; i < n; i++) {
+		for (size_t i = 0; i < n; i++) {
 			answer->at(i) = this->at(i)->at(j);
 		}
 		return answer;
@@ -401,9 +401,9 @@ namespace MbD {
 	template<typename T>
 	inline FMatsptr<T> FullMatrix<T>::plusFullMatrix(FMatsptr<T> fullMat)
 	{
-		int n = (int)this->size();
+		auto n = this->size();
 		auto answer = std::make_shared<FullMatrix<T>>(n);
-		for (int i = 0; i < n; i++) {
+		for (size_t i = 0; i < n; i++) {
 			answer->at(i) = this->at(i)->plusFullRow(fullMat->at(i));
 		}
 		return answer;
@@ -411,9 +411,9 @@ namespace MbD {
 	template<typename T>
 	inline FMatsptr<T> FullMatrix<T>::minusFullMatrix(FMatsptr<T> fullMat)
 	{
-		int n = (int)this->size();
+		auto n = this->size();
 		auto answer = std::make_shared<FullMatrix<T>>(n);
-		for (int i = 0; i < n; i++) {
+		for (size_t i = 0; i < n; i++) {
 			answer->at(i) = this->at(i)->minusFullRow(fullMat->at(i));
 		}
 		return answer;
@@ -440,9 +440,9 @@ namespace MbD {
 	template<typename T>
 	inline void FullMatrix<T>::symLowerWithUpper()
 	{
-		int n = (int)this->size();
-		for (int i = 0; i < n; i++) {
-			for (int j = i + 1; j < n; j++) {
+		auto n = this->size();
+		for (size_t i = 0; i < n; i++) {
+			for (size_t j = i + 1; j < n; j++) {
 				this->at(j)->at(i) = this->at(i)->at(j);
 			}
 		}
@@ -486,7 +486,7 @@ namespace MbD {
 	inline double FullMatrix<double>::sumOfSquares()
 	{
 		double sum = 0.0;
-		for (int i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			sum += this->at(i)->sumOfSquares();
 		}
@@ -506,9 +506,9 @@ namespace MbD {
 	template<typename T>
 	inline FMatsptr<T> FullMatrix<T>::copy()
 	{
-		auto m = (int)this->size();
+		auto m = this->size();
 		auto answer = std::make_shared<FullMatrix<T>>(m);
-		for (int i = 0; i < m; i++)
+		for (size_t i = 0; i < m; i++)
 		{
 			answer->at(i) = this->at(i)->copy();
 		}
@@ -517,9 +517,9 @@ namespace MbD {
 	template<typename T>
 	inline FullMatrix<T> FullMatrix<T>::operator+(const FullMatrix<T> fullMat)
 	{
-		int n = (int)this->size();
+		auto n = this->size();
 		auto answer = FullMatrix<T>(n);
-		for (int i = 0; i < n; i++) {
+		for (size_t i = 0; i < n; i++) {
 			answer.at(i) = this->at(i)->plusFullRow(fullMat.at(i));
 		}
 		return answer;
@@ -533,7 +533,7 @@ namespace MbD {
 	template<typename T>
 	inline void FullMatrix<T>::magnifySelf(T factor)
 	{
-		for (int i = 0; i < (int)this->size(); i++) {
+		for (size_t i = 0; i < this->size(); i++) {
 			this->at(i)->magnifySelf(factor);
 		}
 	}
@@ -541,7 +541,7 @@ namespace MbD {
 	inline std::ostream& FullMatrix<T>::printOn(std::ostream& s) const
 	{
 		s << "FullMat[" << std::endl;
-		for (int i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			s << *(this->at(i)) << std::endl;
 		}
@@ -560,7 +560,7 @@ namespace MbD {
 		auto qE = std::make_shared<EulerParameters<T>>(4);
 		qE->initialize();
 		auto OneMinusTraceDivFour = (1.0 - traceA) / 4.0;
-		for (int i = 0; i < 3; i++)
+		for (size_t i = 0; i < 3; i++)
 		{
 			dumSq = this->at(i)->at(i) / 2.0 + OneMinusTraceDivFour;
 			dum = (dumSq > 0.0) ? std::sqrt(dumSq) : 0.0;
@@ -571,7 +571,7 @@ namespace MbD {
 		qE->atiput(3, dum);
 		T max = 0.0;
 		int maxE = -1;
-		for (int i = 0; i < 4; i++)
+		for (size_t i = 0; i < 4; i++)
 		{
 			auto num = qE->at(i);
 			if (max < num) {
@@ -612,7 +612,7 @@ namespace MbD {
 	inline T FullMatrix<T>::trace()
 	{
 		T trace = 0.0;
-		for (int i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			trace += this->at(i)->at(i);
 		}
@@ -622,7 +622,7 @@ namespace MbD {
 	inline double FullMatrix<T>::maxMagnitude()
 	{
 		double max = 0.0;
-		for (int i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			double element = this->at(i)->maxMagnitude();
 			if (max < element) max = element;
@@ -689,9 +689,9 @@ namespace MbD {
 		auto tol = ratio * maxMag;
 		auto nrow = this->nrow();
 		if (nrow == this->ncol()) {
-			for (int i = 0; i < 3; i++)
+			for (size_t i = 0; i < 3; i++)
 			{
-				for (int j = i + 1; j < 3; j++)
+				for (size_t j = i + 1; j < 3; j++)
 				{
 					if (std::abs(this->at(i)->at(j)) > tol) return false;
 					if (std::abs(this->at(j)->at(i)) > tol) return false;

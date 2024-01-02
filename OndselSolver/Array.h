@@ -72,14 +72,14 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::copyFrom(std::shared_ptr<Array<T>> x)
 	{
-		for (int i = 0; i < (int)x->size(); i++) {
+		for (size_t i = 0; i < x->size(); i++) {
 			this->at(i) = x->at(i);
 		}
 	}
 	template<typename T>
 	inline void Array<T>::zeroSelf()
 	{
-		for (int i = 0; i < (int)this->size(); i++) {
+		for (size_t i = 0; i < this->size(); i++) {
 			this->at(i) = (T)0;
 		}
 	}
@@ -104,7 +104,7 @@ namespace MbD {
 	//inline double Array<double>::maxMagnitude()
 	//{
 	//	double max = 0.0;
-	//	for (int i = 0; i < this->size(); i++)
+	//	for (size_t i = 0; i < >size(); i++)
 	//	{
 	//		auto element = this->at(i);
 	//		if (element < 0.0) element = -element;
@@ -116,7 +116,7 @@ namespace MbD {
 	inline double Array<T>::maxMagnitudeOfVector()
 	{
 		double answer = 0.0;
-		for (int i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			double mag = std::abs(this->at(i));
 			if (answer < mag) answer = mag;
@@ -126,9 +126,9 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::equalArrayAt(std::shared_ptr<Array<T>> array, int i)
 	{
-		for (int ii = 0; ii < (int)this->size(); ii++)
+		for (size_t ii = 0; ii < this->size(); ii++)
 		{
-			this->at(ii) = array->at((int)i + ii);
+			this->at(ii) = array->at(i + ii);
 		}
 	}
 	//template<>
@@ -148,7 +148,7 @@ namespace MbD {
 	//template<>
 	//inline void Array<double>::conditionSelfWithTol(double tol)
 	//{
-	//	for (int i = 0; i < this->size(); i++)
+	//	for (size_t i = 0; i < >size(); i++)
 	//	{
 	//		double element = this->at(i);
 	//		if (element < 0.0) element = -element;
@@ -164,7 +164,7 @@ namespace MbD {
 	//inline double Array<double>::length()
 	//{
 	//	double ssq = 0.0;
-	//	for (int i = 0; i < this->size(); i++)
+	//	for (size_t i = 0; i < >size(); i++)
 	//	{
 	//		double elem = this->at(i);
 	//		ssq += elem * elem;
@@ -174,7 +174,7 @@ namespace MbD {
 	template<typename T>
 	inline void Array<T>::magnifySelf(T factor)
 	{
-		for (int i = 0; i < (int)this->size(); i++)
+		for (size_t i = 0; i < this->size(); i++)
 		{
 			this->atitimes(i, factor);
 		}

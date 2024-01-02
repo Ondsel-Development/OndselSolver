@@ -229,7 +229,7 @@ void MbD::ASMTItem::storeOnLevelBool(std::ofstream& os, int level, bool value)
 void MbD::ASMTItem::storeOnLevelArray(std::ofstream& os, int level, std::vector<double> array)
 {
 	storeOnLevelTabs(os, level);
-	for (int i = 0; i < (int)array.size(); i++)
+	for (size_t i = 0; i < array.size(); i++)
 	{
 		os << array[i] << '\t';
 	}
