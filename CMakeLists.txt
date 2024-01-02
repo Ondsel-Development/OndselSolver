@@ -596,6 +596,7 @@ set(ONDSELSOLVER_HEADERS
         OndselSolver/PlanarJoint.h
         OndselSolver/PointInLineJoint.h
         OndselSolver/PointInPlaneJoint.h
+        OndselSolver/PosICDragNewtonRaphson.h
         OndselSolver/PosICKineNewtonRaphson.h
         OndselSolver/PosICNewtonRaphson.h
         OndselSolver/PosKineNewtonRaphson.h
