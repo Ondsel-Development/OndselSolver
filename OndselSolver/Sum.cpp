@@ -127,7 +127,7 @@ bool Sum::isSum()
 double Sum::getValue()
 {
 	double answer = 0.0;
-	for (int i = 0; i < (int)terms->size(); i++) answer += terms->at(i)->getValue();
+	for (size_t i = 0; i < terms->size(); i++) answer += terms->at(i)->getValue();
 	return answer;
 }
 

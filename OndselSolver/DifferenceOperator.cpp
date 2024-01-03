@@ -18,7 +18,7 @@ using namespace MbD;
 
 FRowDsptr DifferenceOperator::OneOverFactorials = []() {
 	auto oneOverFactorials = std::make_shared<FullRow<double>>(10);
-	for (int i = 0; i < (int)oneOverFactorials->size(); i++)
+	for (size_t i = 0; i < oneOverFactorials->size(); i++)
 	{
 		oneOverFactorials->at(i) = 1.0 / std::tgamma(i + 1);
 	}
@@ -36,7 +36,7 @@ void DifferenceOperator::calcOperatorMatrix()
 	try {
 		operatorMatrix = CREATE<LDUFullMatParPv>::With()->inversesaveOriginal(taylorMatrix, false);
 	}
-	catch (SingularMatrixError ex) {
+	catch (const SingularMatrixError& ex) {
 	}
 }
 

@@ -37,12 +37,12 @@ void MbD::GeneralSpline::arguments(Symsptr args)
 	auto array = args->getTerms();
 	auto& arg = array->at(0);
 	int order = (int)array->at(1)->getValue();
-	int n = ((int)array->size() - 2) / 2;
+	size_t n = (array->size() - 2) / 2;
 	auto xarray = std::make_shared<std::vector<double>>(n);
 	auto yarray = std::make_shared<std::vector<double>>(n);
-	for (int i = 0; i < n; i++)
+	for (size_t i = 0; i < n; i++)
 	{
-		int ii = 2 * ((int)i + 1);
+		size_t ii = 2 * (i + 1);
 		xarray->at(i) = array->at(ii)->getValue();
 		yarray->at(i) = array->at(ii + 1)->getValue();
 	}
@@ -63,41 +63,41 @@ void MbD::GeneralSpline::computeDerivatives()
 {
 	//"See derivation in MbDTheory 9spline.fodt."
 	if (degree == 0) throw std::runtime_error("ToDo: Use ZeroDegreeSpline");
-	auto n = (int)xs->size();
+	auto n = xs->size();
 	auto p = degree;
 	auto np = n * p;
 	auto matrix = std::make_shared<SparseMatrix<double>>(np, np);
 	auto bvector = std::make_shared<FullColumn<double>>(np, 0.0);
 	auto hs = std::make_shared<FullColumn<double>>(n - 1);
 	double hmax = 0.0;
-	for (int i = 0; i < n - 1; i++)
+	for (size_t i = 0; i < n - 1; i++)
 	{
-		double h = xs->at((int)i + 1) - xs->at(i);
+		double h = xs->at(i + 1) - xs->at(i);
 		hmax = std::max(hmax, std::abs(h));
 		hs->atiput(i, h);
 	}
-	for (int i = 0; i < n - 1; i++)
+	for (size_t i = 0; i < n - 1; i++)
 	{
 		auto offset = i * p;
 		double hbar = hs->at(i) / hmax;
-		for (int j = 1; j < p; j++)
+		for (size_t j = 1; j < p; j++)
 		{
 			matrix->atijput(offset + j, offset + j - 1, 1.0);
 			matrix->atijput(offset + j, offset + j - 1 + p, -1.0);
 		}
 		double dum = 1.0;
-		for (int j = 0; j < p; j++)
+		for (size_t j = 0; j < p; j++)
 		{
 			dum = dum * hbar / (j + 1);
-			for (int k = j; k < p; k++)
+			for (size_t k = j; k < p; k++)
 			{
 				matrix->atijput(offset + k - j, offset + k, dum);
 			}
 		}
-		bvector->atiput(offset, ys->at((int)i + 1) - ys->at(i));
+		bvector->atiput(offset, ys->at(i + 1) - ys->at(i));
 	}
 	if (isCyclic()) {
-		for (int j = 1; j < p + 1; j++)
+		for (size_t j = 1; j < p + 1; j++)
 		{
 			matrix->atijput(np - j, np - j, 1.0);
 			matrix->atijput(np - j, p - j, -1.0);
@@ -105,8 +105,8 @@ void MbD::GeneralSpline::computeDerivatives()
 	}
 	else {
 		//"Zero out higher derivatives at node n and node 1 to get the p end equations."
-		auto count = 0;
-		auto npass = 0;
+		size_t count = 0;
+		size_t npass = 0;
 		while (count < p) {
 			matrix->atijput(np - count, np - npass, 1.0);
 			count++;
@@ -121,15 +121,15 @@ void MbD::GeneralSpline::computeDerivatives()
 	auto derivsVector = solver->solvewithsaveOriginal(matrix, bvector, false);
 	derivs = std::make_shared<FullMatrix<double>>(n, p);
 	auto hmaxpowers = std::make_shared<FullColumn<double>>(p);
-	for (int j = 0; j < p; j++)
+	for (size_t j = 0; j < p; j++)
 	{
 		hmaxpowers->atiput(j, std::pow(hmax, j + 1));
 	}
-	for (int i = 0; i < n; i++)
+	for (size_t i = 0; i < n; i++)
 	{
 		auto& derivsi = derivs->at(i);
 		derivsi->equalArrayAt(derivsVector, (i - 1) * p + 1);
-		for (int j = 0; j < p; j++)
+		for (size_t j = 0; j < p; j++)
 		{
 			derivsi->atiput(j, derivsi->at(j) / hmaxpowers->at(j));
 		}
@@ -245,14 +245,14 @@ std::ostream& MbD::GeneralSpline::printOn(std::ostream& s) const
 	s << degree << ", " << std::endl;
 	s << "xs{";
 	s << xs->at(0);
-	for (int i = 1; i < (int)xs->size(); i++)
+	for (size_t i = 1; i < xs->size(); i++)
 	{
 		s << ", " << xs->at(i);
 	}
 	s << "}, " << std::endl;
 	s << "ys{";
 	s << ys->at(0);
-	for (int i = 1; i < (int)ys->size(); i++)
+	for (size_t i = 1; i < ys->size(); i++)
 	{
 		s << ", " << ys->at(i);
 	}

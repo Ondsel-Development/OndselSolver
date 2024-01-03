@@ -11,7 +11,7 @@
 
 using namespace MbD;
 
-ConstraintIJ::ConstraintIJ(EndFrmsptr frmi, EndFrmsptr frmj) : frmI(frmi), frmJ(frmj), Constraint()
+ConstraintIJ::ConstraintIJ(EndFrmsptr frmi, EndFrmsptr frmj) : Constraint(), frmI(frmi), frmJ(frmj)
 {
 }
 
