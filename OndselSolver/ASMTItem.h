@@ -36,6 +36,7 @@ namespace MbD {
 		FColDsptr readColumnOfDoubles(std::string& line);
 		double readDouble(std::string& line);
 		int readInt(std::string& line);
+		size_t readSize_t(std::string& line);
 		bool readBool(std::string& line);
 		std::string readString(std::string& line);
 		void readName(std::vector<std::string>& lines);
@@ -48,16 +49,17 @@ namespace MbD {
 		virtual void outputResults(AnalysisType type);
 		std::shared_ptr<Units> mbdUnits();
 		std::shared_ptr<Constant> sptrConstant(double value);
-		virtual void storeOnLevel(std::ofstream& os, int level);
-		virtual void storeOnLevelTabs(std::ofstream& os, int level);
-		virtual void storeOnLevelString(std::ofstream& os, int level, std::string str);
-		virtual void storeOnLevelDouble(std::ofstream& os, int level, double value);
-		virtual void storeOnLevelInt(std::ofstream& os, int level, int i);
-		virtual void storeOnLevelBool(std::ofstream& os, int level, bool value);
+		virtual void storeOnLevel(std::ofstream& os, size_t level);
+		virtual void storeOnLevelTabs(std::ofstream& os, size_t level);
+		virtual void storeOnLevelString(std::ofstream& os, size_t level, std::string str);
+		virtual void storeOnLevelDouble(std::ofstream& os, size_t level, double value);
+		virtual void storeOnLevelInt(std::ofstream& os, size_t level, int i);
+		virtual void storeOnLevelSize_t(std::ofstream& os, size_t level, size_t i);
+		virtual void storeOnLevelBool(std::ofstream& os, size_t level, bool value);
 		//template<typename T>
-		//void storeOnLevelArray(std::ofstream& os, int level, std::vector<T> array);
-		void storeOnLevelArray(std::ofstream& os, int level, std::vector<double> array);
-		void storeOnLevelName(std::ofstream& os, int level);
+		//void storeOnLevelArray(std::ofstream& os, size_t level, std::vector<T> array);
+		void storeOnLevelArray(std::ofstream& os, size_t level, std::vector<double> array);
+		void storeOnLevelName(std::ofstream& os, size_t level);
 		virtual void storeOnTimeSeries(std::ofstream& os);
 		void logString(std::string& str);
 		void logString(const char* chars);
@@ -67,10 +69,10 @@ namespace MbD {
 		std::shared_ptr<Item> mbdObject;
 	};
 	//template<typename T>
-	//inline void ASMTItem::storeOnLevelArray(std::ofstream& os, int level, std::vector<T> array)
+	//inline void ASMTItem::storeOnLevelArray(std::ofstream& os, size_t level, std::vector<T> array)
 	//{
 	//	storeOnLevelTabs(os, level);
-	//	for (int i = 0; i < array.size(); i++)
+	//	for (size_t i = 0; i < array.size(); i++)
 	//	{
 	//		os << array[i] << '\t';
 	//	}

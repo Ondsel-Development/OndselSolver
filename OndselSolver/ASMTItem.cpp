@@ -110,6 +110,14 @@ int MbD::ASMTItem::readInt(std::string& line)
 	return i;
 }
 
+size_t MbD::ASMTItem::readSize_t(std::string& line)
+{
+	std::istringstream iss(line);
+	size_t i;
+	iss >> i;
+	return i;
+}
+
 bool MbD::ASMTItem::readBool(std::string& line)
 {
 	if (line.find("true") != std::string::npos)
@@ -199,39 +207,45 @@ std::shared_ptr<Constant> MbD::ASMTItem::sptrConstant(double value)
 	return std::make_shared<Constant>(value);
 }
 
-void MbD::ASMTItem::storeOnLevel(std::ofstream&, int)
+void MbD::ASMTItem::storeOnLevel(std::ofstream&, size_t)
 {
 	noop();
 	assert(false);
 }
 
-void MbD::ASMTItem::storeOnLevelTabs(std::ofstream& os, int level)
+void MbD::ASMTItem::storeOnLevelTabs(std::ofstream& os, size_t level)
 {
-	for (int i = 0; i < level; i++)
+	for (size_t i = 0; i < level; i++)
 	{
 		os << '\t';
 	}
 }
 
-void MbD::ASMTItem::storeOnLevelString(std::ofstream& os, int level, std::string str)
+void MbD::ASMTItem::storeOnLevelString(std::ofstream& os, size_t level, std::string str)
 {
 	storeOnLevelTabs(os, level);
 	os << str << std::endl;
 }
 
-void MbD::ASMTItem::storeOnLevelDouble(std::ofstream& os, int level, double value)
+void MbD::ASMTItem::storeOnLevelDouble(std::ofstream& os, size_t level, double value)
 {
 	storeOnLevelTabs(os, level);
 	os << value << std::endl;
 }
 
-void MbD::ASMTItem::storeOnLevelInt(std::ofstream& os, int level, int i)
+void MbD::ASMTItem::storeOnLevelInt(std::ofstream& os, size_t level, int i)
 {
 	storeOnLevelTabs(os, level);
 	os << i << std::endl;
 }
 
-void MbD::ASMTItem::storeOnLevelBool(std::ofstream& os, int level, bool value)
+void MbD::ASMTItem::storeOnLevelSize_t(std::ofstream& os, size_t level, size_t i)
+{
+	storeOnLevelTabs(os, level);
+	os << i << std::endl;
+}
+
+void MbD::ASMTItem::storeOnLevelBool(std::ofstream& os, size_t level, bool value)
 {
 	storeOnLevelTabs(os, level);
 	if (value) {
@@ -242,17 +256,17 @@ void MbD::ASMTItem::storeOnLevelBool(std::ofstream& os, int level, bool value)
 	}
 }
 
-void MbD::ASMTItem::storeOnLevelArray(std::ofstream& os, int level, std::vector<double> array)
+void MbD::ASMTItem::storeOnLevelArray(std::ofstream& os, size_t level, std::vector<double> array)
 {
 	storeOnLevelTabs(os, level);
-	for (int i = 0; i < (int)array.size(); i++)
+	for (size_t i = 0; i < array.size(); i++)
 	{
 		os << array[i] << '\t';
 	}
 	os << std::endl;
 }
 
-void MbD::ASMTItem::storeOnLevelName(std::ofstream& os, int level)
+void MbD::ASMTItem::storeOnLevelName(std::ofstream& os, size_t level)
 {
 	storeOnLevelString(os, level, "Name");
 	storeOnLevelString(os, level + 1, name);

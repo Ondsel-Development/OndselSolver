@@ -49,10 +49,10 @@ namespace MbD {
 		bool expected(std::string msg);
 		bool signedNumber();
 		bool peekForTypevalue(std::string type, std::string symbol);
-		void notify(std::string msg);
-		void notifyat(std::string msg, int mrk);
-		void combineStackTo(int pos);
-		bool isNextLineTag(char c);
+		void notify(std::string msg) const;
+		void notifyat(std::string msg, int mrk) const;
+		void combineStackTo(size_t pos) const;
+		bool isNextLineTag(char c) const;
 
 		ASMTItem* owner = nullptr;
 		std::shared_ptr<std::map<std::string, Symsptr>> variables;

@@ -191,7 +191,7 @@ bool MbD::SymbolicParser::peekForTypeNoPush(std::string c)
 
 std::string MbD::SymbolicParser::scanToken()
 {
-	prevEnd = (int)source->tellg();
+	prevEnd = (int)source->tellg();	//Use int because of decrement
 	prevEnd--;
 	while (std::isspace(hereChar) || isNextLineTag(hereChar)) {
 		hereChar = source->get();
@@ -393,7 +393,7 @@ bool MbD::SymbolicParser::intrinsic()
 			if (expression()) {
 				while (commaExpression()) {}
 				if (stack->size() > startsize) {
-					combineStackTo((int)startsize);
+					combineStackTo(startsize);
 					if (peekForTypeNoPush(")")) {
 						Symsptr args = stack->top();	//args is a Sum with "terms" containing the actual arguments
 						stack->pop();
@@ -480,12 +480,12 @@ bool MbD::SymbolicParser::peekForTypevalue(std::string type, std::string symbol)
 	return false;
 }
 
-void MbD::SymbolicParser::notify(std::string msg)
+void MbD::SymbolicParser::notify(std::string msg) const
 {
 	notifyat(msg, mark);
 }
 
-void MbD::SymbolicParser::notifyat(std::string, int)
+void MbD::SymbolicParser::notifyat(std::string, int) const
 {
 	//"Temporarily reset source in order to get full contents"
 	auto p = source->tellg();
@@ -501,10 +501,10 @@ void MbD::SymbolicParser::notifyat(std::string, int)
 	//raiseSignal
 }
 
-void MbD::SymbolicParser::combineStackTo(int pos)
+void MbD::SymbolicParser::combineStackTo(size_t pos) const
 {
 	auto args = std::make_shared<std::vector<Symsptr>>();
-	while ((int)stack->size() > pos) {
+	while (stack->size() > pos) {
 		Symsptr arg = stack->top();
 		stack->pop();
 		args->push_back(arg);
@@ -515,7 +515,7 @@ void MbD::SymbolicParser::combineStackTo(int pos)
 	stack->push(sum);
 }
 
-bool MbD::SymbolicParser::isNextLineTag(char c)
+bool MbD::SymbolicParser::isNextLineTag(char c) const
 {
 	//Skip <n> tag in asmt file
 	auto pos = source->tellg();
