@@ -295,6 +295,7 @@ void MbD::ASMTSpatialContainer::createMbD(std::shared_ptr<System> mbdSys, std::s
 
 void MbD::ASMTSpatialContainer::updateMbDFromPosition3D(FColDsptr vec)
 {
+    oldPos3D = position3D;
 	position3D = vec;
 	auto mbdPart = std::static_pointer_cast<Part>(mbdObject);
 	auto mbdUnits = this->mbdUnits();
@@ -309,6 +310,7 @@ void MbD::ASMTSpatialContainer::updateMbDFromPosition3D(double a, double b, doub
 
 void MbD::ASMTSpatialContainer::updateMbDFromRotationMatrix(FMatDsptr mat)
 {
+    oldRotMat = rotationMatrix;
 	rotationMatrix = mat;
 	auto mbdPart = std::static_pointer_cast<Part>(mbdObject);
 	auto mbdUnits = this->mbdUnits();
