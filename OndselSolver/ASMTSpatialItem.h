@@ -43,7 +43,9 @@ namespace MbD {
 				{ 0, 1, 0 },
 				{ 0, 0, 1 }
 			});
-		FRowDsptr xs, ys, zs, bryxs, bryys, bryzs;
+        FColDsptr oldPos3D = position3D;
+        FMatDsptr oldRotMat = rotationMatrix;
+        FRowDsptr xs, ys, zs, bryxs, bryys, bryzs;
 		FRowDsptr inxs, inys, inzs, inbryxs, inbryys, inbryzs;
 
 	};
