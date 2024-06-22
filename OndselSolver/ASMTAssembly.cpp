@@ -1332,8 +1332,8 @@ void MbD::ASMTAssembly::runDragStep(
     auto dragMbDParts = std::make_shared<std::vector<std::shared_ptr<Part>>>();
     auto crOOld = std::make_shared<std::vector<FColDsptr>>();
     auto crONew = std::make_shared<std::vector<FColDsptr>>();
-    auto cqEOld = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
-    auto cqENew = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
+    auto cqEOold = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
+    auto cqEOnew = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
     for (auto& dragASMTPart : *dragASMTParts) {
         if (debug) {
             std::ofstream os("dragging.log", std::ios_base::app);
@@ -1347,8 +1347,8 @@ void MbD::ASMTAssembly::runDragStep(
         dragMbDParts->push_back(dragMbDPart);
         crOOld->push_back(dragASMTPart->oldPos3D);
         crONew->push_back(dragASMTPart->position3D);
-        cqEOld->push_back(dragASMTPart->oldRotMat->asEulerParameters());
-        cqENew->push_back(dragASMTPart->rotationMatrix->asEulerParameters());
+        cqEOold->push_back(dragASMTPart->oldRotMat->asEulerParameters());
+        cqEOnew->push_back(dragASMTPart->rotationMatrix->asEulerParameters());
     }
     for (int i = 0; i < 5; i++) {
         if (i > 0) {
@@ -1359,30 +1359,61 @@ void MbD::ASMTAssembly::runDragStep(
                 auto rONew = crONew->at(j);
                 auto rOMid = rOOld->times(1.0 - factor)->plusFullColumn(rONew->times(factor));
                 dragASMTPart->updateMbDFromPosition3D(rOMid);
-                auto qEOld = cqEOld->at(j);
-                auto qENew = cqENew->at(j);
-                std::shared_ptr<EulerParameters<double>> qEMid;
+                auto qEOold = cqEOold->at(j);
+                auto qEOnew = cqEOnew->at(j);
+                std::shared_ptr<EulerParameters<double>> qEOmid;
                 // Note: theta4D = theta3D / 2
-                auto cosTheta4D = qEOld->dot(qENew);
+                auto cosTheta4D = qEOold->dot(qEOnew);
                 if (abs(cosTheta4D) >= 1.0) {
-                    qEMid = qEOld->copy();
+                    qEOmid = qEOold->copy();
                 }
                 else {
                     auto theta4D = std::acos(cosTheta4D);
                     auto sinTheta4D = std::sin(theta4D);
                     double ratioA = std::sin((1 - factor) * theta4D) / sinTheta4D;
                     double ratioB = std::sin(factor * theta4D) / sinTheta4D;
-                    qEMid = qEOld->times(ratioA)->plusFullColumn(qENew->times(ratioB));
+                    qEOmid = qEOold->times(ratioA)->plusFullColumn(qEOnew->times(ratioB));
                 }
-                qEMid->calcABC();
-                dragASMTPart->updateMbDFromRotationMatrix(qEMid->aA);
+                qEOmid->calcABC();
+                dragASMTPart->updateMbDFromRotationMatrix(qEOmid->aA);
+                //Alternate derivation to check
+                //{IJK} = [A]Oo[A]on{ijk}
+                //{IJK} = [A]On{ijk}
+                //[A]On = [A]Oo[A]on
+                //[A]on = [A]OoT[A]On
+                qEOold->calcABC();
+                auto aAOo = qEOold->aA;
+                qEOnew->calcABC();
+                auto aAOn = qEOnew->aA;
+                auto aAon = aAOo->transposeTimesFullMatrix(aAOn);
+                auto qEon = aAon->asEulerParameters();
+                cosTheta4D = qEon->at(3);
+                auto theta4D = std::acos(cosTheta4D);
+                auto sinTheta4D = std::sin(theta4D);
+                auto axisOfRotation = std::make_shared<std::vector<double>>();
+                for (size_t i = 0; i < 3; i++) {
+                    axisOfRotation->push_back(qEon->at(i) / sinTheta4D);
+                }
+                auto qEomid = std::make_shared<EulerParameters<double>>();
+                theta4D = factor * theta4D;
+                cosTheta4D = std::cos(theta4D);
+                sinTheta4D = std::sin(theta4D);
+                for (size_t i = 0; i < 3; i++) {
+                    qEomid->at(i) = axisOfRotation->at(i) * sinTheta4D;
+                }
+                qEomid->at(3) = cosTheta4D;
+                qEomid->calcABC();
+                auto aAOmid = aAOo->timesFullMatrix(qEomid->aA);
             }
+        }
+        if (debug) {
+            outputFile("runDragStep.asmt");
         }
         try {
             mbdSystem->runDragStep(dragMbDParts);
             break;
         }
-        catch (...) {
+        catch (std::exception const& e) {
             // Do not use
             // runPreDrag();
             // Assembly breaks up too easily because of redundant constraint removal.
