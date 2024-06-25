@@ -453,11 +453,11 @@ void MbD::ASMTAssembly::runDraggingTest()
     FColDsptr pos3D, delta;
     pos3D = dragPart->position3D;
     delta = std::make_shared<FullColumn<double>>(ListD {0.1, 0.2, 0.3});
-    dragPart->updateMbDFromPosition3D(pos3D->plusFullColumn(delta));
+    dragPart->setPosition3D(pos3D->plusFullColumn(delta));
     assembly->runDragStep(dragParts);
     pos3D = dragPart->position3D;
     delta = std::make_shared<FullColumn<double>>(ListD {0.3, 0.2, 0.1});
-    dragPart->updateMbDFromPosition3D(pos3D->plusFullColumn(delta));
+    dragPart->setPosition3D(pos3D->plusFullColumn(delta));
     assembly->runDragStep(dragParts);
     assembly->runPostDrag();  // Do this after last drag
 }
@@ -493,11 +493,11 @@ void MbD::ASMTAssembly::runDraggingTest2()
     FColDsptr pos3D, delta;
     pos3D = dragPart->position3D;
     delta = std::make_shared<FullColumn<double>>(ListD {0.1, 0.2, 0.3});
-    dragPart->updateMbDFromPosition3D(pos3D->plusFullColumn(delta));
+    dragPart->setPosition3D(pos3D->plusFullColumn(delta));
     assembly->runDragStep(dragParts);
     pos3D = dragPart->position3D;
     delta = std::make_shared<FullColumn<double>>(ListD {0.3, 0.2, 0.1});
-    dragPart->updateMbDFromPosition3D(pos3D->plusFullColumn(delta));
+    dragPart->setPosition3D(pos3D->plusFullColumn(delta));
     assembly->runDragStep(dragParts);
     assembly->runPostDrag();  // Do this after last drag
 }
@@ -517,13 +517,13 @@ void MbD::ASMTAssembly::runDraggingTest3()
     rotPos3D = rotPart->position3D;
     rotMat = rotPart->rotationMatrix;
     delta = std::make_shared<FullColumn<double>>(ListD {0.5, 0.0, 0.0});
-    dragPart->updateMbDFromPosition3D(dragPos3D->plusFullColumn(delta));
+    dragPart->setPosition3D(dragPos3D->plusFullColumn(delta));
     assembly->runDragStep(dragParts);
     dragPos3D = dragPart->position3D;
     rotPos3D = rotPart->position3D;
     rotMat = rotPart->rotationMatrix;
     delta = std::make_shared<FullColumn<double>>(ListD {0.5, 0.0, 0.0});
-    dragPart->updateMbDFromPosition3D(dragPos3D->plusFullColumn(delta));
+    dragPart->setPosition3D(dragPos3D->plusFullColumn(delta));
     assembly->runDragStep(dragParts);
     dragPos3D = dragPart->position3D;
     rotPos3D = rotPart->position3D;
@@ -1064,14 +1064,14 @@ void MbD::ASMTAssembly::runDraggingLog(const char* fileName)
             dragParts->push_back(dragPart);
             assert(readStringOffTop(lines) == "Position3D");
             auto dragPartPosition3D = readColumnOfDoublesOffTop(lines);
-            dragPart->updateMbDFromPosition3D(dragPartPosition3D);
+            dragPart->setPosition3D(dragPartPosition3D);
             assert(readStringOffTop(lines) == "RotationMatrix");
             auto dragPartRotationMatrix = std::make_shared<FullMatrix<double>>(3);
             for (size_t i = 0; i < 3; i++) {
                 auto row = readRowOfDoublesOffTop(lines);
                 dragPartRotationMatrix->atiput(i, row);
             }
-            dragPart->updateMbDFromRotationMatrix(dragPartRotationMatrix);
+            dragPart->setRotationMatrix(dragPartRotationMatrix);
         }
         runDragStep(dragParts);
     }
@@ -1090,6 +1090,13 @@ void MbD::ASMTAssembly::preMbDrun(std::shared_ptr<System> mbdSys)
     deleteMbD();
     createMbD(mbdSys, mbdUnits);
     std::static_pointer_cast<Part>(mbdObject)->asFixed();
+}
+
+void MbD::ASMTAssembly::preMbDrunDragStep(std::shared_ptr<System> mbdSys, std::shared_ptr<std::vector<std::shared_ptr<Part>>> dragParts)
+{
+    for (auto& part : *parts) {
+        part->preMbDrunDragStep(mbdSys, mbdUnits);
+    }
 }
 
 void MbD::ASMTAssembly::postMbDrun()
@@ -1330,10 +1337,10 @@ void MbD::ASMTAssembly::runDragStep(
         os.close();
     }
     auto dragMbDParts = std::make_shared<std::vector<std::shared_ptr<Part>>>();
-    auto crOOld = std::make_shared<std::vector<FColDsptr>>();
-    auto crONew = std::make_shared<std::vector<FColDsptr>>();
-    auto cqEOold = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
-    auto cqEOnew = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
+    auto crO1 = std::make_shared<std::vector<FColDsptr>>();
+    auto crO2 = std::make_shared<std::vector<FColDsptr>>();
+    auto cqEO1 = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
+    auto cqEO2 = std::make_shared<std::vector<std::shared_ptr<EulerParameters<double>>>>();
     for (auto& dragASMTPart : *dragASMTParts) {
         if (debug) {
             std::ofstream os("dragging.log", std::ios_base::app);
@@ -1345,72 +1352,45 @@ void MbD::ASMTAssembly::runDragStep(
         }
         auto dragMbDPart = std::static_pointer_cast<Part>(dragASMTPart->mbdObject);
         dragMbDParts->push_back(dragMbDPart);
-        crOOld->push_back(dragASMTPart->oldPos3D);
-        crONew->push_back(dragASMTPart->position3D);
-        cqEOold->push_back(dragASMTPart->oldRotMat->asEulerParameters());
-        cqEOnew->push_back(dragASMTPart->rotationMatrix->asEulerParameters());
+        crO1->push_back(dragASMTPart->oldPos3D);
+        crO2->push_back(dragASMTPart->position3D);
+        cqEO1->push_back(dragASMTPart->oldRotMat->asEulerParameters());
+        cqEO2->push_back(dragASMTPart->rotationMatrix->asEulerParameters());
     }
+    bool success = false;
     for (int i = 0; i < 5; i++) {
         if (i > 0) {
             double factor = std::pow(2.0, -i);
             for (size_t j = 0; j < dragASMTParts->size(); j++) {
                 auto& dragASMTPart = dragASMTParts->at(j);
-                auto rOOld = crOOld->at(j);
-                auto rONew = crONew->at(j);
-                auto rOMid = rOOld->times(1.0 - factor)->plusFullColumn(rONew->times(factor));
-                dragASMTPart->updateMbDFromPosition3D(rOMid);
-                auto qEOold = cqEOold->at(j);
-                auto qEOnew = cqEOnew->at(j);
+                auto rO1 = crO1->at(j);
+                auto rO2 = crO2->at(j);
+                auto rOMid = rO1->times(1.0 - factor)->plusFullColumn(rO2->times(factor));
+                dragASMTPart->setPosition3D(rOMid);
+                auto qEO1 = cqEO1->at(j);
+                auto qEO2 = cqEO2->at(j);
                 std::shared_ptr<EulerParameters<double>> qEOmid;
-                // Note: theta4D = theta3D / 2
-                auto cosTheta4D = qEOold->dot(qEOnew);
-                if (abs(cosTheta4D) >= 1.0) {
-                    qEOmid = qEOold->copy();
+                auto cosHalfTheta = qEO1->dot(qEO2);
+                if (abs(cosHalfTheta) >= 1.0) {
+                    qEOmid = qEO1->copy();
                 }
                 else {
-                    auto theta4D = std::acos(cosTheta4D);
-                    auto sinTheta4D = std::sin(theta4D);
-                    double ratioA = std::sin((1 - factor) * theta4D) / sinTheta4D;
-                    double ratioB = std::sin(factor * theta4D) / sinTheta4D;
-                    qEOmid = qEOold->times(ratioA)->plusFullColumn(qEOnew->times(ratioB));
+                    auto halfTheta = std::acos(cosHalfTheta);
+                    auto sinHalfTheta = std::sin(halfTheta);
+                    double ratio1 = std::sin((1.0 - factor) * halfTheta) / sinHalfTheta;
+                    double ratio2 = std::sin(factor * halfTheta) / sinHalfTheta;
+                    qEOmid = qEO1->times(ratio1)->plusFullColumn(qEO2->times(ratio2));
                 }
                 qEOmid->calcABC();
-                dragASMTPart->updateMbDFromRotationMatrix(qEOmid->aA);
-                //Alternate derivation to check
-                //{IJK} = [A]Oo[A]on{ijk}
-                //{IJK} = [A]On{ijk}
-                //[A]On = [A]Oo[A]on
-                //[A]on = [A]OoT[A]On
-                qEOold->calcABC();
-                auto aAOo = qEOold->aA;
-                qEOnew->calcABC();
-                auto aAOn = qEOnew->aA;
-                auto aAon = aAOo->transposeTimesFullMatrix(aAOn);
-                auto qEon = aAon->asEulerParameters();
-                cosTheta4D = qEon->at(3);
-                auto theta4D = std::acos(cosTheta4D);
-                auto sinTheta4D = std::sin(theta4D);
-                auto axisOfRotation = std::make_shared<std::vector<double>>();
-                for (size_t i = 0; i < 3; i++) {
-                    axisOfRotation->push_back(qEon->at(i) / sinTheta4D);
-                }
-                auto qEomid = std::make_shared<EulerParameters<double>>();
-                theta4D = factor * theta4D;
-                cosTheta4D = std::cos(theta4D);
-                sinTheta4D = std::sin(theta4D);
-                for (size_t i = 0; i < 3; i++) {
-                    qEomid->at(i) = axisOfRotation->at(i) * sinTheta4D;
-                }
-                qEomid->at(3) = cosTheta4D;
-                qEomid->calcABC();
-                auto aAOmid = aAOo->timesFullMatrix(qEomid->aA);
+                dragASMTPart->setRotationMatrix(qEOmid->aA);
             }
         }
         if (debug) {
             outputFile("runDragStep.asmt");
         }
         try {
-            mbdSystem->runDragStep(dragMbDParts);
+            mbdSystem->runDragStep(mbdSystem, dragMbDParts);
+            success = true;
             break;
         }
         catch (std::exception const& e) {
@@ -1420,6 +1400,7 @@ void MbD::ASMTAssembly::runDragStep(
             noop();
         }
     }
+    if (!success) restorePosRot();
 }
 
 void MbD::ASMTAssembly::runPostDrag()
@@ -1433,6 +1414,13 @@ void MbD::ASMTAssembly::runPostDrag()
     mbdSystem = std::make_shared<System>();
     mbdSystem->externalSystem->asmtAssembly = this;
     mbdSystem->runPreDrag(mbdSystem);
+}
+
+void MbD::ASMTAssembly::restorePosRot()
+{
+    for (auto& part : *parts) {
+        part->restorePosRot();
+    }
 }
 
 void MbD::ASMTAssembly::runKINEMATIC()
