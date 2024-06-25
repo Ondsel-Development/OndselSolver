@@ -1574,11 +1574,12 @@ void MbD::ASMTAssembly::compareResults(AnalysisType type)
 
 void MbD::ASMTAssembly::outputResults(AnalysisType type)
 {
-    // ASMTSpatialContainer::outputResults(type);
-    // for (auto& part : *parts) part->outputResults(type);
-    // for (auto& joint : *joints) joint->outputResults(type);
-    // for (auto& motion : *motions) motion->outputResults(type);
-    // for (auto& forceTorque : *forcesTorques) forceTorque->outputResults(type);
+    (void) type;
+	//ASMTSpatialContainer::outputResults(type);
+	//for (auto& part : *parts) part->outputResults(type);
+	//for (auto& joint : *joints) joint->outputResults(type);
+	//for (auto& motion : *motions) motion->outputResults(type);
+	//for (auto& forceTorque : *forcesTorques) forceTorque->outputResults(type);
 }
 
 void MbD::ASMTAssembly::addPart(std::shared_ptr<ASMTPart> part)
