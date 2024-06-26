@@ -116,6 +116,12 @@ void MbD::ASMTSpatialItem::storeOnLevelPosition(std::ofstream& os, size_t level)
 	}
 }
 
+void MbD::ASMTSpatialItem::storeOnLevelPositionRaw(std::ofstream& os, size_t level)
+{
+	storeOnLevelString(os, level, "Position3D");
+	storeOnLevelArray(os, level + 1, *position3D);
+}
+
 void MbD::ASMTSpatialItem::storeOnLevelRotationMatrix(std::ofstream& os, size_t level)
 {
 	storeOnLevelString(os, level, "RotationMatrix");
@@ -133,6 +139,15 @@ void MbD::ASMTSpatialItem::storeOnLevelRotationMatrix(std::ofstream& os, size_t 
 		}
 	}
 
+}
+
+void MbD::ASMTSpatialItem::storeOnLevelRotationMatrixRaw(std::ofstream& os, size_t level)
+{
+	storeOnLevelString(os, level, "RotationMatrix");
+	for (size_t i = 0; i < 3; i++)
+	{
+		storeOnLevelArray(os, level + 1, *rotationMatrix->at(i));
+	}
 }
 
 FColDsptr MbD::ASMTSpatialItem::getPosition3D(size_t i)
@@ -153,4 +168,10 @@ FMatDsptr MbD::ASMTSpatialItem::getRotationMatrix(size_t i)
 	bryantAngles->at(2) = bryzs->at(i);
 	bryantAngles->calc();
 	return bryantAngles->aA;
+}
+
+void MbD::ASMTSpatialItem::restorePosRot()
+{
+	position3D = oldPos3D;
+	rotationMatrix = oldRotMat;
 }

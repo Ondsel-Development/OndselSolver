@@ -17,7 +17,6 @@
 #include "../OndselSolver/CREATE.h"
 #include "../OndselSolver/GESpMatParPvPrecise.h"
 #include "../OndselSolver/ASMTAssembly.h"
-#include "../OndselSolver/MBDynSystem.h"
 #include "../OndselSolver/MomentOfInertiaSolver.h"
 
 using namespace MbD;
@@ -26,37 +25,31 @@ void sharedptrTest();
 
 int main()
 {
-	ASMTAssembly::runDraggingTest2();
-	ASMTAssembly::runDraggingTest3();
-	ASMTAssembly::runDraggingTest();
-	//ASMTAssembly::runFile("../testapp/pistonWithLimits.asmt");
+	//ASMTAssembly::runFile("C:/Users/askoh/OneDrive/askoh/visualstudio/Ondsel/OndselFreeCAD/build/src/Main/runDragStep.asmt");
+	//return 0;
+	//auto assembly = ASMTAssembly::assemblyFromFile("C:/Users/askoh/OneDrive/askoh/visualstudio/Ondsel/OndselFreeCAD/build/src/Main/runPreDrag.asmt");
+	//assembly->runDraggingLog("C:/Users/askoh/OneDrive/askoh/visualstudio/Ondsel/OndselFreeCAD/build/src/Main/dragging.log");
+	//return 0;
+	auto assembly = ASMTAssembly::assemblyFromFile("../testapp/runPreDragBackhoe3.asmt");
+	assembly->runDraggingLog("../testapp/draggingBackhoe3.log");
+	return 0;
+	ASMTAssembly::runDraggingLogTest3();
+	ASMTAssembly::runDraggingLogTest2();
+	ASMTAssembly::runDraggingLogTest();
 	ASMTAssembly::runFile("../testapp/pistonAllowZRotation.asmt");
 	ASMTAssembly::runFile("../testapp/Schmidt_Coupling_Ass_1-1.asmt");
 	ASMTAssembly::runFile("../testapp/RevRevJt.asmt");
 	ASMTAssembly::runFile("../testapp/RevCylJt.asmt");
 	ASMTAssembly::runFile("../testapp/CylSphJt.asmt");
 	ASMTAssembly::runFile("../testapp/SphSphJt.asmt");
-	MBDynSystem::runFile("../testapp/MBDynCase(Cosine-half drive).mbd");
-	MBDynSystem::runFile("../testapp/MBDynCase(Sine-forever drive).mbd");
-	MBDynSystem::runFile("../testapp/MBDynCase9orig.mbd");	//SimulationStoppingError
-	MBDynSystem::runFile("../testapp/MBDynCase8orig.mbd");	//Incompatible geometry at t=3.15
-	MBDynSystem::runFile("../testapp/MBDynCase5orig.mbd");	//Test Product::integrateWRT
 	ASMTAssembly::readWriteFile("../testapp/Gears.asmt");
 	ASMTAssembly::readWriteFile("../testapp/anglejoint.asmt");
 	ASMTAssembly::readWriteFile("../testapp/constvel.asmt");
 	ASMTAssembly::readWriteFile("../testapp/rackscrew.asmt");
 	ASMTAssembly::readWriteFile("../testapp/planarbug.asmt");
-	MBDynSystem::runFile("../testapp/InitialConditions.mbd");
-	MBDynSystem::runFile("../testapp/SphericalHinge.mbd");
 	ASMTAssembly::runFile("../testapp/cirpendu2.asmt");	//Under constrained. Testing ICKine.
 	ASMTAssembly::runFile("../testapp/quasikine.asmt");	//Under constrained. Testing ICKine.
 	ASMTAssembly::readWriteFile("../testapp/piston.asmt");
-	//MBDynSystem::runFile("../testapp/MBDynCaseDebug2.mbd");
-	//return 0;
-	MBDynSystem::runFile("../testapp/MBDynCase2.mbd");
-	//MBDynSystem::runFile("../testapp/MBDynCase.mbd");	//Very large but works
-	MBDynSystem::runFile("../testapp/CrankSlider2.mbd");
-	//MBDynSystem::runFile("../testapp/crank_slider.mbd");	//Needs integration of product
 	////ASMTAssembly::runSinglePendulumSuperSimplified();	//Mass is missing
 	////ASMTAssembly::runSinglePendulumSuperSimplified2();	//DOF has infinite acceleration due to zero mass and inertias
 	ASMTAssembly::runSinglePendulumSimplified();

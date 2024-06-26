@@ -31,6 +31,7 @@ void MbD::PosICDragLimitNewtonRaphson::initializeGlobally()
 
 void MbD::PosICDragLimitNewtonRaphson::setdragParts(std::shared_ptr<std::vector<std::shared_ptr<Part>>> dragParts)
 {
+    (void) dragParts;
 	assert(false);
 }
 
@@ -38,7 +39,11 @@ void MbD::PosICDragLimitNewtonRaphson::run()
 {
 	preRun();
 	system->deactivateLimits();
-	if (system->limitsSatisfied()) return;
+	if (system->limitsSatisfied()) {
+		std::string str("MbD: No limits reached. ");
+		system->logString(str);
+		return;
+	}
 	auto limits = system->limits();
 	std::partition(limits->begin(), limits->end(), [](auto limit) { return !limit->satisfied(); });
 	//Violated limits are in front.

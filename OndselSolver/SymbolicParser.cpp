@@ -6,9 +6,10 @@
  *   See LICENSE file for details about copyright.                         *
  ***************************************************************************/
  
-#include "corecrt_math_defines.h"
+#include <cmath>
 #include <sstream>
 #include <iomanip>
+#include <algorithm>
 
 #include "SymbolicParser.h"
 #include "BasicUserFunction.h"
@@ -338,7 +339,7 @@ bool MbD::SymbolicParser::constant()
 		return true;
 	}
 	if (peekForTypevalue("word", "pi")) {
-		auto symconst = std::make_shared<Constant>(OS_M_PI);
+		auto symconst = std::make_shared<Constant>(M_PI);
 		stack->push(symconst);
 		return true;
 	}
