@@ -61,6 +61,7 @@
 #include "ASMTLimit.h"
 #include "ASMTRotationLimit.h"
 #include "ASMTTranslationLimit.h"
+#include <filesystem>
 
 using namespace MbD;
 
@@ -356,6 +357,9 @@ void MbD::ASMTAssembly::runSinglePendulum()
 
 std::shared_ptr<ASMTAssembly> MbD::ASMTAssembly::assemblyFromFile(const char* fileName)
 {
+    std::filesystem::path currentPath = std::filesystem::current_path();
+    std::cout << "Current directory: " << currentPath << std::endl;
+
     std::ifstream stream(fileName);
     if (stream.fail()) {
         throw std::invalid_argument("File not found.");
@@ -424,8 +428,8 @@ void MbD::ASMTAssembly::runDraggingLogTest3()
 
 void MbD::ASMTAssembly::runDraggingTest()
 {
-    // auto assembly = ASMTAssembly::assemblyFromFile("../testapp/pistonWithLimits.asmt");
-    auto assembly = ASMTAssembly::assemblyFromFile("../testapp/dragCrankSlider.asmt");
+    // auto assembly = ASMTAssembly::assemblyFromFile("../../testapp/pistonWithLimits.asmt");
+    auto assembly = ASMTAssembly::assemblyFromFile("../../testapp/dragCrankSlider.asmt");
     assembly->setDebug(true);
 
     auto limit1 = ASMTRotationLimit::With();
@@ -464,8 +468,8 @@ void MbD::ASMTAssembly::runDraggingTest()
 
 void MbD::ASMTAssembly::runDraggingTest2()
 {
-    // auto assembly = ASMTAssembly::assemblyFromFile("../testapp/pistonWithLimits.asmt");
-    auto assembly = ASMTAssembly::assemblyFromFile("../testapp/dragCrankSlider.asmt");
+    // auto assembly = ASMTAssembly::assemblyFromFile("../../testapp/pistonWithLimits.asmt");
+    auto assembly = ASMTAssembly::assemblyFromFile("../../testapp/dragCrankSlider.asmt");
     assembly->setDebug(true);
 
     auto limit1 = ASMTRotationLimit::With();
@@ -504,7 +508,7 @@ void MbD::ASMTAssembly::runDraggingTest2()
 
 void MbD::ASMTAssembly::runDraggingTest3()
 {
-    auto assembly = ASMTAssembly::assemblyFromFile("../testapp/rackPinion3.asmt");
+    auto assembly = ASMTAssembly::assemblyFromFile("../../testapp/rackPinion3.asmt");
     assembly->setDebug(true);
     auto dragPart = assembly->partNamed("/OndselAssembly/rackPinion#Box");
     auto rotPart = assembly->partNamed("/OndselAssembly/rackPinion#Cylinder");

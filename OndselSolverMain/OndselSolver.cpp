@@ -30,37 +30,37 @@ int main()
 	//auto assembly = ASMTAssembly::assemblyFromFile("C:/Users/askoh/OneDrive/askoh/visualstudio/Ondsel/OndselFreeCAD/build/src/Main/runPreDrag.asmt");
 	//assembly->runDraggingLog("C:/Users/askoh/OneDrive/askoh/visualstudio/Ondsel/OndselFreeCAD/build/src/Main/dragging.log");
 	//return 0;
-	auto assembly = ASMTAssembly::assemblyFromFile("../testapp/runPreDragBackhoe3.asmt");
-	assembly->runDraggingLog("../testapp/draggingBackhoe3.log");
-	return 0;
+	auto assembly = ASMTAssembly::assemblyFromFile("../../testapp/runPreDragBackhoe3.asmt");
+	assembly->runDraggingLog("../../testapp/draggingBackhoe3.log");
+	//return 0;
 	ASMTAssembly::runDraggingLogTest3();
 	ASMTAssembly::runDraggingLogTest2();
 	ASMTAssembly::runDraggingLogTest();
-	ASMTAssembly::runFile("../testapp/pistonAllowZRotation.asmt");
-	ASMTAssembly::runFile("../testapp/Schmidt_Coupling_Ass_1-1.asmt");
-	ASMTAssembly::runFile("../testapp/RevRevJt.asmt");
-	ASMTAssembly::runFile("../testapp/RevCylJt.asmt");
-	ASMTAssembly::runFile("../testapp/CylSphJt.asmt");
-	ASMTAssembly::runFile("../testapp/SphSphJt.asmt");
-	ASMTAssembly::readWriteFile("../testapp/Gears.asmt");
-	ASMTAssembly::readWriteFile("../testapp/anglejoint.asmt");
-	ASMTAssembly::readWriteFile("../testapp/constvel.asmt");
-	ASMTAssembly::readWriteFile("../testapp/rackscrew.asmt");
-	ASMTAssembly::readWriteFile("../testapp/planarbug.asmt");
-	ASMTAssembly::runFile("../testapp/cirpendu2.asmt");	//Under constrained. Testing ICKine.
-	ASMTAssembly::runFile("../testapp/quasikine.asmt");	//Under constrained. Testing ICKine.
-	ASMTAssembly::readWriteFile("../testapp/piston.asmt");
+	ASMTAssembly::runFile("../../testapp/pistonAllowZRotation.asmt");
+	ASMTAssembly::runFile("../../testapp/Schmidt_Coupling_Ass_1-1.asmt");
+	ASMTAssembly::runFile("../../testapp/RevRevJt.asmt");
+	ASMTAssembly::runFile("../../testapp/RevCylJt.asmt");
+	ASMTAssembly::runFile("../../testapp/CylSphJt.asmt");
+	ASMTAssembly::runFile("../../testapp/SphSphJt.asmt");
+	ASMTAssembly::readWriteFile("../../testapp/Gears.asmt");
+	ASMTAssembly::readWriteFile("../../testapp/anglejoint.asmt");
+	ASMTAssembly::readWriteFile("../../testapp/constvel.asmt");
+	ASMTAssembly::readWriteFile("../../testapp/rackscrew.asmt");
+	ASMTAssembly::readWriteFile("../../testapp/planarbug.asmt");
+	ASMTAssembly::runFile("../../testapp/cirpendu2.asmt");	//Under constrained. Testing ICKine.
+	ASMTAssembly::runFile("../../testapp/quasikine.asmt");	//Under constrained. Testing ICKine.
+	ASMTAssembly::readWriteFile("../../testapp/piston.asmt");
 	////ASMTAssembly::runSinglePendulumSuperSimplified();	//Mass is missing
 	////ASMTAssembly::runSinglePendulumSuperSimplified2();	//DOF has infinite acceleration due to zero mass and inertias
 	ASMTAssembly::runSinglePendulumSimplified();
 	ASMTAssembly::runSinglePendulum();
-	ASMTAssembly::runFile("../testapp/piston.asmt");
-	ASMTAssembly::runFile("../testapp/00backhoe.asmt");
-	//ASMTAssembly::runFile("../testapp/circular.asmt");	//Needs checking
-	//ASMTAssembly::runFile("../testapp/engine1.asmt");	//Needs checking
-	ASMTAssembly::runFile("../testapp/fourbar.asmt");
-	//ASMTAssembly::runFile("../testapp/fourbot.asmt");	//Very large but works
-	ASMTAssembly::runFile("../testapp/wobpump.asmt");
+	ASMTAssembly::runFile("../../testapp/piston.asmt");
+	ASMTAssembly::runFile("../../testapp/00backhoe.asmt");
+	//ASMTAssembly::runFile("../../testapp/circular.asmt");	//Needs checking
+	//ASMTAssembly::runFile("../../testapp/engine1.asmt");	//Needs checking
+	ASMTAssembly::runFile("../../testapp/fourbar.asmt");
+	//ASMTAssembly::runFile("../../testapp/fourbot.asmt");	//Very large but works
+	ASMTAssembly::runFile("../../testapp/wobpump.asmt");
 
 	auto cadSystem = std::make_shared<CADSystem>();
 	cadSystem->runOndselSinglePendulum();
