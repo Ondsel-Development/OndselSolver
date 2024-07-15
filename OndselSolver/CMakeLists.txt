@@ -610,7 +610,7 @@ set(ONDSELSOLVER_HEADERS
         System.h
         SystemNewtonRaphson.h
         SystemSolver.h
-        Time.h
+        SymTime.h
         TooManyTriesError.h
         TooSmallStepSizeError.h
         Translation.h
