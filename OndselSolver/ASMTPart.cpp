@@ -126,7 +126,7 @@ void MbD::ASMTPart::createMbD(std::shared_ptr<System> mbdSys, std::shared_ptr<Un
 	if (isFixed) std::static_pointer_cast<Part>(mbdObject)->asFixed();
 }
 
-void MbD::ASMTPart::preMbDrunDragStep(std::shared_ptr<System> mbdSys, std::shared_ptr<Units> mbdUnits)
+void MbD::ASMTPart::preMbDrunDragStep(std::shared_ptr<System> /*mbdSys*/, std::shared_ptr<Units> mbdUnits)
 {
 	auto mbdPart = std::static_pointer_cast<Part>(mbdObject);
 	mbdPart->qX(rOcmO()->times(1.0 / mbdUnits->length));

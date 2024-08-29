@@ -61,6 +61,7 @@
 #include "ASMTLimit.h"
 #include "ASMTRotationLimit.h"
 #include "ASMTTranslationLimit.h"
+#include "ExternalSystem.h"
 #include <filesystem>
 
 using namespace MbD;
@@ -68,6 +69,7 @@ using namespace MbD;
 MbD::ASMTAssembly::ASMTAssembly()
     : ASMTSpatialContainer()
 {
+    externalSystem = std::make_shared<ExternalSystem>();
     times = std::make_shared<FullRow<double>>();
 }
 
@@ -1096,7 +1098,7 @@ void MbD::ASMTAssembly::preMbDrun(std::shared_ptr<System> mbdSys)
     std::static_pointer_cast<Part>(mbdObject)->asFixed();
 }
 
-void MbD::ASMTAssembly::preMbDrunDragStep(std::shared_ptr<System> mbdSys, std::shared_ptr<std::vector<std::shared_ptr<Part>>> dragParts)
+void MbD::ASMTAssembly::preMbDrunDragStep(std::shared_ptr<System> mbdSys, std::shared_ptr<std::vector<std::shared_ptr<Part>>> /*dragParts*/)
 {
     for (auto& part : *parts) {
         part->preMbDrunDragStep(mbdSys, mbdUnits);
@@ -1305,6 +1307,11 @@ void MbD::ASMTAssembly::storeOnLevel(std::ofstream& os, size_t level)
     storeOnTimeSeries(os);
 }
 
+size_t MbD::ASMTAssembly::numberOfFrames()
+{
+    return times->size();
+}
+
 void MbD::ASMTAssembly::solve()
 {
     auto simulationParameters = CREATE<ASMTSimulationParameters>::With();
@@ -1375,7 +1382,7 @@ void MbD::ASMTAssembly::runDragStep(
                 auto qEO2 = cqEO2->at(j);
                 std::shared_ptr<EulerParameters<double>> qEOmid;
                 auto cosHalfTheta = qEO1->dot(qEO2);
-                if (abs(cosHalfTheta) >= 1.0) {
+                if (std::abs(cosHalfTheta) >= 1.0) {
                     qEOmid = qEO1->copy();
                 }
                 else {
@@ -1756,4 +1763,21 @@ void MbD::ASMTAssembly::setFilename(const std::string& str)
 void MbD::ASMTAssembly::setDebug(bool todebug)
 {
     debug = todebug;
+}
+
+void MbD::ASMTAssembly::updateForFrame(size_t index)
+{
+    ASMTSpatialContainer::updateForFrame(index);
+    for (auto& part : *parts) {
+        part->updateForFrame(index);
+    }
+    //for (auto& joint : *joints) {
+    //    joint->updateForFrame(index);
+    //}
+    //for (auto& motion : *motions) {
+    //    motion->updateForFrame(index);
+    //}
+    //for (auto& forceTorque : *forcesTorques) {
+    //    forceTorque->updateForFrame(index);
+    //}
 }
