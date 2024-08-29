@@ -7,11 +7,13 @@
  ***************************************************************************/
  
 #include "ConstraintIJ.h"
+
+#include <utility>
 #include "EndFramec.h"
 
 using namespace MbD;
 
-ConstraintIJ::ConstraintIJ(EndFrmsptr frmi, EndFrmsptr frmj) : frmI(frmi), frmJ(frmj), Constraint()
+ConstraintIJ::ConstraintIJ(EndFrmsptr frmi, EndFrmsptr frmj) : frmI(std::move(frmi)), frmJ(std::move(frmj))
 {
 }
 
